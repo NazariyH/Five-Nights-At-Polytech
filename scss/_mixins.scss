@@ -1,0 +1,20 @@
+@mixin preloader-animation {
+    animation: spin $preloader-duration linear infinite;
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+
+@mixin flex-position($x: center, $y: center, $direction: column) {
+    display: flex;
+    justify-content: $x;
+    align-items: $y;
+    flex-direction: $direction;
+}

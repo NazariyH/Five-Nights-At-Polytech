@@ -4,3 +4,27 @@
 @import 'mixins';
 
 @import './components/startMenu';
+
+
+body {
+    background-color: $body-background-color;
+    overflow: hidden;
+    height: 100vh;
+
+    @include flex-position($x: center, $y: center, $direction: column);
+}
+
+#preloader {
+    width: $preloader-size;
+    height: $preloader-size;
+    border: $preloader-border;
+    border-top: $preloader-active-border;
+    border-right: $preloader-active-border;
+    border-radius: $preloader-radius;
+
+    @include preloader-animation;
+}
+
+.d-none {
+    display: none;
+}
