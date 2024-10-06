@@ -1,0 +1,61 @@
+/* Universal reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* Reset for input, button, form, textarea, select */
+input,
+button,
+textarea,
+select {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    box-sizing: border-box;
+    outline: none;
+    /* Removes the outline on focus (you may want to add custom focus styles later) */
+    appearance: none;
+    /* Removes default styles for buttons/inputs */
+}
+
+/* Reset for form */
+form {
+    margin: 0;
+    padding: 0;
+}
+
+/* Reset for anchor links */
+a {
+    text-decoration: none;
+    color: inherit;
+    /* Inherit the color of the parent element */
+}
+
+/* Reset for buttons */
+button {
+    background: none;
+    cursor: pointer;
+    /* Adds back the pointer cursor */
+}
+
+/* Reset lists */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Reset table */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
