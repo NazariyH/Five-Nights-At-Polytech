@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./dist/css/main.min.css">
     <title>Five nights at Палітех</title>
 </head>
+
 <body>
     <div id="preloader"></div>
-    <h1>Hello World</h1>
+
+    <div id="disclaimer" class="d-none">
+        <div class="disclaimer__block">
+            <div>
+                <img src="./assets/icons/warning.png" alt="">
+            </div>
+            <div>
+                <p>
+                    Ця гра містить елементи жаху та може викликати страх у деяких гравців. Усі персонажі в цій грі були
+                    створені з використанням фотографій реальних людей, які були оброблені для розважальних цілей. Ми з
+                    повагою ставимося до всіх осіб, зображених у грі, і не маємо наміру образити чи завдати шкоди
+                    будь-якому
+                    з них.
+                </p>
+            </div>
+        </div>
+        <button id="disclaimer-button"><span>Грати</span></button>
+    </div>
+
+
+
+
+    <div class="d-none">
+        <audio id="start-menu-background-music" src="./assets/audio/backgroundMusic/startMenuBackgroundMusic.mp3" loop></audio>
+    </div>
+
+
+    <script src="./scripts/StartMenuState.js"></script>
     <script src="./scripts/main.js"></script>
 </body>
+
 </html>

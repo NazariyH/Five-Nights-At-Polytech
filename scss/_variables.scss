@@ -2,14 +2,37 @@
 $preloader-size:                    120px;
 $preloader-radius:                  50%;
 
+$warning-icon-size:                 80px;
+$disclaimer-width:                  800px;
+$disclaimer-button-width:           100%;
+$disclaimer-button-height:          50px;
+$disclaimer-button-radius:          20px;
+$disclaimer-button-hover-width:     900px;
+$disclaimer-button-hover-height:    600px;
+$disclaimer-button-hover-steep:     70deg;
+
+
+// Margins and paddings
+$warning-icon-margin:               25px;
+$disclaimer-button-margin:          $warning-icon-margin;
+
 
 // Colors
+$text-color:                       #FFFFFF;
 $body-background-color:            #000000;
+
+$disclaimer-button-color:          #A50000;
+$disclaimer-button-hover-color:    #ff8d8d;
+
+
+
+// Font styles, sizes, familys
+$disclaimer-text-fontsize:          18px;
 
 
 // Transitions
-// $preloader-transition:              all .5s ease-in-out;
 $preloader-duration:                1.5s;
+$disclaimer-button-transition:      all .6s ease-in-out;
 
 
 // Border styles

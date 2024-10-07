@@ -1,0 +1,49 @@
+.disclaimer {
+    &__block {
+        position: relative;
+        width: $disclaimer-width;
+
+        @include flex-position($x: center, $y: center, $direction: row);
+
+        img {
+            width: $warning-icon-size;
+            margin-right: $warning-icon-margin;
+        }
+
+        p {
+            font-size: $disclaimer-text-fontsize;
+        }
+    }
+}
+
+#disclaimer-button {
+    position: relative;
+    width: $disclaimer-button-width;
+    height: $disclaimer-button-height;
+    font-size: $disclaimer-text-fontsize;
+    background-color: $disclaimer-button-color;
+    margin-top: $disclaimer-button-margin;
+    border-radius: $disclaimer-button-radius;
+    overflow: hidden;
+
+    &::after {
+        content: '';
+        width: $disclaimer-button-hover-width;
+        height: $disclaimer-button-hover-height;
+        background-color:  $disclaimer-button-hover-color;
+        transform: rotate($disclaimer-button-hover-steep);
+        transition: $disclaimer-button-transition;
+
+        @include absolute-position;
+        left: -$disclaimer-button-hover-height / 2;
+    }
+
+    &:hover::after {
+        left: $disclaimer-button-hover-height / 2;
+    }
+
+    span {
+        @include absolute-position(true);
+        z-index: 2;
+    }
+}

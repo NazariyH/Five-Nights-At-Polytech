@@ -18,3 +18,16 @@
     align-items: $y;
     flex-direction: $direction;
 }
+
+
+@mixin absolute-position($center: false) {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    @if ($center) {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
