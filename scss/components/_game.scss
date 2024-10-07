@@ -1,0 +1,46 @@
+.game {
+    overflow: hidden;
+
+    @include full-screen-mode;
+    @include flex-position($x: space-between, $y: center, $direction: column);
+
+    &__header {
+        padding: $header-padding-y $header-padding-x;
+        width: 100%;
+
+        @include flex-position($x: space-between, $y: center, $direction: row);
+
+        &--energy {
+            img {
+                width: $battery-size;
+                filter: $game-icon-color;
+            }
+        }
+
+        &--time {
+            font-size: $game-fontsize;
+            font-family: $game-fontfamily;
+        }
+    }
+
+    &__footer {
+        padding: $footer-padding-y $footer-padding-x;
+        @include flex-position($x: center, $y: center, $direction: row);
+
+        button {
+            margin: 0 $game-footer-button-margin;
+
+            img {
+                width: $game-icons-size;
+                filter: $game-icon-color;
+            }
+
+
+            &:hover {
+                img {
+                    filter: $game-icon-color-hover;
+                }
+            }
+        }
+    }
+}

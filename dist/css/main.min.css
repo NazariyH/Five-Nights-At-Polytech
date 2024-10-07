@@ -222,6 +222,50 @@ table {
   background-color: rgba(0, 0, 0, 0.6156862745);
 }
 
+.game {
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+.game__header {
+  padding: 40px 150px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.game__header--energy img {
+  width: 60px;
+  filter: invert(1);
+}
+.game__header--time {
+  font-size: 30px;
+  font-family: "Roboto", sans-serif;
+}
+.game__footer {
+  padding: 40px 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.game__footer button {
+  margin: 0 30px;
+}
+.game__footer button img {
+  width: 50px;
+  filter: invert(1);
+}
+.game__footer button:hover img {
+  filter: invert(100%) sepia(1) saturate(0) hue-rotate(0deg) brightness(60%);
+}
+
 body {
   background-color: #000000;
   color: #FFFFFF;

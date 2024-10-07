@@ -16,8 +16,11 @@ $start-menu-image-height:           400px;
 $start-menu-image-offset:           150px;
 $start-menu-image-shake-offset:     20px;
 
-$arrow-icon-width:                   20px;
-$arrow-icon-height:                  $arrow-icon-width;
+$arrow-icon-width:                  20px;
+$arrow-icon-height:                 $arrow-icon-width;
+
+$battery-size:                      60px;
+$game-icons-size:                   50px;
 
 
 
@@ -31,6 +34,12 @@ $start-menu-navbar-item-margin:     10px;
 
 $arrow-icon-margin:                 20px;
 
+$header-padding-x:                  150px;
+$header-padding-y:                  40px;
+$footer-padding-x:                  $header-padding-x;
+$footer-padding-y:                  $header-padding-y;
+$game-footer-button-margin:         30px;
+
 
 // Colors
 $text-color:                       #FFFFFF;
@@ -42,6 +51,8 @@ $start-menu-navbar-hover-color:    #9b9b9b;
 $start-menu-image-filter:          #0000009d;
 $start-menu-title-color:           $disclaimer-button-color;
 $start-menu-navbar-icons-color:    invert(100%) sepia(1) saturate(0) hue-rotate(0deg) brightness(60%);
+$game-icon-color:                  invert(1);
+$game-icon-color-hover:            $start-menu-navbar-icons-color;
 
 
 
@@ -53,6 +64,9 @@ $start-menu-navbar-fontsize:        26px;
 $start-menu-navbar-letter-spacing:  2px;
 $start-menu-title-fontfamily:       "Nosifer", sans-serif;
 $base-font-family:                  "Ruslan Display", sans-serif;
+
+$game-fontsize:                      30px;
+$game-fontfamily:                    "Roboto", sans-serif;
 
 
 // Transitions
