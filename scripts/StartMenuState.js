@@ -19,7 +19,12 @@ var startMenu = {
 
     fetchSettings() {
         // Fetch settings from JSON settings
-        fetch('https://nazariyh.github.io/Five-Nights-At-Polytech/settings.json')
+
+        const settingsPath = window.location.hostname === 'localhost'
+            ? 'settings.json'  // Local development
+            : 'https://nazariyh.github.io/Five-Nights-At-Polytech/settings.json';  // GitHub Pages
+
+        fetch(settingsPath)
             .then(response => response.json())
             .then(settings => {
                 this.start_menu_shake_interval = settings['start_menu_shake_interval'];
