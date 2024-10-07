@@ -13,7 +13,8 @@ $disclaimer-button-hover-steep:     70deg;
 
 $start-menu-image-width:            300px;
 $start-menu-image-height:           400px;
-$start-menu-image-offset:           150px;
+$start-menu-image-offset-x:         130px;
+$start-menu-image-offset-y:         -30px;
 $start-menu-image-shake-offset:     20px;
 
 $arrow-icon-width:                  20px;
@@ -29,7 +30,7 @@ $warning-icon-margin:               25px;
 $disclaimer-button-margin:          $warning-icon-margin;
 
 $start-menu-padding:                200px;
-$start-menu-title-margin:           80px;
+$start-menu-title-margin:           120px;
 $start-menu-navbar-item-margin:     10px;
 
 $arrow-icon-margin:                 20px;
@@ -90,3 +91,5 @@ $start-menu-object1-active:         '../../assets/gameObjects/startMenu/object_1
 $start-menu-object2:                '../../assets/gameObjects/startMenu/object_2.png';
 $start-menu-object2-active:         '../../assets/gameObjects/startMenu/object_2_active.png';
 $start-menu-object3:                '../../assets/gameObjects/startMenu/object_3.png';
+$start-menu-object3-active:         '../../assets/gameObjects/startMenu/object_3_active.png';
+

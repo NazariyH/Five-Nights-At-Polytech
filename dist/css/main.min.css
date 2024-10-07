@@ -134,7 +134,7 @@ table {
   font-size: 48px;
   font-family: "Nosifer", sans-serif;
   color: #A50000;
-  margin-bottom: 80px;
+  margin-bottom: 120px;
 }
 .start__block--menubar ul li {
   font-size: 26px;
@@ -163,7 +163,7 @@ table {
 }
 .start__block__group {
   position: relative;
-  width: 750px;
+  width: 690px;
   height: 400px;
 }
 .start__block__group.shaking {
@@ -195,12 +195,17 @@ table {
   background-position: center;
 }
 .start__block__group--image:nth-child(1) {
-  background: url("../../assets/gameObjects/startMenu/object_3.png");
-  left: 300px;
+  background-image: url("../../assets/gameObjects/startMenu/object_3.png");
+  left: 260px;
+  top: -60px;
+}
+.start__block__group--image:nth-child(1).active {
+  background-image: url("../../assets/gameObjects/startMenu/object_3_active.png");
 }
 .start__block__group--image:nth-child(2) {
-  background: url("../../assets/gameObjects/startMenu/object_2.png");
-  left: 150px;
+  background-image: url("../../assets/gameObjects/startMenu/object_2.png");
+  left: 130px;
+  top: -30px;
 }
 .start__block__group--image:nth-child(2).active {
   background-image: url("../../assets/gameObjects/startMenu/object_2_active.png");
@@ -208,6 +213,7 @@ table {
 .start__block__group--image:nth-child(3) {
   background-image: url("../../assets/gameObjects/startMenu/object_1.png");
   left: 0;
+  top: 0;
 }
 .start__block__group--image:nth-child(3).active {
   background-image: url("../../assets/gameObjects/startMenu/object_1_active.png");
@@ -217,8 +223,9 @@ table {
   position: absolute;
   top: 0;
   left: 0;
+  top: -60px;
   width: 100%;
-  height: 100%;
+  min-height: 490px;
   background-color: rgba(0, 0, 0, 0.6156862745);
 }
 

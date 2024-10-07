@@ -30,7 +30,7 @@
         content: '';
         width: $disclaimer-button-hover-width;
         height: $disclaimer-button-hover-height;
-        background-color:  $disclaimer-button-hover-color;
+        background-color: $disclaimer-button-hover-color;
         transform: rotate($disclaimer-button-hover-steep);
         transition: $disclaimer-button-transition;
 
@@ -82,13 +82,13 @@
                 height: $arrow-icon-height;
                 margin-right: $arrow-icon-margin;
                 transition: $start-menu-navbar-transition;
-                
+
                 opacity: 0;
             }
 
             &:hover {
                 color: $start-menu-navbar-hover-color;
-                
+
                 img {
                     opacity: 1;
                 }
@@ -97,7 +97,7 @@
 
         &__group {
             position: relative;
-            width: $start-menu-image-width + $start-menu-image-offset * 3;
+            width: $start-menu-image-width + $start-menu-image-offset-x * 3;
             height: $start-menu-image-height;
 
             &.shaking {
@@ -113,26 +113,32 @@
                 @include image-center-position;
 
                 &:nth-child(1) {
-                    background: url($start-menu-object3);
+                    background-image: url($start-menu-object3);
+                    left: $start-menu-image-offset-x * 2;
+                    top: $start-menu-image-offset-y * 2;
 
-                    left: $start-menu-image-offset * 2;
+                    &.active {
+                        background-image: url($start-menu-object3-active);
+                    }
                 }
 
                 &:nth-child(2) {
-                    background: url($start-menu-object2);
-                    left: $start-menu-image-offset;
-                    
+                    background-image: url($start-menu-object2);
+                    left: $start-menu-image-offset-x;
+                    top: $start-menu-image-offset-y;
+
                     &.active {
-                        background-image: url($start-menu_object2-active);
+                        background-image: url($start-menu-object2-active);
                     }
                 }
 
                 &:nth-child(3) {
                     background-image: url($start-menu-object1);
                     left: 0;
-                    
+                    top: 0;
+
                     &.active {
-                        background-image: url($start-menu_object1-active);
+                        background-image: url($start-menu-object1-active);
                     }
                 }
             }
@@ -141,8 +147,9 @@
                 content: '';
 
                 @include absolute-position;
+                top: $start-menu-image-offset-y * 2;
                 width: 100%;
-                height: 100%;
+                min-height: $start-menu-image-height - $start-menu-image-offset-y * 3;
 
                 background-color: $start-menu-image-filter;
             }
