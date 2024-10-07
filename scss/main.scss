@@ -1,7 +1,7 @@
-@import 'resets';
 @import 'variables';
 @import 'functions';
 @import 'mixins';
+@import 'resets';
 
 @import './components/startMenu';
 
@@ -11,6 +11,7 @@ body {
     color: $text-color;
     overflow: hidden;
     height: 100vh;
+    cursor: $cursor, auto;
 
     @include flex-position($x: center, $y: center, $direction: column);
 }
@@ -28,4 +29,9 @@ body {
 
 .d-none {
     display: none;
+}
+
+button:hover,
+button:focus {
+    cursor: $cursor, auto;
 }

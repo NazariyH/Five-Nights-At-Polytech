@@ -31,3 +31,36 @@
         transform: translate(-50%, -50%);
     }
 }
+
+
+@mixin full-screen-mode {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+@mixin image-center-position {
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@mixin start-menu-image-shake($duration: .5s, $offset: 20px) {
+    animation: shake $duration infinite;
+
+    @keyframes shake {
+        0% {
+            transform: translate(0, 0);
+        }
+        33% {
+            transform: translate($offset, $offset);
+        }
+        66% {
+            transform: translate(0, 0);
+        }
+        100% {
+            transform: translate(-$offset, -$offset);
+        }
+    }
+}

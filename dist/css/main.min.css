@@ -113,11 +113,121 @@ table {
   z-index: 2;
 }
 
+.start {
+  padding: 0 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+.start__block:nth-child(2) {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.start__block--title {
+  font-size: 48px;
+  font-family: "Nosifer", sans-serif;
+  color: #A50000;
+  margin-bottom: 80px;
+}
+.start__block--menubar ul li {
+  font-size: 26px;
+  font-family: "Ruslan Display", sans-serif;
+  letter-spacing: 2px;
+  margin: 10px 0;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.start__block--menubar ul li img {
+  filter: invert(100%) sepia(1) saturate(0) hue-rotate(0deg) brightness(60%);
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+}
+.start__block--menubar ul li:hover {
+  color: #9b9b9b;
+}
+.start__block--menubar ul li:hover img {
+  opacity: 1;
+}
+.start__block__group {
+  position: relative;
+  width: 750px;
+  height: 400px;
+}
+.start__block__group.shaking {
+  animation: shake 0.2s infinite;
+}
+@keyframes shake {
+  0% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(20px, 20px);
+  }
+  66% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-20px, -20px);
+  }
+}
+.start__block__group--image {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover !important;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.start__block__group--image:nth-child(1) {
+  background: url("../../assets/gameObjects/startMenu/object_3.png");
+  left: 300px;
+}
+.start__block__group--image:nth-child(2) {
+  background: url("../../assets/gameObjects/startMenu/object_2.png");
+  left: 150px;
+}
+.start__block__group--image:nth-child(2).active {
+  background-image: url("../../assets/gameObjects/startMenu/object_2_active.png");
+}
+.start__block__group--image:nth-child(3) {
+  background-image: url("../../assets/gameObjects/startMenu/object_1.png");
+  left: 0;
+}
+.start__block__group--image:nth-child(3).active {
+  background-image: url("../../assets/gameObjects/startMenu/object_1_active.png");
+}
+.start__block__group::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6156862745);
+}
+
 body {
   background-color: #000000;
   color: #FFFFFF;
   overflow: hidden;
   height: 100vh;
+  cursor: url("../../assets/cursor/cursor.png"), auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,4 +254,9 @@ body {
 
 .d-none {
   display: none;
+}
+
+button:hover,
+button:focus {
+  cursor: url("../../assets/cursor/cursor.png"), auto;
 }/*# sourceMappingURL=main.min.css.map */

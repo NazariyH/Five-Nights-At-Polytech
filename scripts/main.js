@@ -1,6 +1,8 @@
 window.onload = function () {
     const preloader = document.getElementById('preloader');
+
     preloader.classList.add('d-none');
-    
-    setUpDisclaimer();
+    disclaimer.classList.remove('d-none');
+
+    startMenu.initializeStartMenu();
 };

@@ -4,6 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- Link fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ruslan+Display&family=Nosifer&display=swap" rel="stylesheet">
+
+
     <link rel="stylesheet" href="./dist/css/main.min.css">
     <title>Five nights at Палітех</title>
 </head>
@@ -29,14 +37,55 @@
         <button id="disclaimer-button"><span>Грати</span></button>
     </div>
 
+    <div id="start-menu" class="start d-none">
+        <div class="start__block">
+            <h1 class="start__block--title">Five Nights at Polytech</h1>
+        </div>
+        <div class="start__block">
+            <div class="start__block__group">
+                <div class="start__block__group--image"></div>
+                <div class="start__block__group--image two-options"></div>
+                <div class="start__block__group--image two-options"></div>
+            </div>
+            <div class="start__block--menubar">
+                <ul>
+                    <li id="start-new-game"><img src="./assets/icons/arrow.png" class="arrow-icon" alt="">Нова Гра</li>
+                    <li><img src="./assets/icons/arrow.png" class="arrow-icon" alt="">Вибрати Ніч</li>
+                    <li><img src="./assets/icons/arrow.png" class="arrow-icon" alt="">Усі Політехотроніки</li>
+                    <li><img src="./assets/icons/arrow.png" class="arrow-icon" alt="">Інструкція</li>
+                    <li><img src="./assets/icons/arrow.png" class="arrow-icon" alt=""><a href="https://github.com/NazariyH" target="_blank">Github автора</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="game" class="d-none">
+        <div class="game__header">
+            <div class="game__header--energy">
+                <img src="./assets/gameObjects/gamePlay/battery/100%.png" alt="100%">
+            </div>
+            <div class="game__header--time"></div>
+        </div>
+        <div class="game__content"></div>
+        <div class="game__footer">
+            <div class="game__footer--camares"></div>
+            <div class="game__footer--mask"></div>
+            <button class="game__footer--close--ventilation"></button>
+        </div>
+    </div>
+
 
 
 
     <div class="d-none">
         <audio id="start-menu-background-music" src="./assets/audio/backgroundMusic/startMenuBackgroundMusic.mp3" loop></audio>
+        <audio id="camera-toggling-sound" src="./assets/audio/soundEffect/startMenu/camera_toggling_sound.mp3"></audio>
+        <audio class="start-menu-sound-effect" src="./assets/audio/soundEffect/startMenu/sound_effect_1.mp3"></audio>
+        <audio class="start-menu-sound-effect" src="./assets/audio/soundEffect/startMenu/sound_effect_2.mp3"></audio>
+        <audio class="start-menu-sound-effect" src="./assets/audio/soundEffect/startMenu/sound_effect_3.mp3"></audio>
     </div>
 
-
+    <script src="./scripts/Player.js"></script>
     <script src="./scripts/StartMenuState.js"></script>
     <script src="./scripts/main.js"></script>
 </body>

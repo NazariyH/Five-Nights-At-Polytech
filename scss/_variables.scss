@@ -11,10 +11,25 @@ $disclaimer-button-hover-width:     900px;
 $disclaimer-button-hover-height:    600px;
 $disclaimer-button-hover-steep:     70deg;
 
+$start-menu-image-width:            300px;
+$start-menu-image-height:           400px;
+$start-menu-image-offset:           150px;
+$start-menu-image-shake-offset:     20px;
+
+$arrow-icon-width:                   20px;
+$arrow-icon-height:                  $arrow-icon-width;
+
+
 
 // Margins and paddings
 $warning-icon-margin:               25px;
 $disclaimer-button-margin:          $warning-icon-margin;
+
+$start-menu-padding:                200px;
+$start-menu-title-margin:           80px;
+$start-menu-navbar-item-margin:     10px;
+
+$arrow-icon-margin:                 20px;
 
 
 // Colors
@@ -23,18 +38,41 @@ $body-background-color:            #000000;
 
 $disclaimer-button-color:          #A50000;
 $disclaimer-button-hover-color:    #ff8d8d;
+$start-menu-navbar-hover-color:    #9b9b9b;
+$start-menu-image-filter:          #0000009d;
+$start-menu-title-color:           $disclaimer-button-color;
+$start-menu-navbar-icons-color:    invert(100%) sepia(1) saturate(0) hue-rotate(0deg) brightness(60%);
 
 
 
 // Font styles, sizes, familys
 $disclaimer-text-fontsize:          18px;
 
+$start-menu-title-fontsize:         48px;
+$start-menu-navbar-fontsize:        26px;
+$start-menu-navbar-letter-spacing:  2px;
+$start-menu-title-fontfamily:       "Nosifer", sans-serif;
+$base-font-family:                  "Ruslan Display", sans-serif;
+
 
 // Transitions
 $preloader-duration:                1.5s;
 $disclaimer-button-transition:      all .6s ease-in-out;
 
+$start-menu-navbar-transition:      all .3s ease-in-out;
+$start-menu-image-duration:         .2s;
+
 
 // Border styles
 $preloader-border:                  16px double transparent;
 $preloader-active-border:           16px double #A50000;
+
+
+// Images
+$cursor:                            url('../../assets/cursor/cursor.png');
+
+$start-menu-object1:                '../../assets/gameObjects/startMenu/object_1.png';
+$start-menu-object1-active:         '../../assets/gameObjects/startMenu/object_1_active.png';
+$start-menu-object2:                '../../assets/gameObjects/startMenu/object_2.png';
+$start-menu-object2-active:         '../../assets/gameObjects/startMenu/object_2_active.png';
+$start-menu-object3:                '../../assets/gameObjects/startMenu/object_3.png';
