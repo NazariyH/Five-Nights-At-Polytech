@@ -64,3 +64,30 @@
         }
     }
 }
+
+
+@mixin canvas-noise-animation($duration) {
+    animation: transitioning $duration infinite;
+    transition: $camera-transition;
+
+    @keyframes transitioning {
+        0% {
+            opacity: 0.3;
+        }
+        20% {
+            opacity: 0.6;
+        }
+        40% {
+            opacity: 1;
+        }
+        60% {
+            opacity: 0.6;
+        }
+        80% {
+            opacity: 0.4;
+        }
+        100% {
+            opacity: 0.3;
+        }
+    }
+}

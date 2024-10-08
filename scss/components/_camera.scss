@@ -1,0 +1,111 @@
+.camera {
+    position: relative;
+    width: $camera-width;
+    height: $camera-height;
+    padding: $camera-padding;
+
+    border-radius: 0 $camera-frame-radius $camera-frame-radius 0;
+    background-color: $camera-background-color;
+    transition: $camera-transition;
+
+    border-right: $camera-frame-border-size solid $camera-frame-border-color;
+    border-bottom: $camera-frame-border-size solid $camera-frame-border-color;
+
+    @include flex-position($x: space-between, $y: center, $direction: row);
+    @include absolute-position(center);
+    top: 300%;
+
+
+    .camera-top-panel {
+        width: $camera-decoration-width;
+        height: $camera-decoration-height;
+        background-color: $camera-background-color;
+        border-right: $camera-decoration-border-size solid $camera-frame-border-color;
+        border-radius: $camera-decoration-left-radius $camera-decoration-right-radius 0 0;
+
+        @include flex-position($x: center, $y: center, $direction: row);
+        @include absolute-position;
+        top: -$camera-decoration-height;
+        left: $camera-decoration-offset;
+
+        span {
+            width: $camera-indicator-size;
+            height: $camera-indicator-size;
+            border-radius: $camera-indicator-radius;
+            margin: 0 $camera-indicator-margin;
+            box-shadow: $indicator-box-shadow;
+
+            &:nth-of-type(1) {
+                background: $indicator-success;
+                box-shadow: 5px 5px 5px $indicator-success;
+            }
+
+            &:nth-of-type(2) {
+                background: $indicator-warning;
+                box-shadow: 5px 5px 5px $indicator-warning;
+            }
+
+            &:nth-of-type(3) {
+                background: $indicator-danger;
+                box-shadow: 5px 5px 5px $indicator-danger;
+            }
+        }
+    }
+
+    &__screen {
+        position: relative;
+        width: $camera-screen-width;
+        height: $camera-screen-height;
+        background-color: $camera-screen-color;
+        border-radius: $camera-screen-radius;
+        margin-left: $camera-scree-margin-left;
+        overflow: hidden;
+
+        canvas {
+            width: 100%;
+            height: 100%;
+            @include absolute-position;
+            @include canvas-noise-animation($canvas-noise-duration);
+        }
+
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__panel {
+        height: 100%;
+
+        @include flex-position($x: space-between, $y: start, $direction: column);
+
+        button {
+            width: $camera-button-width;
+            height: $camera-button-height;
+            font-size: $camera-button-fontsize;
+
+            background-color: $camera-button-background;
+
+            @if (lightness($camera-button-background) > 40) {
+                color: #000000;
+            }
+
+            @else {
+                color: #ffffff;
+            }
+
+            border-right: $camera-button-border-size solid $camera-button-border-color;
+            border-bottom: $camera-button-border-size solid $camera-button-border-color;
+
+            &.active {
+                border-right: $camera-button-border-size / 2 solid $camera-button-border-color;
+                border-bottom: $camera-button-border-size / 2 solid $camera-button-border-color;
+            }
+        }
+    }
+
+    &.active {
+        top: 50%;
+    }
+}

@@ -9,7 +9,9 @@
     <!-- Link fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nosifer&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ruslan+Display&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nosifer&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ruslan+Display&display=swap"
+        rel="stylesheet">
 
 
     <link rel="stylesheet" href="./dist/css/main.min.css">
@@ -17,6 +19,7 @@
 </head>
 
 <body>
+    <img id="background-location" class="d-none" src="./assets/gameObjects/gamePlay/background.png">
     <div id="preloader"></div>
 
     <div id="disclaimer" class="d-none">
@@ -53,24 +56,71 @@
                     <li><img src="./assets/icons/arrow.png" class="arrow-icon" alt="">Вибрати Ніч</li>
                     <li><img src="./assets/icons/arrow.png" class="arrow-icon" alt="">Усі Політехотроніки</li>
                     <li><img src="./assets/icons/arrow.png" class="arrow-icon" alt="">Інструкція</li>
-                    <li><img src="./assets/icons/arrow.png" class="arrow-icon" alt=""><a href="https://github.com/NazariyH" target="_blank">Github автора</a></li>
+                    <li><img src="./assets/icons/arrow.png" class="arrow-icon" alt=""><a
+                            href="https://github.com/NazariyH" target="_blank">Github автора</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
     <div id="game" class="game d-none">
+        <img id="mask" src="./assets/gameObjects/gamePlay/mask.png">
         <div class="game__header">
             <div class="game__header--energy">
                 <img src="./assets/gameObjects/gamePlay/battery/100.png" alt="100%">
             </div>
             <div class="game__header--time">4 AM</div>
         </div>
-        <div class="game__content"></div>
+        <div class="game__content">
+            <div class="camera" id="camera">
+                <div class="camera-top-panel">
+                    <span class="status-indicator" data-value="green"></span>
+                    <span class="status-indicator" data-value="yellow"></span>
+                    <span class="status-indicator" data-value="red"></span>
+                </div>
+
+                <div class="camera__panel">
+                    <button class="camera-toggling-button" data-cameraId="1">cam #1</button>
+                    <button class="camera-toggling-button" data-cameraId="2">cam #2</button>
+                    <button class="camera-toggling-button" data-cameraId="3">cam #3</button>
+                    <button class="camera-toggling-button" data-cameraId="4">cam #4</button>
+                    <button class="camera-toggling-button" data-cameraId="5">cam #5</button>
+                    <button class="camera-toggling-button" data-cameraId="6">cam #6</button>
+                    <button class="camera-toggling-button" data-cameraId="7">cam #7</button>
+                    <button class="camera-toggling-button" data-cameraId="8">cam #8</button>
+                    <button class="camera-toggling-button" data-cameraId="9">cam #9</button>
+                </div>
+
+                <div class="camera__screen">
+                    <!-- The sequence of camera is important -->
+                    <canvas id="noiseCanvas"></canvas>
+                    <img class="camera__screen--location" src="./assets/gameObjects/gamePlay/locations/location_3.jpeg">
+                    <img class="camera__screen--location d-none"
+                        src="./assets/gameObjects/gamePlay/locations/location_3.jpeg">
+                    <img class="camera__screen--location d-none"
+                        src="./assets/gameObjects/gamePlay/locations/location_3.jpeg">
+                    <img class="camera__screen--location d-none"
+                        src="./assets/gameObjects/gamePlay/locations/location_4.jpeg">
+                    <img class="camera__screen--location d-none"
+                        src="./assets/gameObjects/gamePlay/locations/location_5.jpeg">
+                    <img class="camera__screen--location d-none"
+                        src="./assets/gameObjects/gamePlay/locations/location_6.jpeg">
+                    <img class="camera__screen--location d-none"
+                        src="./assets/gameObjects/gamePlay/locations/location_7.jpeg">
+                    <img class="camera__screen--location d-none"
+                        src="./assets/gameObjects/gamePlay/locations/location_8.jpeg">
+                    <img class="camera__screen--location d-none"
+                        src="./assets/gameObjects/gamePlay/locations/location_9.jpeg">
+                </div>
+            </div>
+        </div>
         <div class="game__footer">
-            <button class="game__footer--mask"><img src="./assets/gameObjects/gamePlay/icons/mask.png" alt="mask"></button>
-            <button class="game__footer--camares"><img src="./assets/gameObjects/gamePlay/icons/camera.png" alt="camera"></button>
-            <button class="game__footer--close--ventilation"><img src="./assets/gameObjects/gamePlay/icons/ventilation.png" alt="ventilation"></button>
+            <button class="game__footer--mask"><img src="./assets/gameObjects/gamePlay/icons/mask.png"
+                    alt="mask"></button>
+            <button class="game__footer--camares"><img src="./assets/gameObjects/gamePlay/icons/camera.png"
+                    alt="camera"></button>
+            <button class="game__footer--close--ventilation"><img
+                    src="./assets/gameObjects/gamePlay/icons/ventilation.png" alt="ventilation"></button>
         </div>
     </div>
 
@@ -78,13 +128,16 @@
 
 
     <div class="d-none">
-        <audio id="start-menu-background-music" src="./assets/audio/backgroundMusic/startMenuBackgroundMusic.mp3" loop></audio>
+        <audio id="start-menu-background-music" src="./assets/audio/backgroundMusic/startMenuBackgroundMusic.mp3"
+            loop></audio>
         <audio id="camera-toggling-sound" src="./assets/audio/soundEffect/startMenu/camera_toggling_sound.mp3"></audio>
         <audio class="start-menu-sound-effect" src="./assets/audio/soundEffect/startMenu/sound_effect_1.mp3"></audio>
         <audio class="start-menu-sound-effect" src="./assets/audio/soundEffect/startMenu/sound_effect_2.mp3"></audio>
         <audio class="start-menu-sound-effect" src="./assets/audio/soundEffect/startMenu/sound_effect_3.mp3"></audio>
     </div>
 
+
+    <script src="./scripts/Game.js"></script>
     <script src="./scripts/Player.js"></script>
     <script src="./scripts/StartMenuState.js"></script>
     <script src="./scripts/main.js"></script>

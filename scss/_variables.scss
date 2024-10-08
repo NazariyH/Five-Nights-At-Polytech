@@ -1,4 +1,6 @@
 // Dimensions
+$background-width:                  200%;
+
 $preloader-size:                    120px;
 $preloader-radius:                  50%;
 
@@ -23,6 +25,25 @@ $arrow-icon-height:                 $arrow-icon-width;
 $battery-size:                      60px;
 $game-icons-size:                   50px;
 
+$camera-width:                      1300px;
+$camera-height:                     800px;
+$camera-frame-radius:               90px;
+$camera-screen-width:               100%;
+$camera-screen-height:              100%;
+$camera-button-width:               230px;
+$camera-button-height:              50px;
+$camera-button-border-size:         10px;
+$camera-screen-radius:              $camera-frame-radius / 2;
+$camera-frame-border-size:          30px;
+
+$camera-decoration-width:           400px;
+$camera-decoration-height:          50px;
+$camera-decoration-offset:          calc($camera-width - $camera-decoration-width - 10%);
+$camera-decoration-border-size:     20px;
+$camera-decoration-left-radius:     30px;
+$camera-decoration-right-radius:    30px;
+$camera-indicator-size:             20px;
+$camera-indicator-radius:           50%;
 
 
 // Margins and paddings
@@ -41,6 +62,13 @@ $footer-padding-x:                  $header-padding-x;
 $footer-padding-y:                  $header-padding-y;
 $game-footer-button-margin:         30px;
 
+$camera-padding:                    40px;
+$camera-scree-margin-left:          50px;
+$camera-indicator-margin:           20px;
+
+$mask-deactivated:                  scale(0.8) translateY(100%) rotateX(90deg);
+$mask-activated:                    scale(1) translateY(0) rotateX(0deg);
+
 
 // Colors
 $text-color:                       #FFFFFF;
@@ -48,6 +76,7 @@ $body-background-color:            #000000;
 
 $disclaimer-button-color:          #A50000;
 $disclaimer-button-hover-color:    #ff8d8d;
+
 $start-menu-navbar-hover-color:    #9b9b9b;
 $start-menu-image-filter:          #0000009d;
 $start-menu-title-color:           $disclaimer-button-color;
@@ -55,6 +84,15 @@ $start-menu-navbar-icons-color:    invert(100%) sepia(1) saturate(0) hue-rotate(
 $game-icon-color:                  invert(1);
 $game-icon-color-hover:            $start-menu-navbar-icons-color;
 
+$camera-background-color:         #313131;
+$camera-screen-color:             #9ac4e8;
+$camera-button-background:        #A50000;
+$camera-button-border-color:        darken($camera-button-background, 15);
+$camera-frame-border-color:         darken($camera-background-color, 5);
+
+$indicator-success:               linear-gradient(to bottom, #4bff4b, #00d900);
+$indicator-warning:               linear-gradient(to bottom, #ffec4b, #d9b800);
+$indicator-danger:                linear-gradient(to bottom, #ff4b4b, #d90000);
 
 
 // Font styles, sizes, familys
@@ -66,8 +104,10 @@ $start-menu-navbar-letter-spacing:  2px;
 $start-menu-title-fontfamily:       "Nosifer", sans-serif;
 $base-font-family:                  "Ruslan Display", sans-serif;
 
-$game-fontsize:                      30px;
-$game-fontfamily:                    "Roboto", sans-serif;
+$game-fontsize:                     30px;
+$game-fontfamily:                   "Roboto", sans-serif;
+
+$camera-button-fontsize:            20px;
 
 
 // Transitions
@@ -76,12 +116,19 @@ $disclaimer-button-transition:      all .6s ease-in-out;
 
 $start-menu-navbar-transition:      all .3s ease-in-out;
 $start-menu-image-duration:         .2s;
+$background-transition:             left .5s ease;
+$camera-transition:                 top .5s ease;
+$canvas-noise-duration:             5s;
+$mask-transition:                   transform .5s ease-in-out, opacity .5s ease-in-out;
 
 
 // Border styles
 $preloader-border:                  16px double transparent;
 $preloader-active-border:           16px double #A50000;
 
+
+// Box shadow
+$indicator-box-shadow:              0 5px 15px rgba(0, 0, 0, 0.3);
 
 // Images
 $cursor:                            url('../../assets/cursor/cursor.png');

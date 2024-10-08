@@ -229,6 +229,15 @@ table {
   background-color: rgba(0, 0, 0, 0.6156862745);
 }
 
+#background-location {
+  width: 200%;
+  height: 100%;
+  transition: left 0.5s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .game {
   overflow: hidden;
   position: relative;
@@ -271,6 +280,145 @@ table {
 }
 .game__footer button:hover img {
   filter: invert(100%) sepia(1) saturate(0) hue-rotate(0deg) brightness(60%);
+}
+
+#mask {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scale(0.8) translateY(100%) rotateX(90deg);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: 0;
+}
+#mask.active {
+  transform: scale(1) translateY(0) rotateX(0deg);
+  opacity: 1;
+}
+
+.camera {
+  position: relative;
+  width: 1300px;
+  height: 800px;
+  padding: 40px;
+  border-radius: 0 90px 90px 0;
+  background-color: #313131;
+  transition: top 0.5s ease;
+  border-right: 30px solid #242424;
+  border-bottom: 30px solid #242424;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  position: absolute;
+  top: 0;
+  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 300%;
+}
+.camera .camera-top-panel {
+  width: 400px;
+  height: 50px;
+  background-color: #313131;
+  border-right: 20px solid #242424;
+  border-radius: 30px 30px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  position: absolute;
+  top: 0;
+  left: 0;
+  top: -50px;
+  left: calc(900px - 10%);
+}
+.camera .camera-top-panel span {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 0 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.camera .camera-top-panel span:nth-of-type(1) {
+  background: linear-gradient(to bottom, #4bff4b, #00d900);
+  box-shadow: 5px 5px 5px linear-gradient(to bottom, #4bff4b, #00d900);
+}
+.camera .camera-top-panel span:nth-of-type(2) {
+  background: linear-gradient(to bottom, #ffec4b, #d9b800);
+  box-shadow: 5px 5px 5px linear-gradient(to bottom, #ffec4b, #d9b800);
+}
+.camera .camera-top-panel span:nth-of-type(3) {
+  background: linear-gradient(to bottom, #ff4b4b, #d90000);
+  box-shadow: 5px 5px 5px linear-gradient(to bottom, #ff4b4b, #d90000);
+}
+.camera__screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #9ac4e8;
+  border-radius: 45px;
+  margin-left: 50px;
+  overflow: hidden;
+}
+.camera__screen canvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: transitioning 5s infinite;
+  transition: top 0.5s ease;
+}
+@keyframes transitioning {
+  0% {
+    opacity: 0.3;
+  }
+  20% {
+    opacity: 0.6;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+.camera__screen img {
+  width: 100%;
+  height: 100%;
+}
+.camera__panel {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: column;
+}
+.camera__panel button {
+  width: 230px;
+  height: 50px;
+  font-size: 20px;
+  background-color: #A50000;
+  color: #ffffff;
+  border-right: 10px solid #590000;
+  border-bottom: 10px solid #590000;
+}
+.camera__panel button.active {
+  border-right: 5px solid #590000;
+  border-bottom: 5px solid #590000;
+}
+.camera.active {
+  top: 50%;
 }
 
 body {
