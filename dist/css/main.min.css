@@ -280,8 +280,8 @@ table {
 }
 .game__header--oxygen--frame {
   position: relative;
-  width: 120px;
-  height: 40px;
+  width: 100px;
+  height: 35px;
   padding: 5px;
   border: 2px solid #ffffff;
   transform: rotate(180deg);
@@ -320,8 +320,8 @@ table {
 }
 .game__header--energy--frame {
   position: relative;
-  width: 120px;
-  height: 40px;
+  width: 100px;
+  height: 35px;
   padding: 5px;
   border: 2px solid #ffffff;
   transform: rotate(180deg);
@@ -349,7 +349,7 @@ table {
   background-color: #ffffff;
 }
 .game__header--time {
-  font-size: 30px;
+  font-size: 25px;
   font-family: "Roboto", sans-serif;
 }
 .game__footer {
@@ -363,7 +363,7 @@ table {
   margin: 0 30px;
 }
 .game__footer button img {
-  width: 50px;
+  width: 40px;
   filter: invert(1);
 }
 .game__footer button:hover img {
@@ -424,8 +424,8 @@ table {
 }
 .game__header--oxygen--frame {
   position: relative;
-  width: 120px;
-  height: 40px;
+  width: 100px;
+  height: 35px;
   padding: 5px;
   border: 2px solid #ffffff;
   transform: rotate(180deg);
@@ -462,6 +462,14 @@ table {
   left: 0;
   background-color: transparent;
 }
+.blood-effect img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  display: none;
+}
 .blood-effect.active {
   box-shadow: 0 0 0 5px red, inset 0 0 100px 40px rgba(255, 0, 0, 0.9);
   animation: blink 2s infinite;
@@ -477,11 +485,41 @@ table {
     box-shadow: 0 0 0 5px rgb(255, 0, 0), inset 0 0 100px 40px rgba(255, 0, 0, 0.9);
   }
 }
+.blood-effect.active img {
+  display: block;
+  animation: blink 2s infinite;
+}
+@keyframes blink {
+  0% {
+    opacity: 0.7;
+  }
+  25% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  75% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.blood-effect.active img:nth-of-type(1) {
+  transform: rotate(90deg);
+  top: 0;
+  left: 0;
+}
+.blood-effect.active img:nth-of-type(2) {
+  top: calc(100% - 500px);
+  left: calc(100% - 500px);
+}
 
 .camera {
   position: relative;
-  width: 1300px;
-  height: 800px;
+  width: 1100px;
+  height: 700px;
   padding: 40px;
   border-radius: 0 90px 90px 0;
   background-color: #313131;
@@ -501,11 +539,11 @@ table {
   top: 300%;
 }
 .camera .camera-top-panel {
-  width: 400px;
-  height: 50px;
+  width: 300px;
+  height: 40px;
   background-color: #313131;
   border-right: 20px solid #242424;
-  border-radius: 30px 30px 0 0;
+  border-radius: 25px 25px 0 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -513,12 +551,12 @@ table {
   position: absolute;
   top: 0;
   left: 0;
-  top: -50px;
-  left: calc(900px - 10%);
+  top: -40px;
+  left: calc(800px - 10%);
 }
 .camera .camera-top-panel span {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   margin: 0 20px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -585,17 +623,17 @@ table {
   flex-direction: column;
 }
 .camera__panel button {
-  width: 230px;
-  height: 50px;
+  width: 190px;
+  height: 40px;
   font-size: 20px;
   background-color: #A50000;
   color: #ffffff;
-  border-right: 10px solid #590000;
-  border-bottom: 10px solid #590000;
+  border-right: 7px solid #720000;
+  border-bottom: 7px solid #720000;
 }
 .camera__panel button.active {
-  border-right: 5px solid #590000;
-  border-bottom: 5px solid #590000;
+  border-right: 3.5px solid #720000;
+  border-bottom: 3.5px solid #720000;
 }
 .camera.active {
   top: 50%;

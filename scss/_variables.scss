@@ -22,37 +22,39 @@ $start-menu-image-shake-offset:     20px;
 $arrow-icon-width:                  20px;
 $arrow-icon-height:                 $arrow-icon-width;
 
-$game-icons-size:                   50px;
+$game-icons-size:                   40px;
 
-$camera-width:                      1300px;
-$camera-height:                     800px;
+$camera-width:                      1100px;
+$camera-height:                     700px;
 $camera-frame-radius:               90px;
 $camera-screen-width:               100%;
 $camera-screen-height:              100%;
-$camera-button-width:               230px;
-$camera-button-height:              50px;
-$camera-button-border-size:         10px;
+$camera-button-width:               190px;
+$camera-button-height:              40px;
+$camera-button-border-size:         7px;
 $camera-screen-radius:              $camera-frame-radius / 2;
 $camera-frame-border-size:          30px;
 
-$battery-width:                     120px;
-$battery-height:                    40px;
+$battery-width:                     100px;
+$battery-height:                    35px;
 $battery-decorator-width:           5px;
 $battery-decorator-height:          15px;
 $battery-padding:                   5px;
 $battery-decorator-offset:          -$battery-decorator-width - $battery-padding;
 
-$camera-decoration-width:           400px;
-$camera-decoration-height:          50px;
+$camera-decoration-width:           300px;
+$camera-decoration-height:          40px;
 $camera-decoration-offset:          calc($camera-width - $camera-decoration-width - 10%);
 $camera-decoration-border-size:     20px;
-$camera-decoration-left-radius:     30px;
-$camera-decoration-right-radius:    30px;
-$camera-indicator-size:             20px;
+$camera-decoration-left-radius:     25px;
+$camera-decoration-right-radius:    $camera-decoration-left-radius;
+$camera-indicator-size:             16px;
 $camera-indicator-radius:           50%;
 
 $object-shaking-offset:             9px; 
 $object-scale-offset:               0.008;
+
+$blood-image-size:                  500px;
 
 
 
@@ -100,8 +102,8 @@ $game-icon-color-hover:            $start-menu-navbar-icons-color;
 $camera-background-color:         #313131;
 $camera-screen-color:             #9ac4e8;
 $camera-button-background:        #A50000;
-$camera-button-border-color:        darken($camera-button-background, 15);
-$camera-frame-border-color:         darken($camera-background-color, 5);
+$camera-button-border-color:      darken($camera-button-background, 10);
+$camera-frame-border-color:       darken($camera-background-color, 5);
 
 $indicator-success:               linear-gradient(to bottom, #4bff4b, #00d900);
 $indicator-warning:               linear-gradient(to bottom, #ffec4b, #d9b800);
@@ -122,7 +124,7 @@ $start-menu-navbar-letter-spacing:  2px;
 $start-menu-title-fontfamily:       "Nosifer", sans-serif;
 $base-font-family:                  "Ruslan Display", sans-serif;
 
-$game-fontsize:                     30px;
+$game-fontsize:                     25px;
 $game-fontfamily:                   "Roboto", sans-serif;
 
 $camera-button-fontsize:            20px;

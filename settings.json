@@ -4,7 +4,7 @@
     "start_menu_shake_times": 4,
     "start_menu_sound_interval": 15000,
     "background_move_step": 170,
-    "blood_start_showing": 25,
+    "blood_start_showing": 30,
 
     "level_1": {
         "battery_capacity": 3600,

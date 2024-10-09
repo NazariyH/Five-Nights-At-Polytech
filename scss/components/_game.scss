@@ -96,8 +96,33 @@
 
     background-color: transparent;
 
+    img {
+        @include absolute-position;
+        width: $blood-image-size;
+        height: $blood-image-size;
+
+        display: none;
+    }
+
     &.active {
         box-shadow: $blood-shadow;
         @include blood-animation($blood-duration);
+
+        img {
+            display: block;
+
+            @include blood--image-animation($blood-duration);
+
+            &:nth-of-type(1) {
+                transform: rotate(90deg);
+                top: 0;
+                left: 0;
+            }
+
+            &:nth-of-type(2) {
+                top: calc(100% - $blood-image-size);
+                left: calc(100% - $blood-image-size);
+            }
+        }
     }
 }
