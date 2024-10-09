@@ -10,10 +10,10 @@ window.onload = function () {
 
 
 
-    fetchConfig().then(({ startMenuConfig, backgroundMoveStep }) => {
+    fetchConfig().then(({ startMenuConfig, backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing }) => {
         startMenu.initializeStartMenu(startMenuConfig);
 
-        const player = new Player(backgroundMoveStep);
+        const player = new Player(backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing);
 
         cameraBtn.addEventListener('click', player.toggleCamera);
         cameraTogglingBtns.forEach(button => {
@@ -30,9 +30,7 @@ window.onload = function () {
             else if (event.key === 'ArrowRight') player.moveBackground('right');
 
             if (event.key === ' ') player.putOnMask();
-            if (event.key === 'Shift') player.toggleCamera(); 
-
-            console.log(event);
+            if (event.key === 'Shift') player.toggleCamera();
         });
     }).catch(error => {
         console.error('Error loading config:', error);
@@ -47,40 +45,34 @@ function fetchConfig() {
     return fetch('settings.json')
         .then(response => response.json())
         .then(settings => {
+            let current_level = 'level_1';
+
             const startMenuConfig = {
                 start_menu_shake_interval: settings['start_menu_shake_interval'],
                 start_menu_shake_delay: settings['start_menu_shake_delay'],
                 start_menu_shake_times: settings['start_menu_shake_times'],
                 start_menu_sound_interval: settings['start_menu_sound_interval'],
             };
+
+            const batteryConfig = {
+                battery_capacity: settings[current_level]['battery_capacity'],
+                battery_camera_consumption: settings[current_level]['battery_camera_consumption'],
+            }
+
+            const oxygenConfig = {
+                oxygen_capacity: settings[current_level]['oxygen_capacity'],
+                oxygen_mask_consumption: settings[current_level]['oxygen_mask_consumption'],
+                oxygen_restoration: settings[current_level]['oxygen_restoration'],
+            }
+
+            const bloodStartShowing = settings['blood_start_showing'];
+
             const backgroundMoveStep = settings['background_move_step'];
-            return { startMenuConfig, backgroundMoveStep };
+
+            return { startMenuConfig, backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing };
         })
         .catch(error => {
             console.log('Error with loading settings', error);
             throw error;
         });
 }
-
-
-// Make noise effect
-const canvas = document.getElementById('noiseCanvas');
-const ctx = canvas.getContext('2d');
-const width = canvas.width = window.innerWidth;
-const height = canvas.height = window.innerHeight;
-
-function generateNoise() {
-    const imageData = ctx.createImageData(width, height);
-    const buffer32 = new Uint32Array(imageData.data.buffer);
-    for (let i = 0; i < buffer32.length; i++) {
-        buffer32[i] = Math.random() < 0.5 ? 0xff000000 : 0xffffffff;
-    }
-    ctx.putImageData(imageData, 0, 0);
-}
-
-function loop() {
-    generateNoise();
-    requestAnimationFrame(loop);
-}
-
-loop();

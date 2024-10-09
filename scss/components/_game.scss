@@ -3,6 +3,7 @@
     height: 100%;
     transition: $background-transition;
     @include absolute-position;
+    z-index: -2;
 }
 
 
@@ -13,16 +14,24 @@
     @include flex-position($x: space-between, $y: center, $direction: column);
 
     &__header {
-        padding: $header-padding-y $header-padding-x;
         width: 100%;
+        padding: $header-padding-y $header-padding-x;
 
         @include flex-position($x: space-between, $y: center, $direction: row);
 
+
+        div {
+            @include flex-position($x: start, $y: center, $direction: row);
+        }
+
+
+        &--oxygen {
+            @include capacity-block($oxygen-bg-color);
+            margin-right: $oxygen-margin;
+        }
+
         &--energy {
-            img {
-                width: $battery-size;
-                filter: $game-icon-color;
-            }
+            @include capacity-block($battery-bg-color);
         }
 
         &--time {
@@ -57,6 +66,7 @@
 #mask {
     @include full-screen-mode;
     @include absolute-position(center);
+    z-index: -1;
 
     transform: $mask-deactivated;
     transition: $mask-transition;
@@ -71,5 +81,23 @@
     &.active {
         transform: $mask-activated;
         opacity: 1;
+    }
+}
+
+
+.game__header--oxygen {
+    @include capacity-block($oxygen-bg-color)
+}
+
+
+.blood-effect {
+    @include full-screen-mode;
+    @include absolute-position;
+
+    background-color: transparent;
+
+    &.active {
+        box-shadow: $blood-shadow;
+        @include blood-animation($blood-duration);
     }
 }

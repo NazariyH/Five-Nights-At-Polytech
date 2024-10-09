@@ -3,5 +3,15 @@
     "start_menu_shake_delay": 200,
     "start_menu_shake_times": 4,
     "start_menu_sound_interval": 15000,
-    "background_move_step": 170
+    "background_move_step": 170,
+    "blood_start_showing": 25,
+
+    "level_1": {
+        "battery_capacity": 3600,
+        "battery_camera_consumption": 32,
+
+        "oxygen_capacity": 1000,
+        "oxygen_mask_consumption": 50,
+        "oxygen_restoration": 25
+    }
 }

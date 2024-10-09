@@ -45,11 +45,14 @@
             <h1 class="start__block--title">Five Nights at Polytech</h1>
         </div>
         <div class="start__block">
-            <div class="start__block__group">
-                <div class="start__block__group--image two-options"></div>
-                <div class="start__block__group--image two-options"></div>
-                <div class="start__block__group--image two-options"></div>
+            <div>
+                <div class="start__block__group">
+                    <div class="start__block__group--image two-options"></div>
+                    <div class="start__block__group--image two-options"></div>
+                    <div class="start__block__group--image two-options"></div>
+                </div>
             </div>
+
             <div class="start__block--menubar">
                 <ul>
                     <li id="start-new-game"><img src="./assets/icons/arrow.png" class="arrow-icon" alt="">Нова Гра</li>
@@ -64,13 +67,26 @@
     </div>
 
     <div id="game" class="game d-none">
+        <div class="blood-effect"></div>
+
         <div id="mask">
             <img src="./assets/gameObjects/gamePlay/mask.png">
         </div>
         <div class="game__header">
-            <div class="game__header--energy">
-                <img src="./assets/gameObjects/gamePlay/battery/100.png" alt="100%">
+            <div>
+                <div class="game__header--oxygen">
+                    <div class="game__header--oxygen--frame">
+                        <div class="game__header--oxygen--capacity"></div>
+                    </div>
+                </div>
+                <div class="game__header--energy">
+                    <div class="game__header--energy--frame">
+                        <div class="game__header--energy--capacity"></div>
+                    </div>
+                    <h3><span class="game__header--energy--consumption">0</span> мА/с</h3>
+                </div>
             </div>
+
             <div class="game__header--time">4 AM</div>
         </div>
         <div class="game__content">
@@ -96,8 +112,7 @@
                 <div class="camera__screen">
                     <!-- The sequence of camera is important -->
                     <canvas id="noiseCanvas"></canvas>
-                    <img class="camera__screen--location"
-                        src="./assets/gameObjects/gamePlay/locations/location_1.jpeg">
+                    <img class="camera__screen--location" src="./assets/gameObjects/gamePlay/locations/location_1.jpeg">
                     <img class="camera__screen--location d-none"
                         src="./assets/gameObjects/gamePlay/locations/location_2.jpeg">
                     <img class="camera__screen--location d-none"
@@ -138,13 +153,14 @@
         <audio class="start-menu-sound-effect" src="./assets/audio/soundEffect/startMenu/sound_effect_2.mp3"></audio>
         <audio class="start-menu-sound-effect" src="./assets/audio/soundEffect/startMenu/sound_effect_3.mp3"></audio>
 
-        <audio id="mask-breath" src="./assets/audio/soundEffect/gameplay/mask_breath.mp3"></audio>
+        <audio id="mask-breath" src="./assets/audio/soundEffect/gameplay/mask_breath.mp3" loop></audio>
         <audio id="open-camera" src="./assets/audio/soundEffect/gameplay/open_camera.mp3"></audio>
         <audio id="change-camera" src="./assets/audio/soundEffect/gameplay/camera-changing.mp3"></audio>
         <audio id="noise" src="./assets/audio/soundEffect/gameplay/noise.mp3" loop></audio>
     </div>
 
 
+    <script src="./scripts/noiseCanvas.js"></script>
     <script src="./scripts/Game.js"></script>
     <script src="./scripts/Player.js"></script>
     <script src="./scripts/StartMenuState.js"></script>

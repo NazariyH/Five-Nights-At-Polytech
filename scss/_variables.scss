@@ -15,14 +15,13 @@ $disclaimer-button-hover-steep:     70deg;
 
 $start-menu-image-width:            300px;
 $start-menu-image-height:           400px;
-$start-menu-image-offset-x:         120px;
-$start-menu-image-offset-y:         -20px;
+$start-menu-image-offset-x:         130px;
+$start-menu-image-offset-y:         -30px;
 $start-menu-image-shake-offset:     20px;
 
 $arrow-icon-width:                  20px;
 $arrow-icon-height:                 $arrow-icon-width;
 
-$battery-size:                      60px;
 $game-icons-size:                   50px;
 
 $camera-width:                      1300px;
@@ -36,6 +35,13 @@ $camera-button-border-size:         10px;
 $camera-screen-radius:              $camera-frame-radius / 2;
 $camera-frame-border-size:          30px;
 
+$battery-width:                     120px;
+$battery-height:                    40px;
+$battery-decorator-width:           5px;
+$battery-decorator-height:          15px;
+$battery-padding:                   5px;
+$battery-decorator-offset:          -$battery-decorator-width - $battery-padding;
+
 $camera-decoration-width:           400px;
 $camera-decoration-height:          50px;
 $camera-decoration-offset:          calc($camera-width - $camera-decoration-width - 10%);
@@ -45,8 +51,8 @@ $camera-decoration-right-radius:    30px;
 $camera-indicator-size:             20px;
 $camera-indicator-radius:           50%;
 
-$object-shaking-offset:             4px; 
-$object-scale-offset:               0.004;
+$object-shaking-offset:             9px; 
+$object-scale-offset:               0.008;
 
 
 
@@ -73,6 +79,9 @@ $camera-indicator-margin:           20px;
 $mask-deactivated:                  scale(0.8) translateY(100%) rotateX(90deg);
 $mask-activated:                    scale(1) translateY(0) rotateX(0deg);
 
+$battery-info-margin-right:         40px;
+$oxygen-margin:                     40px;
+
 
 // Colors
 $text-color:                       #FFFFFF;
@@ -98,6 +107,11 @@ $indicator-success:               linear-gradient(to bottom, #4bff4b, #00d900);
 $indicator-warning:               linear-gradient(to bottom, #ffec4b, #d9b800);
 $indicator-danger:                linear-gradient(to bottom, #ff4b4b, #d90000);
 
+$battery-border-color:            #ffffff;
+$battery-bg-color:                #00ff00;
+$oxygen-bg-color:                 #0000ff;
+$blood-shadow:                    0 0 0 5px red, inset 0 0 100px 40px rgba(255, 0, 0, 0.9);
+
 
 // Font styles, sizes, familys
 $disclaimer-text-fontsize:          18px;
@@ -112,6 +126,7 @@ $game-fontsize:                     30px;
 $game-fontfamily:                   "Roboto", sans-serif;
 
 $camera-button-fontsize:            20px;
+$battery-info-fontsize:             20px;
 
 
 // Transitions
@@ -125,11 +140,13 @@ $camera-transition:                 top .5s ease;
 $canvas-noise-duration:             5s;
 $mask-transition:                   transform .5s ease-in-out, opacity .5s ease-in-out;
 $object-shaking-duration:           10s;
+$blood-duration:                    2s;
 
 
 // Border styles
 $preloader-border:                  16px double transparent;
 $preloader-active-border:           16px double #A50000;
+$battery-border:                    2px solid $battery-border-color;
 
 
 // Box shadow

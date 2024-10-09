@@ -55,8 +55,10 @@
     @include full-screen-mode;
 
     &__block {
+        position: relative !important;
         &:nth-child(2) {
             width: 100%;
+            height: $start-menu-image-height;
             @include flex-position($x: space-between, $y: center, $direction: row);
         }
 
@@ -96,9 +98,9 @@
         }
 
         &__group {
-            position: relative;
-            width: $start-menu-image-width + $start-menu-image-offset-x * 3;
-            height: $start-menu-image-height;
+            position: absolute;
+            top: 0;
+            left: 0;
 
             &.shaking {
                 @include start-menu-image-shake($start-menu-image-duration, $start-menu-image-shake-offset);
