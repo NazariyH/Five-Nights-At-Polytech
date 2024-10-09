@@ -15,8 +15,8 @@ $disclaimer-button-hover-steep:     70deg;
 
 $start-menu-image-width:            300px;
 $start-menu-image-height:           400px;
-$start-menu-image-offset-x:         130px;
-$start-menu-image-offset-y:         -30px;
+$start-menu-image-offset-x:         120px;
+$start-menu-image-offset-y:         -20px;
 $start-menu-image-shake-offset:     20px;
 
 $arrow-icon-width:                  20px;
@@ -44,6 +44,10 @@ $camera-decoration-left-radius:     30px;
 $camera-decoration-right-radius:    30px;
 $camera-indicator-size:             20px;
 $camera-indicator-radius:           50%;
+
+$object-shaking-offset:             4px; 
+$object-scale-offset:               0.004;
+
 
 
 // Margins and paddings
@@ -120,6 +124,7 @@ $background-transition:             left .5s ease;
 $camera-transition:                 top .5s ease;
 $canvas-noise-duration:             5s;
 $mask-transition:                   transform .5s ease-in-out, opacity .5s ease-in-out;
+$object-shaking-duration:           10s;
 
 
 // Border styles

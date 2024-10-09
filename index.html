@@ -64,7 +64,9 @@
     </div>
 
     <div id="game" class="game d-none">
-        <img id="mask" src="./assets/gameObjects/gamePlay/mask.png">
+        <div id="mask">
+            <img src="./assets/gameObjects/gamePlay/mask.png">
+        </div>
         <div class="game__header">
             <div class="game__header--energy">
                 <img src="./assets/gameObjects/gamePlay/battery/100.png" alt="100%">
@@ -80,7 +82,7 @@
                 </div>
 
                 <div class="camera__panel">
-                    <button class="camera-toggling-button" data-cameraId="1">cam #1</button>
+                    <button class="camera-toggling-button active" data-cameraId="1">cam #1</button>
                     <button class="camera-toggling-button" data-cameraId="2">cam #2</button>
                     <button class="camera-toggling-button" data-cameraId="3">cam #3</button>
                     <button class="camera-toggling-button" data-cameraId="4">cam #4</button>
@@ -94,9 +96,10 @@
                 <div class="camera__screen">
                     <!-- The sequence of camera is important -->
                     <canvas id="noiseCanvas"></canvas>
-                    <img class="camera__screen--location" src="./assets/gameObjects/gamePlay/locations/location_3.jpeg">
+                    <img class="camera__screen--location"
+                        src="./assets/gameObjects/gamePlay/locations/location_1.jpeg">
                     <img class="camera__screen--location d-none"
-                        src="./assets/gameObjects/gamePlay/locations/location_3.jpeg">
+                        src="./assets/gameObjects/gamePlay/locations/location_2.jpeg">
                     <img class="camera__screen--location d-none"
                         src="./assets/gameObjects/gamePlay/locations/location_3.jpeg">
                     <img class="camera__screen--location d-none"
@@ -134,6 +137,11 @@
         <audio class="start-menu-sound-effect" src="./assets/audio/soundEffect/startMenu/sound_effect_1.mp3"></audio>
         <audio class="start-menu-sound-effect" src="./assets/audio/soundEffect/startMenu/sound_effect_2.mp3"></audio>
         <audio class="start-menu-sound-effect" src="./assets/audio/soundEffect/startMenu/sound_effect_3.mp3"></audio>
+
+        <audio id="mask-breath" src="./assets/audio/soundEffect/gameplay/mask_breath.mp3"></audio>
+        <audio id="open-camera" src="./assets/audio/soundEffect/gameplay/open_camera.mp3"></audio>
+        <audio id="change-camera" src="./assets/audio/soundEffect/gameplay/camera-changing.mp3"></audio>
+        <audio id="noise" src="./assets/audio/soundEffect/gameplay/noise.mp3" loop></audio>
     </div>
 
 

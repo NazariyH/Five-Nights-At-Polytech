@@ -28,6 +28,11 @@ window.onload = function () {
         document.addEventListener('keydown', event => {
             if (event.key === 'ArrowLeft') player.moveBackground('left');
             else if (event.key === 'ArrowRight') player.moveBackground('right');
+
+            if (event.key === ' ') player.putOnMask();
+            if (event.key === 'Shift') player.toggleCamera(); 
+
+            console.log(event);
         });
     }).catch(error => {
         console.error('Error loading config:', error);

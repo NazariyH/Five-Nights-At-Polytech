@@ -3,7 +3,12 @@ const locations = document.querySelectorAll('.camera__screen--location');
 const locationButtons = document.querySelectorAll('.camera-toggling-button');
 const mask = document.getElementById('mask');
 
-
+// Const imort audio files
+const maskBreath = document.getElementById('mask-breath');
+const openCamera = document.getElementById('open-camera');
+const changeCamera = document.getElementById('change-camera');
+const noise = document.getElementById('noise');
+noise.volume = 0.1; //default noise volume
 
 function Player(backgroundMoveStep) {
     this.backgroundMoveStep = backgroundMoveStep;
@@ -23,13 +28,27 @@ Player.prototype.toggleCamera = function () {
     // Show camera screen for user
     if (mask.classList.contains('active')) {
         mask.classList.remove('active');
+        maskBreath.pause();
+        noise.play();
+        maskBreath.currentTime = 0;
+
         setTimeout(() => {
             camera.classList.add('active');
+            openCamera.play();
         }, this.toggleDelay);
 
         return;
     }
-    camera.classList.toggle('active');
+
+    if (camera.classList.contains('active')) {
+        camera.classList.remove('active');
+        openCamera.play();
+        noise.pause();
+    } else {
+        camera.classList.add('active');
+        openCamera.play();
+        noise.play();
+    }
 }
 
 Player.prototype.toggleCameraLocation = function (event) {
@@ -39,6 +58,7 @@ Player.prototype.toggleCameraLocation = function (event) {
     locationButtons.forEach(btn => {
         if (btn.className === 'camera-toggling-button active') {
             btn.classList.remove('active');
+            changeCamera.play();
         }
     });
 
@@ -47,7 +67,7 @@ Player.prototype.toggleCameraLocation = function (event) {
             location.classList.add('d-none');
         }
 
-        if (count === Number(locationId)) {
+        if (count === Number(locationId - 1)) {
             location.classList.remove('d-none');
             event.currentTarget.classList.add('active');
         }
@@ -60,10 +80,12 @@ Player.prototype.putOnMask = function () {
 
     if (camera.classList.contains('active')) {
         camera.classList.remove('active');
+        openCamera.play();
+        noise.pause();
         setTimeout(() => {
             mask.classList.add('active');
+            maskBreath.play();
         }, this.toggleDela / 2);
-
         return;
     }
 
@@ -72,12 +94,19 @@ Player.prototype.putOnMask = function () {
     if (mask.className !== 'active') {
         timeOfDead = setTimeout(() => {
             console.log('DEAD')
-        }, 5000);
+        }, mask.duration);
     } else {
         clearTimeout(timeOfDead);
     }
 
-    mask.classList.toggle('active');
+    if (mask.classList.contains('active')) {
+        mask.classList.remove('active');
+        maskBreath.pause();
+        maskBreath.currentTime = 0;
+    } else {
+        mask.classList.add('active');
+        maskBreath.play();
+    }
 }
 
 

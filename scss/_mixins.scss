@@ -5,6 +5,7 @@
         from {
             transform: rotate(0deg);
         }
+
         to {
             transform: rotate(360deg);
         }
@@ -53,12 +54,15 @@
         0% {
             transform: translate(0, 0);
         }
+
         33% {
             transform: translate($offset, $offset);
         }
+
         66% {
             transform: translate(0, 0);
         }
+
         100% {
             transform: translate(-$offset, -$offset);
         }
@@ -74,20 +78,48 @@
         0% {
             opacity: 0.3;
         }
+
         20% {
             opacity: 0.6;
         }
+
         40% {
             opacity: 1;
         }
+
         60% {
             opacity: 0.6;
         }
+
         80% {
             opacity: 0.4;
         }
+
         100% {
             opacity: 0.3;
+        }
+    }
+}
+
+
+@mixin object-shaking($duration) {
+    animation: shake $duration infinite;
+
+    @keyframes shake {
+        0% {
+            transform: translate(calc(-50% + $object-shaking-offset), calc(-50% + $object-shaking-offset)) scale(1 + $object-scale-offset);
+        }
+        25% {
+            transform: translate(calc(-50% - $object-shaking-offset), calc(-50% - $object-shaking-offset)) scale(1 - $object-scale-offset);
+        }
+        50% {
+            transform: translate(calc(-50% + $object-shaking-offset), calc(-50% - $object-shaking-offset)) scale(1 + $object-scale-offset);
+        }
+        75% {
+            transform: translate(calc(-50% - $object-shaking-offset), calc(-50% + $object-shaking-offset)) scale(1 - $object-scale-offset);
+        }
+        100% {
+            transform: translate(calc(-50% + $object-shaking-offset), calc(-50% + $object-shaking-offset)) scale(1 + $object-scale-offset);
         }
     }
 }

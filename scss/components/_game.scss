@@ -56,11 +56,17 @@
 
 #mask {
     @include full-screen-mode;
-    @include absolute-position;
+    @include absolute-position(center);
 
     transform: $mask-deactivated;
     transition: $mask-transition;
     opacity: 0;
+
+    img {
+        width: 105%;
+        height: 105%;
+        @include object-shaking($object-shaking-duration);
+    }
 
     &.active {
         transform: $mask-activated;

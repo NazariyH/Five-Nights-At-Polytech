@@ -163,7 +163,7 @@ table {
 }
 .start__block__group {
   position: relative;
-  width: 690px;
+  width: 660px;
   height: 400px;
 }
 .start__block__group.shaking {
@@ -196,16 +196,16 @@ table {
 }
 .start__block__group--image:nth-child(1) {
   background-image: url("../../assets/gameObjects/startMenu/object_3.png");
-  left: 260px;
-  top: -60px;
+  left: 240px;
+  top: -40px;
 }
 .start__block__group--image:nth-child(1).active {
   background-image: url("../../assets/gameObjects/startMenu/object_3_active.png");
 }
 .start__block__group--image:nth-child(2) {
   background-image: url("../../assets/gameObjects/startMenu/object_2.png");
-  left: 130px;
-  top: -30px;
+  left: 120px;
+  top: -20px;
 }
 .start__block__group--image:nth-child(2).active {
   background-image: url("../../assets/gameObjects/startMenu/object_2_active.png");
@@ -223,9 +223,9 @@ table {
   position: absolute;
   top: 0;
   left: 0;
-  top: -60px;
+  top: -40px;
   width: 100%;
-  min-height: 490px;
+  min-height: 460px;
   background-color: rgba(0, 0, 0, 0.6156862745);
 }
 
@@ -289,9 +289,34 @@ table {
   position: absolute;
   top: 0;
   left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   transform: scale(0.8) translateY(100%) rotateX(90deg);
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
   opacity: 0;
+}
+#mask img {
+  width: 105%;
+  height: 105%;
+  animation: shake 10s infinite;
+}
+@keyframes shake {
+  0% {
+    transform: translate(calc(-50% + 4px), calc(-50% + 4px)) scale(1.004);
+  }
+  25% {
+    transform: translate(calc(-50% - 4px), calc(-50% - 4px)) scale(0.996);
+  }
+  50% {
+    transform: translate(calc(-50% + 4px), calc(-50% - 4px)) scale(1.004);
+  }
+  75% {
+    transform: translate(calc(-50% - 4px), calc(-50% + 4px)) scale(0.996);
+  }
+  100% {
+    transform: translate(calc(-50% + 4px), calc(-50% + 4px)) scale(1.004);
+  }
 }
 #mask.active {
   transform: scale(1) translateY(0) rotateX(0deg);
@@ -318,7 +343,25 @@ table {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  animation: shake 10s infinite;
   top: 300%;
+}
+@keyframes shake {
+  0% {
+    transform: translate(calc(-50% + 4px), calc(-50% + 4px)) scale(1.004);
+  }
+  25% {
+    transform: translate(calc(-50% - 4px), calc(-50% - 4px)) scale(0.996);
+  }
+  50% {
+    transform: translate(calc(-50% + 4px), calc(-50% - 4px)) scale(1.004);
+  }
+  75% {
+    transform: translate(calc(-50% - 4px), calc(-50% + 4px)) scale(0.996);
+  }
+  100% {
+    transform: translate(calc(-50% + 4px), calc(-50% + 4px)) scale(1.004);
+  }
 }
 .camera .camera-top-panel {
   width: 400px;

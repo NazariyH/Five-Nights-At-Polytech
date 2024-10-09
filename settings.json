@@ -3,5 +3,5 @@
     "start_menu_shake_delay": 200,
     "start_menu_shake_times": 4,
     "start_menu_sound_interval": 15000,
-    "background_move_step": 200
+    "background_move_step": 170
 }

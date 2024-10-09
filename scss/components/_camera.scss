@@ -13,6 +13,7 @@
 
     @include flex-position($x: space-between, $y: center, $direction: row);
     @include absolute-position(center);
+    @include object-shaking($object-shaking-duration);
     top: 300%;
 
 
