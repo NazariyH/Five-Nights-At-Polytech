@@ -67,9 +67,13 @@
     </div>
 
     <div id="game" class="game d-none">
-        <div class="blood-effect active">
+        <div class="blood-effect">
             <img src="./assets/gameObjects/gamePlay/blood_1.png">
             <img src="./assets/gameObjects/gamePlay/blood_2.png">
+        </div>
+
+        <div class="game__screamer--wrap">
+            <div class="game__screamer--wrap--image"></div>
         </div>
 
         <div id="mask">
@@ -90,7 +94,7 @@
                 </div>
             </div>
 
-            <div class="game__header--time">4 AM</div>
+            <div class="game__header--time">0 AM</div>
         </div>
         <div class="game__content">
             <div class="camera" id="camera">
@@ -115,23 +119,43 @@
                 <div class="camera__screen">
                     <!-- The sequence of camera is important -->
                     <canvas id="noiseCanvas"></canvas>
-                    <img class="camera__screen--location" src="./assets/gameObjects/gamePlay/locations/location_1.jpeg">
-                    <img class="camera__screen--location d-none"
-                        src="./assets/gameObjects/gamePlay/locations/location_2.jpeg">
-                    <img class="camera__screen--location d-none"
-                        src="./assets/gameObjects/gamePlay/locations/location_3.jpeg">
-                    <img class="camera__screen--location d-none"
-                        src="./assets/gameObjects/gamePlay/locations/location_4.jpeg">
-                    <img class="camera__screen--location d-none"
-                        src="./assets/gameObjects/gamePlay/locations/location_5.jpeg">
-                    <img class="camera__screen--location d-none"
-                        src="./assets/gameObjects/gamePlay/locations/location_6.jpeg">
-                    <img class="camera__screen--location d-none"
-                        src="./assets/gameObjects/gamePlay/locations/location_7.jpeg">
-                    <img class="camera__screen--location d-none"
-                        src="./assets/gameObjects/gamePlay/locations/location_8.jpeg">
-                    <img class="camera__screen--location d-none"
-                        src="./assets/gameObjects/gamePlay/locations/location_9.jpeg">
+                    <div class="camera__screen--wrap">
+                        <img class="camera__screen--location"
+                            src="./assets/gameObjects/gamePlay/locations/location_1.jpeg">
+                            <button class="puppet-box-update-button">Підкрутити шкатулку</button>
+                    </div>
+                    <div class="camera__screen--wrap">
+                        <img class="camera__screen--location d-none"
+                            src="./assets/gameObjects/gamePlay/locations/location_2.jpeg">
+                    </div>
+                    <div class="camera__screen--wrap">
+                        <img class="camera__screen--location d-none"
+                            src="./assets/gameObjects/gamePlay/locations/location_3.jpeg">
+                    </div>
+                    <div class="camera__screen--wrap">
+                        <img class="camera__screen--location d-none"
+                            src="./assets/gameObjects/gamePlay/locations/location_4.jpeg">
+                    </div>
+                    <div class="camera__screen--wrap">
+                        <img class="camera__screen--location d-none"
+                            src="./assets/gameObjects/gamePlay/locations/location_5.jpeg">
+                    </div>
+                    <div class="camera__screen--wrap">
+                        <img class="camera__screen--location d-none"
+                            src="./assets/gameObjects/gamePlay/locations/location_6.jpeg">
+                    </div>
+                    <div class="camera__screen--wrap">
+                        <img class="camera__screen--location d-none"
+                            src="./assets/gameObjects/gamePlay/locations/location_7.jpeg">
+                    </div>
+                    <div class="camera__screen--wrap">
+                        <img class="camera__screen--location d-none"
+                            src="./assets/gameObjects/gamePlay/locations/location_8.jpeg">
+                    </div>
+                    <div class="camera__screen--wrap">
+                        <img class="camera__screen--location d-none"
+                            src="./assets/gameObjects/gamePlay/locations/location_9.jpeg">
+                    </div>
                 </div>
             </div>
         </div>
@@ -160,9 +184,13 @@
         <audio id="open-camera" src="./assets/audio/soundEffect/gameplay/open_camera.mp3"></audio>
         <audio id="change-camera" src="./assets/audio/soundEffect/gameplay/camera-changing.mp3"></audio>
         <audio id="noise" src="./assets/audio/soundEffect/gameplay/noise.mp3" loop></audio>
+        <audio id="puppet-box" src="./assets/audio/soundEffect/gameplay/puppet_music_box.mp3"></audio>
+        <audio id="twisting-puppet" src="./assets/audio/soundEffect/gameplay/twisting_sound.mp3"></audio>
+        <audio class="screamer-audio" src="./assets/audio/soundEffect/gameplay/screamer/screamer_audio.mp3"></audio>
     </div>
 
 
+    <script src="./scripts/Enemy.js"></script>
     <script src="./scripts/noiseCanvas.js"></script>
     <script src="./scripts/Game.js"></script>
     <script src="./scripts/Player.js"></script>

@@ -10,6 +10,7 @@ const startGameBtn = document.getElementById('start-new-game');
 const game = document.getElementById('game');
 const backgroundId = document.getElementById('background-location');
 
+
 var startMenu = {
     startMenuConfig: null,
 

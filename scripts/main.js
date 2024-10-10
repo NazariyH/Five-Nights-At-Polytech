@@ -1,36 +1,23 @@
 window.onload = function () {
     const startGameBtn = document.getElementById('start-new-game');
     const preloader = document.getElementById('preloader');
-    const cameraBtn = document.querySelector('.game__footer--camares');
-    const cameraTogglingBtns = document.querySelectorAll('.camera-toggling-button');
-    const maskBtn = document.querySelector('.game__footer--mask');
+    const puppetBox = document.getElementById('puppet-box');
+    puppetBox.volume = 0.5; // default noise volume
 
     preloader.classList.add('d-none');
     disclaimer.classList.remove('d-none');
 
 
-
-    fetchConfig().then(({ startMenuConfig, backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing }) => {
+    fetchConfig().then(({ startMenuConfig, backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing, puppetBoxConfig, screamerConfig }) => {
         startMenu.initializeStartMenu(startMenuConfig);
 
-        const player = new Player(backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing);
 
-        cameraBtn.addEventListener('click', player.toggleCamera);
-        cameraTogglingBtns.forEach(button => {
-            button.addEventListener('click', event => {
-                player.toggleCameraLocation(event);
-            });
-        });
+        startGameBtn.addEventListener('click', () => {
+            const player = new Player(backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing, puppetBoxConfig, screamerConfig);
+            player.initializingGame();
 
-        maskBtn.addEventListener('click', () => player.putOnMask());
 
-        // Added event listeners for specific buttons
-        document.addEventListener('keydown', event => {
-            if (event.key === 'ArrowLeft') player.moveBackground('left');
-            else if (event.key === 'ArrowRight') player.moveBackground('right');
-
-            if (event.key === ' ') player.putOnMask();
-            if (event.key === 'Shift') player.toggleCamera();
+            puppetBox.play();
         });
     }).catch(error => {
         console.error('Error loading config:', error);
@@ -42,7 +29,7 @@ function fetchConfig() {
         ? 'settings.json'  // Local development
         : 'https://nazariyh.github.io/Five-Nights-At-Polytech/settings.json';  // GitHub Pages
 
-    return fetch('settings.json')
+    return fetch(settingsPath)
         .then(response => response.json())
         .then(settings => {
             let current_level = 'level_1';
@@ -65,11 +52,22 @@ function fetchConfig() {
                 oxygen_restoration: settings[current_level]['oxygen_restoration'],
             }
 
+            const puppetBoxConfig = {
+                puppet_box_duration: settings[current_level]['puppet_box_duration'],
+                puppet_box_update: settings[current_level]['puppet_box_update'],
+            }
+
+            const screamerConfig = {
+                screamer_popup_delay: settings['screamer_popup_delay'],
+                puppet_screamer: settings['screamers']['puppet_screamer'],
+                changing_screamer_delay: settings['changing_screamer_image_delay'],
+            }
+
             const bloodStartShowing = settings['blood_start_showing'];
 
             const backgroundMoveStep = settings['background_move_step'];
 
-            return { startMenuConfig, backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing };
+            return { startMenuConfig, backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing, puppetBoxConfig, screamerConfig };
         })
         .catch(error => {
             console.log('Error with loading settings', error);
@@ -80,5 +78,5 @@ function fetchConfig() {
 
 console.clear();
 for (i = 0; i < 100; i++) {
-    console.log(`${i}) ВИЙДИ ОТ СЮДА РОЗБІЙНИК`);
+    console.log(`${i}) А НУ ВИЙШОВ ОТ СЮДА РОЗБІЙНИК`);
 }

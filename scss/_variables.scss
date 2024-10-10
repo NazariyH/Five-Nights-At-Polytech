@@ -56,6 +56,13 @@ $object-scale-offset:               0.010;
 
 $blood-image-size:                  500px;
 
+$puppet-box-button-width:           200px;
+$puppet-box-button-height:          50px; 
+
+$screamer-width:                    800px;
+$screamer-height:                   1000px;
+$screamer-shaking-offset:           75px;
+$screamer-scale-offset:             0.030;
 
 
 // Margins and paddings
@@ -81,8 +88,13 @@ $camera-indicator-margin:           20px;
 $mask-deactivated:                  scale(0.8) translateY(100%) rotateX(90deg);
 $mask-activated:                    scale(1) translateY(0) rotateX(0deg);
 
+$screamer-deactivated:              $mask-deactivated; 
+$screamer-activated:                $mask-activated;
+
 $battery-info-margin-right:         40px;
 $oxygen-margin:                     40px;
+
+$puppet-box-button-margin:          30px;
 
 
 // Colors
@@ -113,7 +125,9 @@ $battery-border-color:            #ffffff;
 $battery-bg-color:                #00ff00;
 $oxygen-bg-color:                 #0000ff;
 $blood-shadow:                    0 0 0 5px red, inset 0 0 100px 40px rgba(255, 0, 0, 0.9);
-
+$puppet-box-button-color:         #ffffff;
+$puppet-box-button-shadow:        0 6px 15px rgba(0, 0, 0, 0.4);
+$puppet-box-button-text-shadow:   2px 2px 4px rgba(0, 0, 0, 0.5);
 
 // Font styles, sizes, familys
 $disclaimer-text-fontsize:          18px;
@@ -143,13 +157,13 @@ $canvas-noise-duration:             5s;
 $mask-transition:                   transform .5s ease-in-out, opacity .5s ease-in-out;
 $object-shaking-duration:           10s;
 $blood-duration:                    2s;
-
+$screamer-duration:                 .5s;
 
 // Border styles
 $preloader-border:                  16px double transparent;
 $preloader-active-border:           16px double #A50000;
 $battery-border:                    2px solid $battery-border-color;
-
+$puppet-box-button-border:          2px solid $puppet-box-button-color;
 
 // Box shadow
 $indicator-box-shadow:              0 5px 15px rgba(0, 0, 0, 0.3);

@@ -1,0 +1,34 @@
+.game {
+    &__screamer--wrap {
+        @include full-screen-mode;
+        @include absolute-position;
+
+        transform: $screamer-deactivated;
+
+        div {
+            width: 0;
+            height: 0;
+        }
+
+        &.active {
+            @include full-screen-mode;
+            @include absolute-position;
+            z-index: 5;
+
+            transform: $screamer-activated;
+            transition: all .3s ease-in-out;
+        }
+
+        div {
+            @include absolute-position(center);
+            width: $screamer-width;
+            height: $screamer-height;
+
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+
+            @include screamer-shaking($screamer-duration);
+        }
+    }
+}

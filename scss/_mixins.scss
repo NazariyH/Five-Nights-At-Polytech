@@ -216,3 +216,31 @@
         }
     }
 }
+
+
+
+@mixin screamer-shaking($duration: 2s) {
+    animation: shake_screamer $duration infinite;
+
+    @keyframes shake_screamer {
+        0% {
+            transform: translate(calc(-50% + $screamer-shaking-offset), calc(-50% + $screamer-shaking-offset)) scale(1 + $screamer-scale-offset);
+        }
+
+        25% {
+            transform: translate(calc(-50% - $screamer-shaking-offset), calc(-50% - $screamer-shaking-offset)) scale(1 - $screamer-scale-offset);
+        }
+
+        50% {
+            transform: translate(calc(-50% + $screamer-shaking-offset), calc(-50% - $screamer-shaking-offset)) scale(1 + $screamer-scale-offset);
+        }
+
+        75% {
+            transform: translate(calc(-50% - $screamer-shaking-offset), calc(-50% + $screamer-shaking-offset)) scale(1 - $screamer-scale-offset);
+        }
+
+        100% {
+            transform: translate(calc(-50% + $screamer-shaking-offset), calc(-50% + $screamer-shaking-offset)) scale(1 + $screamer-scale-offset);
+        }
+    }
+}

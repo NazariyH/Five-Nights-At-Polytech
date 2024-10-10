@@ -1,11 +1,17 @@
+const cameraBtn = document.querySelector('.game__footer--camares');
+const cameraTogglingBtns = document.querySelectorAll('.camera-toggling-button');
+const maskBtn = document.querySelector('.game__footer--mask');
+
 const camera = document.getElementById('camera');
 const locations = document.querySelectorAll('.camera__screen--location');
+const locationWrap = document.querySelectorAll('.camera__screen--wrap');
 const locationButtons = document.querySelectorAll('.camera-toggling-button');
 const mask = document.getElementById('mask');
 const batteryCapacityObject = document.querySelector('.game__header--energy--capacity');
 const batteryConsumptionText = document.querySelector('.game__header--energy--consumption');
 const oxygenCapacityObject = document.querySelector('.game__header--oxygen--capacity');
 const bloodAnimationObject = document.querySelector('.blood-effect');
+const puppetBoxButton = document.querySelector('.puppet-box-update-button');
 
 
 // Import audio files
@@ -14,9 +20,11 @@ const openCamera = document.getElementById('open-camera');
 const changeCamera = document.getElementById('change-camera');
 const noise = document.getElementById('noise');
 noise.volume = 0.1; // default noise volume
+const puppetBoxAudio = document.getElementById('puppet-box');
+const twistingPuppetSound = document.getElementById('twisting-puppet');
 
 class Player {
-    constructor(backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing) {
+    constructor(backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing, puppetBoxConfig, screamerConfig) {
         this.backgroundMoveStep = backgroundMoveStep;
 
         this.batteryCapacity = batteryConfig.battery_capacity;
@@ -32,6 +40,16 @@ class Player {
 
         this.bloodStartShowing = bloodStartShowing // bloodStartShowing = to percent when blood apears
 
+        this.puppetBoxDuration = puppetBoxConfig.puppet_box_duration;
+        this.puppetBoxUpdateSec = puppetBoxConfig.puppet_box_update;
+        this.puppetBoxTimer = this.puppetBoxDuration; 
+
+        this.screamerPopupDelay = screamerConfig.screamer_popup_delay;
+        this.screamerShaking = screamerConfig.changing_screamer_delay;
+
+        // screamers
+        this.puppetScreamerImage = screamerConfig.puppet_screamer;
+
 
         // Gameplay objects 
         this.background = document.getElementById('background-location');
@@ -45,18 +63,53 @@ class Player {
         this.toggleCamera = this.toggleCamera.bind(this); // Bind method to the current instance
         this.toggleCameraLocation = this.toggleCameraLocation.bind(this);
         this.putOnMask = this.putOnMask.bind(this);
+        this.updatePuppetBox = this.updatePuppetBox.bind(this);
 
 
-        // Intervals
-        this.batteryConsumptionInterval = null;
-
+        // Intervals and Timeout
         this.updateTimer = setInterval(() => {
             this.updateBatteryStatus();
             this.updateOxygenStatus();
+            this.updatePuppetBox();
         }, 1000);
     }
 
+    initializingGame() {
+        // Initializing game
+        cameraBtn.addEventListener('click', this.toggleCamera);
+        cameraTogglingBtns.forEach(button => {
+            button.addEventListener('click', event => {
+                this.toggleCameraLocation(event);
+            });
+        });
+
+
+        maskBtn.addEventListener('click', () => this.putOnMask());
+
+        // Added event listeners for specific buttons
+        document.addEventListener('keydown', event => {
+            if (event.key === 'ArrowLeft') this.moveBackground('left');
+            else if (event.key === 'ArrowRight') this.moveBackground('right');
+
+            if (event.key === ' ') this.putOnMask();
+            if (event.key === 'Shift') this.toggleCamera();
+        });
+
+
+        puppetBoxButton.addEventListener('click', () => {
+            twistingPuppetSound.play()
+            if (this.puppetBoxTimer + this.puppetBoxUpdateSec < this.puppetBoxDuration) {
+                this.puppetBoxTimer += this.puppetBoxUpdateSec;
+                puppetBoxAudio.currentTime = Math.max(0, puppetBoxAudio.currentTime - this.puppetBoxUpdateSec);
+            } else {
+                this.puppetBoxTimer = this.puppetBoxDuration;
+            }
+
+        });
+    }
+
     updateBatteryStatus() {
+        // Updates battery status
         this.batteryUsed += this.batteryGeneralConsumption;
         let convertedUsedCapacity = 100 - (100 * this.batteryUsed / this.batteryCapacity);
         batteryCapacityObject.style.width = `${convertedUsedCapacity}%`;
@@ -64,6 +117,8 @@ class Player {
     }
 
     updateOxygenStatus() {
+        // Updated oxygen consumption status
+
         if (this.oxygenGeneralConsumption != 0) {
             this.oxygenUsed += this.oxygenGeneralConsumption;
         } else {
@@ -72,7 +127,7 @@ class Player {
             }
         }
 
-        
+
         let convertedUsedCapacity = 100 - (100 * this.oxygenUsed / this.oxygenCapacity);
 
         if (convertedUsedCapacity < this.bloodStartShowing) {
@@ -85,6 +140,15 @@ class Player {
 
         oxygenCapacityObject.style.width = `${convertedUsedCapacity}%`;
         // console.log(this.oxygenGeneralConsumption, typeof this.oxygenGeneralConsumption, convertedUsedCapacity);
+    }
+
+    updatePuppetBox() {
+        // Updated puppet box every second
+
+        this.puppetBoxTimer -= 1;
+        if (this.puppetBoxTimer <= 0) {
+            this.puppetBoxEndGame();
+        }
     }
 
     toggleCamera() {
@@ -135,6 +199,13 @@ class Player {
                 location.classList.remove('d-none');
             }
         });
+
+        locationWrap.forEach((wrap, count) => {
+            wrap.classList.add('d-none');
+            if (count === Number(locationId) - 1) {
+                wrap.classList.remove('d-none');
+            }
+        });
     }
 
     putOnMask() {
@@ -182,5 +253,21 @@ class Player {
         }
 
         this.background.style.left = `${this.offset}px`;
+    }
+
+    puppetBoxEndGame() {
+        if (camera.classList.contains('active')) {
+            camera.classList.remove('active');
+        } else if (mask.classList.contains('active')) {
+            mask.classList.remove('active');
+        }
+
+        console.log(this.screamerShaking);
+
+
+        clearInterval(this.updateTimer);
+        const screamer = new Screamer(this.screamerPopupDelay, this.puppetScreamerImage, this.screamerShaking);
+        screamer.screamerInitializing();
+        screamer.runEndGameScreamer();
     }
 }
