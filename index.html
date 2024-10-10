@@ -94,7 +94,7 @@
                 </div>
             </div>
 
-            <div class="game__header--time">0 AM</div>
+            <div class="game__header--time"><span class="game__header--time-count">0</span>AM</div>
         </div>
         <div class="game__content">
             <div class="camera" id="camera">
@@ -169,7 +169,17 @@
         </div>
     </div>
 
-
+    <div id="win-game" class="d-none">
+        <div class="win-game__text">
+            <div>
+                <span>5</span>
+                <span>6</span>
+            </div>
+            <div>
+                <span>Am</span>
+            </div>
+        </div>
+    </div>
 
 
     <div class="d-none">
@@ -186,6 +196,11 @@
         <audio id="noise" src="./assets/audio/soundEffect/gameplay/noise.mp3" loop></audio>
         <audio id="puppet-box" src="./assets/audio/soundEffect/gameplay/puppet_music_box.mp3"></audio>
         <audio id="twisting-puppet" src="./assets/audio/soundEffect/gameplay/twisting_sound.mp3"></audio>
+        <audio id="win-sound" src="./assets/audio/soundEffect/gameplay/win_sound.mp3"></audio>
+        <audio id="empty-battery-end" src="./assets/audio/soundEffect/gameplay/battery_empty_song.mp3"></audio>
+        <audio id="power-outage" src="./assets/audio/soundEffect/gameplay/power_outage.mp3"></audio>
+
+
         <audio class="screamer-audio" src="./assets/audio/soundEffect/gameplay/screamer/screamer_audio.mp3"></audio>
     </div>
 

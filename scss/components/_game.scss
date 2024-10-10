@@ -37,6 +37,10 @@
         &--time {
             font-size: $game-fontsize;
             font-family: $game-fontfamily;
+
+            span {
+                margin-right: $time-text-margin !important;
+            }
         }
     }
 
@@ -122,6 +126,57 @@
             &:nth-of-type(2) {
                 top: calc(100% - $blood-image-size);
                 left: calc(100% - $blood-image-size);
+            }
+        }
+    }
+}
+
+
+
+#win-game {
+    @include full-screen-mode;
+    @include absolute-position(center);
+    z-index: 2;
+    @include flex-position($x: center, $y: center, $direction: row);
+
+    background-color: $win_bg;
+
+    &.d-none {
+        display: none;
+    }
+
+    .win-game__text {
+        @include flex-position($x: center, $y: start, $direction: row);
+        max-height: $win-text;
+        overflow: hidden;
+
+
+        div {
+            @include flex-position($x: center, $y: center, $direction: column);
+
+
+            &:nth-of-type(1) {
+                position: relative;
+
+                span {
+                    position: relative;
+                    transform: translateY(0);
+                    margin-right: $win-time-text-margin;
+
+                    transition: $win-text-transition;
+                }
+            }
+
+            span {
+                font-size: $win-text;
+            }
+        }
+
+        &.active {
+            div:nth-child(1) {
+                span {
+                    transform: translateY(-100%);
+                }
             }
         }
     }

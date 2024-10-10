@@ -7,16 +7,18 @@
     "blood_start_showing": 30,
     "screamer_popup_delay": 600,
     "changing_screamer_image_delay": 300,
+    "timer_clock": 100000,
+    "win_game_block": 1300,
 
     "level_1": {
         "battery_capacity": 3600,
-        "battery_camera_consumption": 32,
+        "battery_camera_consumption": 320,
 
         "oxygen_capacity": 1000,
         "oxygen_mask_consumption": 50,
         "oxygen_restoration": 25,
         
-        "puppet_box_duration": 20,
+        "puppet_box_duration": 30,
         "puppet_box_update": 2
     },
 

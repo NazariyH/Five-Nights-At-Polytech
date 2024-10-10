@@ -22,6 +22,8 @@ const noise = document.getElementById('noise');
 noise.volume = 0.1; // default noise volume
 const puppetBoxAudio = document.getElementById('puppet-box');
 const twistingPuppetSound = document.getElementById('twisting-puppet');
+const emptyBatteryLevel = document.getElementById('empty-battery-end');
+const powerOutage = document.getElementById('power-outage');
 
 class Player {
     constructor(backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing, puppetBoxConfig, screamerConfig) {
@@ -42,7 +44,7 @@ class Player {
 
         this.puppetBoxDuration = puppetBoxConfig.puppet_box_duration;
         this.puppetBoxUpdateSec = puppetBoxConfig.puppet_box_update;
-        this.puppetBoxTimer = this.puppetBoxDuration; 
+        this.puppetBoxTimer = this.puppetBoxDuration;
 
         this.screamerPopupDelay = screamerConfig.screamer_popup_delay;
         this.screamerShaking = screamerConfig.changing_screamer_delay;
@@ -112,8 +114,38 @@ class Player {
         // Updates battery status
         this.batteryUsed += this.batteryGeneralConsumption;
         let convertedUsedCapacity = 100 - (100 * this.batteryUsed / this.batteryCapacity);
-        batteryCapacityObject.style.width = `${convertedUsedCapacity}%`;
+
+        if (convertedUsedCapacity <= 0) {
+            convertedUsedCapacity = 0;
+            this.batteryGeneralConsumption = 0;
+        
+        }
+
         batteryConsumptionText.textContent = this.batteryGeneralConsumption;
+        batteryCapacityObject.style.width = `${convertedUsedCapacity}%`;
+
+
+        console.log(convertedUsedCapacity);
+
+        if (convertedUsedCapacity <= 0) {
+            this.endGameDueToBattery();
+        }
+    }
+
+    endGameDueToBattery() {
+        // Ends game
+
+        locationWrap.forEach(location => {
+            location.remove();
+        });
+
+        noiseCanvas.classList.add('d-none');
+        this.background.classList.add('d-none');
+
+        powerOutage.play();
+        setTimeout(() => {
+            emptyBatteryLevel.play();
+        }, powerOutage.duration);
     }
 
     updateOxygenStatus() {

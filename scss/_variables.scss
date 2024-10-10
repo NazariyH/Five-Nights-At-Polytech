@@ -96,6 +96,9 @@ $oxygen-margin:                     40px;
 
 $puppet-box-button-margin:          30px;
 
+$time-text-margin:                  10px;
+$win-time-text-margin:              40px;
+
 
 // Colors
 $text-color:                       #FFFFFF;
@@ -112,7 +115,7 @@ $game-icon-color:                  invert(1);
 $game-icon-color-hover:            $start-menu-navbar-icons-color;
 
 $camera-background-color:         #313131;
-$camera-screen-color:             #9ac4e8;
+$camera-screen-color:             #575757;
 $camera-button-background:        #A50000;
 $camera-button-border-color:      darken($camera-button-background, 10);
 $camera-frame-border-color:       darken($camera-background-color, 5);
@@ -128,6 +131,7 @@ $blood-shadow:                    0 0 0 5px red, inset 0 0 100px 40px rgba(255, 
 $puppet-box-button-color:         #ffffff;
 $puppet-box-button-shadow:        0 6px 15px rgba(0, 0, 0, 0.4);
 $puppet-box-button-text-shadow:   2px 2px 4px rgba(0, 0, 0, 0.5);
+$win-bg:                          #000000;
 
 // Font styles, sizes, familys
 $disclaimer-text-fontsize:          18px;
@@ -144,6 +148,8 @@ $game-fontfamily:                   "Roboto", sans-serif;
 $camera-button-fontsize:            20px;
 $battery-info-fontsize:             20px;
 
+$win-text:                          70px;
+
 
 // Transitions
 $preloader-duration:                1.5s;
@@ -158,6 +164,7 @@ $mask-transition:                   transform .5s ease-in-out, opacity .5s ease-
 $object-shaking-duration:           10s;
 $blood-duration:                    2s;
 $screamer-duration:                 .5s;
+$win-text-transition:               all 5s ease;
 
 // Border styles
 $preloader-border:                  16px double transparent;

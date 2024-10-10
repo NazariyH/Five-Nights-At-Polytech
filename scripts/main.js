@@ -8,7 +8,7 @@ window.onload = function () {
     disclaimer.classList.remove('d-none');
 
 
-    fetchConfig().then(({ startMenuConfig, backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing, puppetBoxConfig, screamerConfig }) => {
+    fetchConfig().then(({ startMenuConfig, backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing, puppetBoxConfig, screamerConfig, timerClock, winGameBlock }) => {
         startMenu.initializeStartMenu(startMenuConfig);
 
 
@@ -18,6 +18,9 @@ window.onload = function () {
 
 
             puppetBox.play();
+
+            const game = new Game(timerClock, winGameBlock);
+            game.initialize();
         });
     }).catch(error => {
         console.error('Error loading config:', error);
@@ -29,10 +32,14 @@ function fetchConfig() {
         ? 'settings.json'  // Local development
         : 'https://nazariyh.github.io/Five-Nights-At-Polytech/settings.json';  // GitHub Pages
 
-    return fetch(settingsPath)
+    return fetch('settings.json')
         .then(response => response.json())
         .then(settings => {
             let current_level = 'level_1';
+
+
+            const timerClock = settings['timer_clock'];
+            const winGameBlock = settings['win_game_block'];
 
             const startMenuConfig = {
                 start_menu_shake_interval: settings['start_menu_shake_interval'],
@@ -67,7 +74,7 @@ function fetchConfig() {
 
             const backgroundMoveStep = settings['background_move_step'];
 
-            return { startMenuConfig, backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing, puppetBoxConfig, screamerConfig };
+            return { startMenuConfig, backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing, puppetBoxConfig, screamerConfig, timerClock, winGameBlock };
         })
         .catch(error => {
             console.log('Error with loading settings', error);
