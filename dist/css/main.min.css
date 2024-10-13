@@ -146,7 +146,7 @@ table {
   font-size: 20px;
   font-family: "Press Start 2P", sans-serif;
   letter-spacing: 2px;
-  margin: 10px 0;
+  margin: 20px 0;
   transition: all 0.3s ease-in-out;
   display: flex;
   justify-content: center;
@@ -297,8 +297,8 @@ table {
 }
 .game__header--oxygen--frame {
   position: relative;
-  width: 100px;
-  height: 35px;
+  width: 80px;
+  height: 30px;
   padding: 5px;
   border: 2px solid #ffffff;
   transform: rotate(180deg);
@@ -337,8 +337,8 @@ table {
 }
 .game__header--energy--frame {
   position: relative;
-  width: 100px;
-  height: 35px;
+  width: 80px;
+  height: 30px;
   padding: 5px;
   border: 2px solid #ffffff;
   transform: rotate(180deg);
@@ -444,8 +444,8 @@ table {
 }
 .game__header--oxygen--frame {
   position: relative;
-  width: 100px;
-  height: 35px;
+  width: 80px;
+  height: 30px;
   padding: 5px;
   border: 2px solid #ffffff;
   transform: rotate(180deg);
@@ -591,11 +591,11 @@ table {
   width: 1100px;
   height: 700px;
   padding: 40px;
-  border-radius: 0 90px 90px 0;
+  border-radius: 80px 80px;
   background-color: #313131;
   transition: top 0.5s ease;
-  border-right: 30px solid #242424;
-  border-bottom: 30px solid #242424;
+  border-right: 20px solid #242424;
+  border-bottom: 20px solid #242424;
   cursor: url("../../assets/cursor/cursor.png"), auto;
   display: flex;
   justify-content: space-between;
@@ -610,10 +610,10 @@ table {
   top: 300%;
 }
 .camera .camera-top-panel {
-  width: 300px;
-  height: 40px;
+  width: 200px;
+  height: 30px;
   background-color: #313131;
-  border-right: 20px solid #242424;
+  border-right: 10px solid #242424;
   border-radius: 25px 25px 0 0;
   display: flex;
   justify-content: center;
@@ -622,14 +622,14 @@ table {
   position: absolute;
   top: 0;
   left: 0;
-  top: -40px;
-  left: calc(800px - 10%);
+  top: -30px;
+  left: calc(900px - 10%);
 }
 .camera .camera-top-panel span {
-  width: 16px;
-  height: 16px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
-  margin: 0 20px;
+  margin: 0 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   opacity: 0.1;
 }
@@ -653,8 +653,8 @@ table {
   width: 100%;
   height: 100%;
   background-color: #575757;
-  border-radius: 45px;
-  margin-left: 50px;
+  border-radius: 40px;
+  margin-left: 0px;
   overflow: hidden;
 }
 .camera__screen canvas {
@@ -751,24 +751,30 @@ table {
   display: none;
 }
 .camera__panel {
-  height: 100%;
+  padding: 50px 70px;
+  z-index: 4;
+  height: 90%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   justify-content: space-between;
   align-items: start;
   flex-direction: column;
 }
 .camera__panel button {
-  width: 190px;
-  height: 40px;
-  font-size: 20px;
-  background-color: #A50000;
+  width: 160px;
+  height: 35px;
+  font-size: 16px;
+  border: 2px solid #ffffff;
+  background-color: transparent;
   color: #ffffff;
-  border-right: 7px solid #720000;
-  border-bottom: 7px solid #720000;
 }
 .camera__panel button.active {
-  border-right: 3.5px solid #720000;
-  border-bottom: 3.5px solid #720000;
+  background-color: #ffffff;
+  color: #000000;
 }
 .camera.active {
   top: 50%;

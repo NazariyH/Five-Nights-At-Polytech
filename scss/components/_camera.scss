@@ -4,7 +4,7 @@
     height: $camera-height;
     padding: $camera-padding;
 
-    border-radius: 0 $camera-frame-radius $camera-frame-radius 0;
+    border-radius: $camera-frame-radius $camera-frame-radius;
     background-color: $camera-background-color;
     transition: $camera-transition;
 
@@ -150,8 +150,15 @@
         }
     }
 
+
     &__panel {
-        height: 100%;
+        padding: $camera-padding + $screen-button-panel-margin-y $camera-padding + $screen-button-panel-margin-x;
+        z-index: 4;
+        height: $camera-button-panel-height;
+
+        @include absolute-position;
+        top: 50%;
+        transform: translateY(-50%);
 
         @include flex-position($x: space-between, $y: start, $direction: column);
 
@@ -159,6 +166,7 @@
             width: $camera-button-width;
             height: $camera-button-height;
             font-size: $camera-button-fontsize;
+            border: $camera-button;
 
             background-color: $camera-button-background;
 
@@ -170,12 +178,15 @@
                 color: #ffffff;
             }
 
-            border-right: $camera-button-border-size solid $camera-button-border-color;
-            border-bottom: $camera-button-border-size solid $camera-button-border-color;
 
             &.active {
-                border-right: $camera-button-border-size / 2 solid $camera-button-border-color;
-                border-bottom: $camera-button-border-size / 2 solid $camera-button-border-color;
+                background-color: $camera-button-active-color;
+
+                @if (lightness($camera-button-active-color) > 40) {
+                    color: #000000;
+                } @else {
+                    color: #ffffff;
+                }
             }
         }
     }
