@@ -12,7 +12,8 @@
 
     "level_1": {
         "battery_capacity": 3600,
-        "battery_camera_consumption": 1,
+        "battery_camera_consumption": 32,
+        "battery_flashlight_consumption": 12,
 
         "oxygen_capacity": 1000,
         "oxygen_mask_consumption": 50,
@@ -22,7 +23,7 @@
         "puppet_box_update": 2,
 
         "move_enemy_interval": 10000,
-        "camera-repair-speed": 3000,
+        "camera-repair-speed": 5000,
 
         "enemies": {
             "enemy_object_1": {

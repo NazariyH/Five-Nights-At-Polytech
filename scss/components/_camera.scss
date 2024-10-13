@@ -10,6 +10,8 @@
 
     border-right: $camera-frame-border-size solid $camera-frame-border-color;
     border-bottom: $camera-frame-border-size solid $camera-frame-border-color;
+    
+    cursor: $cursor, auto;
 
     @include flex-position($x: space-between, $y: center, $direction: row);
     @include absolute-position(center);

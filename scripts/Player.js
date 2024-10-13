@@ -33,6 +33,7 @@ class Player {
 
         this.batteryCapacity = batteryConfig.battery_capacity;
         this.batteryCameraConsumption = batteryConfig.battery_camera_consumption;
+        this.batteryFlashlightConsumption = batteryConfig.battery_flashlight_consumption;
         this.batteryUsed = 0;
         this.batteryGeneralConsumption = 0;
 
@@ -150,8 +151,16 @@ class Player {
     }
 
     toggleFlahlight() {
-        flashlightCircle.classList.toggle('d-none');
-        document.body.classList.toggle('hide-cursor');
+        if (flashlightCircle.classList.contains('d-none')) {
+            flashlightCircle.classList.remove('d-none');
+            document.body.classList.add('hide-cursor');
+            this.batteryGeneralConsumption += this.batteryFlashlightConsumption;
+        } else {
+            flashlightCircle.classList.add('d-none');
+            document.body.classList.remove('hide-cursor');
+            this.batteryGeneralConsumption -= this.batteryFlashlightConsumption;
+        }
+
     }
 
     endGameDueToBattery() {

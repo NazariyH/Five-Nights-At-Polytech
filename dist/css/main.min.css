@@ -596,6 +596,7 @@ table {
   transition: top 0.5s ease;
   border-right: 30px solid #242424;
   border-bottom: 30px solid #242424;
+  cursor: url("../../assets/cursor/cursor.png"), auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -664,22 +665,22 @@ table {
 }
 @keyframes transitioning {
   0% {
-    opacity: 0.3;
+    opacity: 0.2;
   }
   20% {
-    opacity: 0.6;
-  }
-  40% {
-    opacity: 1;
-  }
-  60% {
-    opacity: 0.6;
-  }
-  80% {
     opacity: 0.4;
   }
-  100% {
+  40% {
     opacity: 0.3;
+  }
+  60% {
+    opacity: 0.4;
+  }
+  80% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.2;
   }
 }
 .camera__screen--wrap {

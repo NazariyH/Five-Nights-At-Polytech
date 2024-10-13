@@ -57,6 +57,7 @@ function fetchConfig() {
             const batteryConfig = {
                 battery_capacity: settings[current_level]['battery_capacity'],
                 battery_camera_consumption: settings[current_level]['battery_camera_consumption'],
+                battery_flashlight_consumption: settings[current_level]['battery_flashlight_consumption'],
             }
 
             const oxygenConfig = {
