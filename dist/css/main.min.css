@@ -7,6 +7,7 @@
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  font-family: "Press Start 2P", sans-serif;
 }
 
 /* Reset for input, button, form, textarea, select */
@@ -76,6 +77,7 @@ table {
 }
 .disclaimer__block p {
   font-size: 18px;
+  font-family: "Roboto", sans-serif !important;
 }
 
 #disclaimer-button {
@@ -141,8 +143,8 @@ table {
   margin-bottom: 120px;
 }
 .start__block--menubar ul li {
-  font-size: 26px;
-  font-family: "Ruslan Display", sans-serif;
+  font-size: 20px;
+  font-family: "Press Start 2P", sans-serif;
   letter-spacing: 2px;
   margin: 10px 0;
   transition: all 0.3s ease-in-out;
@@ -240,7 +242,22 @@ table {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: -3;
+}
+
+#light-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: -2;
+  transform: translate(-50px, -50px);
+  width: 300px;
+  border-radius: 50%;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 90%);
 }
 
 .game {
@@ -350,7 +367,7 @@ table {
 }
 .game__header--time {
   font-size: 25px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Press Start 2P", sans-serif;
 }
 .game__header--time span {
   margin-right: 10px !important;
@@ -672,6 +689,19 @@ table {
   width: 100%;
   height: 100%;
 }
+.camera__screen--wrap .no-signal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 25px;
+  display: none;
+}
 .camera__screen--wrap img {
   position: absolute;
   top: 0;
@@ -679,21 +709,36 @@ table {
   width: 100%;
   height: 100%;
 }
-.camera__screen--wrap button {
-  width: 200px;
-  height: 50px;
-  border: 2px solid #ffffff;
-  color: #ffffff;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+.camera__screen--wrap img.broken {
+  display: none;
+}
+.camera__screen--wrap img.broken + .no-signal {
+  display: block;
+}
+.camera__screen--wrap div {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 3;
-  top: calc(100% - 50px - 30px);
-  left: calc(100% - 200px - 30px);
+  width: 100%;
+  height: 100%;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  flex-direction: row;
 }
-.camera__screen--wrap button:active {
+.camera__screen--wrap div button {
+  position: relative;
+  width: 200px;
+  height: 50px;
+  margin: 0 5px;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.camera__screen--wrap div button:active {
   background-color: #ffffff;
   color: black;
 }
@@ -790,6 +835,9 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+body.hide-cursor {
+  cursor: none !important;
 }
 
 #preloader {

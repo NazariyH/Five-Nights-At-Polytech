@@ -4,6 +4,8 @@ $background-width:                  200%;
 $preloader-size:                    120px;
 $preloader-radius:                  50%;
 
+$light-circle-size:                 300px;
+
 $warning-icon-size:                 80px;
 $disclaimer-width:                  800px;
 $disclaimer-button-width:           100%;
@@ -84,6 +86,9 @@ $game-footer-button-margin:         30px;
 $camera-padding:                    40px;
 $camera-scree-margin-left:          50px;
 $camera-indicator-margin:           20px;
+$screen-button-panel-margin-y:      10px;
+$screen-button-panel-margin-x:      30px;
+$screen-button-panel-gap:           $screen-button-panel-margin-y / 2;              
 
 $mask-deactivated:                  scale(0.8) translateY(100%) rotateX(90deg);
 $mask-activated:                    scale(1) translateY(0) rotateX(0deg);
@@ -94,10 +99,10 @@ $screamer-activated:                $mask-activated;
 $battery-info-margin-right:         40px;
 $oxygen-margin:                     40px;
 
-$puppet-box-button-margin:          30px;
-
 $time-text-margin:                  10px;
 $win-time-text-margin:              40px;
+
+
 
 
 // Colors
@@ -133,22 +138,26 @@ $puppet-box-button-shadow:        0 6px 15px rgba(0, 0, 0, 0.4);
 $puppet-box-button-text-shadow:   2px 2px 4px rgba(0, 0, 0, 0.5);
 $win-bg:                          #000000;
 
+$light-circle-color:              radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 90%);
+
 // Font styles, sizes, familys
-$disclaimer-text-fontsize:          18px;
+$disclaimer-text-fontsize:              18px;
 
-$start-menu-title-fontsize:         48px;
-$start-menu-navbar-fontsize:        26px;
-$start-menu-navbar-letter-spacing:  2px;
-$start-menu-title-fontfamily:       "Nosifer", sans-serif;
-$base-font-family:                  "Ruslan Display", sans-serif;
+$start-menu-title-fontsize:             48px;
+$start-menu-navbar-fontsize:            20px;
+$start-menu-navbar-letter-spacing:      2px;
+$start-menu-title-fontfamily:           'Nosifer', sans-serif;
+$base-font-family:                      'Press Start 2P', sans-serif;
+$discrlaimer-font-family:               'Roboto', sans-serif;
 
-$game-fontsize:                     25px;
-$game-fontfamily:                   "Roboto", sans-serif;
+$game-fontsize:                         25px;
+$game-fontfamily:                       'Press Start 2P', sans-serif;
 
-$camera-button-fontsize:            20px;
-$battery-info-fontsize:             20px;
+$camera-button-fontsize:                20px;
+$battery-info-fontsize:                 20px;
 
-$win-text:                          70px;
+$win-text:                              70px;
+$no-signal-fz:                          25px;
 
 
 // Transitions

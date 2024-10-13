@@ -8,13 +8,19 @@ window.onload = function () {
     disclaimer.classList.remove('d-none');
 
 
-    fetchConfig().then(({ startMenuConfig, backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing, puppetBoxConfig, screamerConfig, timerClock, winGameBlock }) => {
+    fetchConfig().then(({ startMenuConfig, backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing,
+        puppetBoxConfig, screamerConfig, timerClock, winGameBlock,
+        enemyObjects, enemyMoveInterval, cameraRepairSpeed }) => {
         startMenu.initializeStartMenu(startMenuConfig);
 
 
         startGameBtn.addEventListener('click', () => {
             const player = new Player(backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing, puppetBoxConfig, screamerConfig);
             player.initializingGame();
+
+
+            const enemy = new Enemy(enemyObjects, enemyMoveInterval, cameraRepairSpeed);
+            enemy.initialize();
 
 
             puppetBox.play();
@@ -73,8 +79,26 @@ function fetchConfig() {
             const bloodStartShowing = settings['blood_start_showing'];
 
             const backgroundMoveStep = settings['background_move_step'];
+            const cameraRepairSpeed = settings[current_level]['camera-repair-speed'];
 
-            return { startMenuConfig, backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing, puppetBoxConfig, screamerConfig, timerClock, winGameBlock };
+
+            const enemyObjects = settings[current_level]['enemies'];
+            const enemyMoveInterval = settings[current_level]['move_enemy_interval'];
+
+            return {
+                startMenuConfig,
+                backgroundMoveStep,
+                batteryConfig,
+                oxygenConfig,
+                bloodStartShowing,
+                puppetBoxConfig,
+                screamerConfig,
+                timerClock,
+                winGameBlock,
+                enemyObjects,
+                enemyMoveInterval,
+                cameraRepairSpeed,
+            };
         })
         .catch(error => {
             console.log('Error with loading settings', error);
@@ -83,7 +107,7 @@ function fetchConfig() {
 }
 
 
-console.clear();
-for (i = 0; i < 100; i++) {
-    console.log(`${i}) А НУ ВИЙШОВ ОТ СЮДА РОЗБІЙНИК`);
-}
+// console.clear();
+// for (i = 0; i < 100; i++) {
+//     console.log(`${i}) А НУ ВИЙШОВ ОТ СЮДА РОЗБІЙНИК`);
+// }

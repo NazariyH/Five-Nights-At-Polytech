@@ -76,32 +76,62 @@
             width: 100%;
             height: 100%;
 
+            .no-signal {
+                @include absolute-position(center);
+                width: auto;
+                height: auto;
+
+                text-shadow: $puppet-box-button-text-shadow;
+                font-size: $no-signal-fz;
+
+                display: none;
+            }
+
             img {
                 @include absolute-position;
                 width: 100%;
                 height: 100%;
             }
 
-            button {
-                width: $puppet-box-button-width;
-                height: $puppet-box-button-height;
+            img.broken {
+                display: none;
+            }
 
-                border: $puppet-box-button-border;
-                color: $puppet-box-button-color;
+            img.broken + .no-signal {
+                display: block;
+            }
 
-                box-shadow: $puppet-box-button-shadow;
-                text-shadow: $puppet-box-button-text-shadow;
-
+            div {
                 @include absolute-position;
                 z-index: 3;
-                top: calc(100% - $puppet-box-button-height - $puppet-box-button-margin);
-                left: calc(100% - $puppet-box-button-width - $puppet-box-button-margin);
+                width: 100%;
+                height: 100%;
 
-                &:active {
-                    background-color: $puppet-box-button-color;
-                    color: darken($puppet-box-button-color, 100)
+                padding: $screen-button-panel-margin-y $screen-button-panel-margin-x;
+
+                @include flex-position($x: end, $y: end, $direction: row);
+
+                button {
+                    position: relative;
+                    width: $puppet-box-button-width;
+                    height: $puppet-box-button-height;
+                    margin: 0 $screen-button-panel-gap;
+
+                    border: $puppet-box-button-border;
+                    color: $puppet-box-button-color;
+
+    
+                    box-shadow: $puppet-box-button-shadow;
+                    text-shadow: $puppet-box-button-text-shadow;
+    
+                    &:active {
+                        background-color: $puppet-box-button-color;
+                        color: darken($puppet-box-button-color, 100)
+                    }
                 }
             }
+
+
 
             &.d-none {
                 button {

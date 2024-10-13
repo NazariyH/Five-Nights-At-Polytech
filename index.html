@@ -9,9 +9,7 @@
     <!-- Link fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Nosifer&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ruslan+Display&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&family=Press+Start+2P&display=swap" rel="stylesheet">
 
 
     <link rel="stylesheet" href="./dist/css/main.min.css">
@@ -21,6 +19,7 @@
 <body>
     <img id="background-location" class="d-none" src="./assets/gameObjects/gamePlay/background.png">
     <div id="preloader"></div>
+    <div id="light-circle" class="d-none"></div>
 
     <div id="disclaimer" class="d-none">
         <div class="disclaimer__block">
@@ -120,41 +119,52 @@
                     <!-- The sequence of camera is important -->
                     <canvas id="noiseCanvas"></canvas>
                     <div class="camera__screen--wrap">
-                        <img class="camera__screen--location"
-                            src="./assets/gameObjects/gamePlay/locations/location_1.jpeg">
+                        <img class="camera__screen--location" data-enemyId="0" alt="Not Signal"
+                            src="./assets/gameObjects/gamePlay/locations/Location_1/location_123.png">
+                        <div class="no-signal">Нема сигналу</div>
+                        <div>
                             <button class="puppet-box-update-button">Підкрутити шкатулку</button>
+                        </div>
                     </div>
-                    <div class="camera__screen--wrap">
-                        <img class="camera__screen--location d-none"
-                            src="./assets/gameObjects/gamePlay/locations/location_2.jpeg">
+                    <div class="camera__screen--wrap d-none">
+                        <img class="camera__screen--location d-none" data-enemyId="0" alt="Not Signal"
+                            src="./assets/gameObjects/gamePlay/locations/Location_2/location_0.png">
+                        <div class="no-signal">Нема сигналу</div>
                     </div>
-                    <div class="camera__screen--wrap">
-                        <img class="camera__screen--location d-none"
-                            src="./assets/gameObjects/gamePlay/locations/location_3.jpeg">
+                    <div class="camera__screen--wrap d-none">
+                        <img class="camera__screen--location d-none" data-enemyId="0" alt="Not Signal"
+                            src="./assets/gameObjects/gamePlay/locations/Location_3/location_0.png">
+                        <div class="no-signal">Нема сигналу</div>
                     </div>
-                    <div class="camera__screen--wrap">
-                        <img class="camera__screen--location d-none"
-                            src="./assets/gameObjects/gamePlay/locations/location_4.jpeg">
+                    <div class="camera__screen--wrap d-none">
+                        <img class="camera__screen--location d-none" data-enemyId="0" alt="Not Signal"
+                            src="./assets/gameObjects/gamePlay/locations/Location_4/location_0.png">
+                        <div class="no-signal">Нема сигналу</div>
                     </div>
-                    <div class="camera__screen--wrap">
-                        <img class="camera__screen--location d-none"
-                            src="./assets/gameObjects/gamePlay/locations/location_5.jpeg">
+                    <div class="camera__screen--wrap d-none">
+                        <img class="camera__screen--location d-none" data-enemyId="0" alt="Not Signal"
+                            src="./assets/gameObjects/gamePlay/locations/Location_5/location_0.png">
+                        <div class="no-signal">Нема сигналу</div>
                     </div>
-                    <div class="camera__screen--wrap">
-                        <img class="camera__screen--location d-none"
-                            src="./assets/gameObjects/gamePlay/locations/location_6.jpeg">
+                    <div class="camera__screen--wrap d-none">
+                        <img class="camera__screen--location d-none" data-enemyId="0" alt="Not Signal"
+                            src="./assets/gameObjects/gamePlay/locations/Location_6/location_0.png">
+                        <div class="no-signal">Нема сигналу</div>
                     </div>
-                    <div class="camera__screen--wrap">
-                        <img class="camera__screen--location d-none"
-                            src="./assets/gameObjects/gamePlay/locations/location_7.jpeg">
+                    <div class="camera__screen--wrap d-none">
+                        <img class="camera__screen--location d-none" data-enemyId="0" alt="Not Signal"
+                            src="./assets/gameObjects/gamePlay/locations/Location_7/location_0.png">
+                        <div class="no-signal">Нема сигналу</div>
                     </div>
-                    <div class="camera__screen--wrap">
-                        <img class="camera__screen--location d-none"
-                            src="./assets/gameObjects/gamePlay/locations/location_8.jpeg">
+                    <div class="camera__screen--wrap d-none">
+                        <img class="camera__screen--location d-none" data-enemyId="0" alt="Not Signal"
+                            src="./assets/gameObjects/gamePlay/locations/Location_8/location_4.png">
+                        <div class="no-signal">Нема сигналу</div>
                     </div>
-                    <div class="camera__screen--wrap">
-                        <img class="camera__screen--location d-none"
-                            src="./assets/gameObjects/gamePlay/locations/location_9.jpeg">
+                    <div class="camera__screen--wrap d-none">
+                        <img class="camera__screen--location d-none" data-enemyId="0" alt="Not Signal"
+                            src="./assets/gameObjects/gamePlay/locations/Location_9/location_0.png">
+                        <div class="no-signal">Нема сигналу</div>
                     </div>
                 </div>
             </div>
@@ -164,8 +174,8 @@
                     alt="mask"></button>
             <button class="game__footer--camares"><img src="./assets/gameObjects/gamePlay/icons/camera.png"
                     alt="camera"></button>
-            <button class="game__footer--close--ventilation"><img
-                    src="./assets/gameObjects/gamePlay/icons/ventilation.png" alt="ventilation"></button>
+            <button class="game__footer--close--flashlight"><img
+                    src="./assets/gameObjects/gamePlay/icons/flashlight.png" alt="flashlight"></button>
         </div>
     </div>
 
@@ -194,7 +204,7 @@
         <audio id="open-camera" src="./assets/audio/soundEffect/gameplay/open_camera.mp3"></audio>
         <audio id="change-camera" src="./assets/audio/soundEffect/gameplay/camera-changing.mp3"></audio>
         <audio id="noise" src="./assets/audio/soundEffect/gameplay/noise.mp3" loop></audio>
-        <audio id="puppet-box" src="./assets/audio/soundEffect/gameplay/puppet_music_box.mp3"></audio>
+        <audio id="puppet-box" src="./assets/audio/soundEffect/gameplay/puppet_music_box.mp3" loop></audio>
         <audio id="twisting-puppet" src="./assets/audio/soundEffect/gameplay/twisting_sound.mp3"></audio>
         <audio id="win-sound" src="./assets/audio/soundEffect/gameplay/win_sound.mp3"></audio>
         <audio id="empty-battery-end" src="./assets/audio/soundEffect/gameplay/battery_empty_song.mp3"></audio>

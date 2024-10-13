@@ -3,7 +3,19 @@
     height: 100%;
     transition: $background-transition;
     @include absolute-position;
+    z-index: -3;
+}
+
+
+#light-circle {
+    @include absolute-position(center);
     z-index: -2;
+    transform: translate(-$light-circle-size / 6, -$light-circle-size / 6);
+
+    width: $light-circle-size;
+    border-radius: 50%;
+    height: $light-circle-size;
+    background: $light-circle-color;
 }
 
 

@@ -17,6 +17,10 @@ body {
     cursor: $cursor, auto;
 
     @include flex-position($x: center, $y: center, $direction: column);
+
+    &.hide-cursor {
+        cursor: none !important;
+    }
 }
 
 #preloader {

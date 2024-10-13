@@ -1,6 +1,8 @@
 const cameraBtn = document.querySelector('.game__footer--camares');
 const cameraTogglingBtns = document.querySelectorAll('.camera-toggling-button');
 const maskBtn = document.querySelector('.game__footer--mask');
+const flashlightCircle = document.getElementById('light-circle');
+const flashlightButton = document.querySelector('.game__footer--close--flashlight');
 
 const camera = document.getElementById('camera');
 const locations = document.querySelectorAll('.camera__screen--location');
@@ -86,6 +88,10 @@ class Player {
         });
 
 
+        flashlightButton.addEventListener('click', () => this.toggleFlahlight());
+        this.flashlightCircleMove();
+
+
         maskBtn.addEventListener('click', () => this.putOnMask());
 
         // Added event listeners for specific buttons
@@ -95,6 +101,8 @@ class Player {
 
             if (event.key === ' ') this.putOnMask();
             if (event.key === 'Shift') this.toggleCamera();
+
+            if (event.key === 'Meta') this.toggleFlahlight();
         });
 
 
@@ -109,6 +117,17 @@ class Player {
 
         });
     }
+
+
+    flashlightCircleMove() {
+        // Move flashlight circle when user hover over the screen
+
+        document.body.addEventListener('mousemove', (event) => {
+            flashlightCircle.style.left = `${event.pageX - 100}px`;
+            flashlightCircle.style.top = `${event.pageY - 100}px`;
+        }); 
+    }
+
 
     updateBatteryStatus() {
         // Updates battery status
@@ -125,15 +144,20 @@ class Player {
         batteryCapacityObject.style.width = `${convertedUsedCapacity}%`;
 
 
-        console.log(convertedUsedCapacity);
-
         if (convertedUsedCapacity <= 0) {
             this.endGameDueToBattery();
         }
     }
 
+    toggleFlahlight() {
+        flashlightCircle.classList.toggle('d-none');
+        document.body.classList.toggle('hide-cursor');
+    }
+
     endGameDueToBattery() {
         // Ends game
+
+        clearInterval(this.updateTimer)
 
         locationWrap.forEach(location => {
             location.remove();
@@ -145,7 +169,12 @@ class Player {
         powerOutage.play();
         setTimeout(() => {
             emptyBatteryLevel.play();
+            puppetBoxAudio.pause();
         }, powerOutage.duration);
+
+        setTimeout(() => {
+            this.puppetBoxEndGame();
+        }, emptyBatteryLevel.duration * 1000);
     }
 
     updateOxygenStatus() {
@@ -293,9 +322,6 @@ class Player {
         } else if (mask.classList.contains('active')) {
             mask.classList.remove('active');
         }
-
-        console.log(this.screamerShaking);
-
 
         clearInterval(this.updateTimer);
         const screamer = new Screamer(this.screamerPopupDelay, this.puppetScreamerImage, this.screamerShaking);
