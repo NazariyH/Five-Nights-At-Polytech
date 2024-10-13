@@ -15,6 +15,10 @@ const oxygenCapacityObject = document.querySelector('.game__header--oxygen--capa
 const bloodAnimationObject = document.querySelector('.blood-effect');
 const puppetBoxButton = document.querySelector('.puppet-box-update-button');
 
+const greenIndicator = document.getElementById('green-indicator');
+const yellowIndicator = document.getElementById('yellow-indicator');
+const redIndicator = document.getElementById('red-indicator');
+
 
 // Import audio files
 const maskBreath = document.getElementById('mask-breath');
@@ -76,6 +80,10 @@ class Player {
             this.updateBatteryStatus();
             this.updateOxygenStatus();
             this.updatePuppetBox();
+
+            let currentLocation = document.querySelector('.camera__screen--location:not(.d-none)');
+
+            this.changeIndicator(currentLocation);
         }, 1000);
     }
 
@@ -126,7 +134,7 @@ class Player {
         document.body.addEventListener('mousemove', (event) => {
             flashlightCircle.style.left = `${event.pageX - 100}px`;
             flashlightCircle.style.top = `${event.pageY - 100}px`;
-        }); 
+        });
     }
 
 
@@ -138,7 +146,7 @@ class Player {
         if (convertedUsedCapacity <= 0) {
             convertedUsedCapacity = 0;
             this.batteryGeneralConsumption = 0;
-        
+
         }
 
         batteryConsumptionText.textContent = this.batteryGeneralConsumption;
@@ -263,6 +271,8 @@ class Player {
         event.currentTarget.classList.add('active');
         changeCamera.play();
 
+        this.changeIndicator(locations[Number(locationId) - 1]);
+
         locations.forEach((location, count) => {
             location.classList.add('d-none');
             if (count === Number(locationId) - 1) {
@@ -276,6 +286,24 @@ class Player {
                 wrap.classList.remove('d-none');
             }
         });
+    }
+
+    changeIndicator(location) {
+        // Change indicator's color depening on camera's location status
+
+        redIndicator.classList.remove('active');
+        yellowIndicator.classList.remove('active');
+        greenIndicator.classList.remove('active');
+
+        if (location.classList.contains('broken')) {
+            redIndicator.classList.add('active');
+            return;
+        } else if (location.getAttribute('data-enemyId') !== '0') {
+            yellowIndicator.classList.add('active');
+            return
+        } else {
+            greenIndicator.classList.add('active');
+        }
     }
 
     putOnMask() {
