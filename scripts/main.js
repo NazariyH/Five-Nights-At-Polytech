@@ -9,8 +9,8 @@ window.onload = function () {
 
 
     fetchConfig().then(({ startMenuConfig, backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing,
-        puppetBoxConfig, screamerConfig, timerClock, winGameBlock,
-        enemyObjects, enemyMoveInterval, cameraRepairSpeed }) => {
+        puppetBoxConfig, screamerConfig, timerClock, winGameBlock, enemyObjects, enemyMoveInterval, 
+        cameraRepairSpeed, enemyDelayBeforeAtack }) => {
         startMenu.initializeStartMenu(startMenuConfig);
 
 
@@ -19,7 +19,7 @@ window.onload = function () {
             player.initializingGame();
 
 
-            const enemy = new Enemy(enemyObjects, enemyMoveInterval, cameraRepairSpeed);
+            const enemy = new Enemy(enemyObjects, enemyMoveInterval, cameraRepairSpeed, enemyDelayBeforeAtack, screamerConfig);
             enemy.initialize();
 
 
@@ -73,7 +73,8 @@ function fetchConfig() {
 
             const screamerConfig = {
                 screamer_popup_delay: settings['screamer_popup_delay'],
-                puppet_screamer: settings['screamers']['puppet_screamer'],
+                puppet_screamer: settings[current_level]['screamers']['puppet_screamer'],
+                screamer_sound: settings[current_level]['screamers']['screamer_sound'],
                 changing_screamer_delay: settings['changing_screamer_image_delay'],
             }
 
@@ -85,6 +86,7 @@ function fetchConfig() {
 
             const enemyObjects = settings[current_level]['enemies'];
             const enemyMoveInterval = settings[current_level]['move_enemy_interval'];
+            const enemyDelayBeforeAtack = settings[current_level]['enemy_delay_before_atack'];
 
             return {
                 startMenuConfig,
@@ -99,6 +101,7 @@ function fetchConfig() {
                 enemyObjects,
                 enemyMoveInterval,
                 cameraRepairSpeed,
+                enemyDelayBeforeAtack,
             };
         })
         .catch(error => {

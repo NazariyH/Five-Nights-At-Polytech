@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <img id="background-location" class="d-none" src="./assets/gameObjects/gamePlay/background.png">
+    <img id="background-location" class="d-none" data-enemyId="0" src="./assets/gameObjects/gamePlay/main_location/background_0.png">
     <div id="preloader"></div>
     <div id="light-circle" class="d-none"></div>
 
@@ -72,6 +72,10 @@
         </div>
 
         <div class="game__screamer--wrap">
+            <div class="game__screamer--wrap--image"></div>
+        </div>
+
+        <div class="game__screamer--waiting">
             <div class="game__screamer--wrap--image"></div>
         </div>
 
@@ -192,7 +196,7 @@
     </div>
 
 
-    <div class="d-none">
+    <div id="sound-effects" class="d-none">
         <audio id="start-menu-background-music" src="./assets/audio/backgroundMusic/startMenuBackgroundMusic.mp3"
             loop></audio>
         <audio id="camera-toggling-sound" src="./assets/audio/soundEffect/startMenu/camera_toggling_sound.mp3"></audio>
@@ -210,8 +214,7 @@
         <audio id="empty-battery-end" src="./assets/audio/soundEffect/gameplay/battery_empty_song.mp3"></audio>
         <audio id="power-outage" src="./assets/audio/soundEffect/gameplay/power_outage.mp3"></audio>
 
-
-        <audio class="screamer-audio" src="./assets/audio/soundEffect/gameplay/screamer/screamer_audio.mp3"></audio>
+        <audio class="screamer-audio"></audio>
     </div>
 
 

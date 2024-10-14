@@ -67,6 +67,7 @@ $screamer-height:                   1000px;
 $screamer-shaking-offset:           75px;
 $screamer-scale-offset:             0.030;
 
+$screamer-preloading-size:          150px;
 
 // Margins and paddings
 $warning-icon-margin:               25px;
@@ -93,6 +94,10 @@ $screen-button-panel-gap:           $screen-button-panel-margin-y / 2;
 
 $mask-deactivated:                  scale(0.8) translateY(100%) rotateX(90deg);
 $mask-activated:                    scale(1) translateY(0) rotateX(0deg);
+
+$waiting-screamer-preload:          100%;
+$waiting-screamer-waiting:          50%;      
+$waiting-screamer-unload:           -100%;       
 
 $screamer-deactivated:              $mask-deactivated; 
 $screamer-activated:                $mask-activated;
@@ -178,6 +183,8 @@ $object-shaking-duration:           10s;
 $blood-duration:                    2s;
 $screamer-duration:                 .5s;
 $win-text-transition:               all 5s ease;
+$peloading-screamer-transition:     all 2s ease-in-out;
+$preload-screamer-body-duration:    3s;
 
 
 // Border styles

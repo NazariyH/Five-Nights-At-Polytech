@@ -57,7 +57,11 @@ class Player {
         this.screamerShaking = screamerConfig.changing_screamer_delay;
 
         // screamers
-        this.puppetScreamerImage = screamerConfig.puppet_screamer;
+        this.puppetScreamerConfig = {
+            background_image: screamerConfig.puppet_screamer.background_image,
+            background_active_image: screamerConfig.puppet_screamer.background_active_image,
+            screamer_sound: screamerConfig.puppet_screamer.screamer_sound,
+        };
 
 
         // Gameplay objects 
@@ -361,7 +365,7 @@ class Player {
         }
 
         clearInterval(this.updateTimer);
-        const screamer = new Screamer(this.screamerPopupDelay, this.puppetScreamerImage, this.screamerShaking);
+        const screamer = new Screamer(this.screamerPopupDelay, this.puppetScreamerConfig, this.screamerShaking);
         screamer.screamerInitializing();
         screamer.runEndGameScreamer();
     }

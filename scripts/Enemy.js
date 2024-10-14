@@ -1,21 +1,32 @@
 const screamerObject = document.querySelector('.game__screamer--wrap');
 const screamerImageObject = screamerObject.querySelector('div');
+const mainLocation = document.getElementById('background-location');
+const waitingScreamerWrapObj = document.querySelector('.game__screamer--waiting');
+const soundEffects = document.getElementById('sound-effects');
 
 // Import audio
 const screamerSound = document.querySelector('.screamer-audio');
 
 
 class Enemy {
-    constructor(enemyObjects, enemyMoveInterval, cameraRepairSpeed) {
+    constructor(enemyObjects, enemyMoveInterval, cameraRepairSpeed, enemyDelayBeforeAtack, screamerConfig) {
         this.enemyObjects = enemyObjects;
         this.enemyMoveInterval = enemyMoveInterval;
         this.cameraRepairSpeed = cameraRepairSpeed;
+        this.enemyDelayBeforeAtack = enemyDelayBeforeAtack;
+    
 
         this.dynamicEnemyObject = {}
+        this.preloadScreamerRemoveDelay = 2000;
+
+
+        this.screamerPopupDelay = screamerConfig.screamer_popup_delay;
+        this.screamerShaking = screamerConfig.changing_screamer_delay;
 
         // Define intervals
         this.enemySpawnInterval = null;
         this.updateImageSrcInterval = null;
+        this.checkMaskStatusInterval = null;
     }
 
     initialize() {
@@ -24,6 +35,63 @@ class Enemy {
         this.initializeInitialEnemyPosition();
 
     }
+
+    moveEnemyToMainLocation(enemy, enemyId, enemyWaitingDuration) {
+        // Move enemy to the main location when they passed their route
+
+        mainLocation.setAttribute('data-enemyId', enemyId);
+        waitingScreamerWrapObj.querySelector('div').style.backgroundImage = `url(${enemy['background_image']})`;
+        
+        const enemyImage = {
+            background_image: enemy['background_image'],
+            background_active_image: enemy['background_active_image'],
+            screamer_sound: enemy['screamer_sound'],
+        }
+
+
+        setTimeout(() => {
+            if (this.checkMaskStatusInterval === null) {
+                this.checkMaskStatusInterval = setInterval(() => {
+                    this.checkMaskStatus(enemyImage);
+                }, 100);
+            }
+
+            waitingScreamerWrapObj.classList.add('waiting');
+            waitingScreamerWrapObj.style.opacity = 1;
+    
+            setTimeout(() => {
+                waitingScreamerWrapObj.classList.remove('waiting');
+                waitingScreamerWrapObj.classList.add('unload');
+    
+                setTimeout(() => {
+                    waitingScreamerWrapObj.style.opacity = 0;
+                    waitingScreamerWrapObj.classList.remove('unload');
+                    
+                    mainLocation.setAttribute('data-enemyId', '0');
+
+                    clearInterval(this.checkMaskStatusInterval);
+                    this.checkMaskStatusInterval = null;
+
+                }, this.preloadScreamerRemoveDelay);
+            }, enemyWaitingDuration);
+        }, this.enemyDelayBeforeAtack);
+    }
+
+
+    checkMaskStatus(enemyImage) {
+        // Check if user's mask is puted on else screamer will kill the user and the game will end
+
+        if (!mask.classList.contains('active')) {
+            waitingScreamerWrapObj.classList.add('d-none');
+            const screamer = new Screamer(this.screamerPopupDelay, enemyImage, this.screamerShaking);
+            screamer.screamerInitializing();
+            screamer.runEndGameScreamer();
+
+            clearInterval(this.checkMaskStatusInterval);
+            this.checkMaskStatusInterval = null;
+        };
+    }
+
 
     enemyMove(enemy) {
         // Move enemy
@@ -35,6 +103,8 @@ class Enemy {
 
         let randomValue = Math.floor(Math.random() * 100);
         let nextLocation;
+
+        const statusOfMainLocation = mainLocation.getAttribute('data-enemyId');
 
 
         if (currentLocationIndex <= currentObject['enemy_locations'].length - 1) {
@@ -53,7 +123,10 @@ class Enemy {
                             currentObject['current_location'] = nextLocation;
                         }
                     } else {
-                        currentObject['current_location'] = currentObject['enemy_start_location'];
+                        if (statusOfMainLocation === '0') {
+                            locations[oldLocationPosition - 1].setAttribute('data-enemyId', '0');
+                            this.moveEnemyToMainLocation(enemy, enemy['enemy_id'], enemy['enemy_waiting_duration']);
+                        }
                     }
                 } else {
                     nextLocation = currentObject['enemy_locations'][currentLocationIndex + 1];
@@ -63,7 +136,10 @@ class Enemy {
                             currentObject['current_location'] = nextLocation;
                         }
                     } else {
-                        currentObject['current_location'] = currentObject['enemy_start_location'];
+                        if (statusOfMainLocation === '0') {
+                            locations[oldLocationPosition - 1].setAttribute('data-enemyId', '0');
+                            this.moveEnemyToMainLocation(enemy, enemy['enemy_id'], enemy['enemy_waiting_duration']);
+                        }
                     }
                 }
             }
@@ -149,13 +225,19 @@ class Enemy {
     updateImageSrc() {
         // Update the part of the src after 'location_' and before '.png'
 
-        const fixButtons = document.querySelectorAll('.fix-button');
+
 
         locations.forEach((loc, i) => {
             let locSrc = loc.getAttribute('src');
             let locData = loc.getAttribute('data-enemyId');
 
             let newFileSrc = locSrc.replace(/(location_)(\d+)(\.png)/, `$1${locData}$3`);
+
+
+            let backgroundSrc = mainLocation.getAttribute('src');
+            let backgroundEnemyId = mainLocation.getAttribute('data-enemyId');
+            backgroundSrc = backgroundSrc.replace(/(background_)(\d+)(\.png)/, `$1${backgroundEnemyId}$3`);
+            mainLocation.setAttribute('src', backgroundSrc);
 
             const camera = document.getElementById('camera');
             if (camera.classList.contains('active')) {
@@ -170,7 +252,6 @@ class Enemy {
             }
 
             loc.setAttribute('src', newFileSrc);
-            console.log(locSrc, newFileSrc, locData);
         });
     }
 
@@ -181,21 +262,32 @@ class Screamer {
         this.screamerDelay = screamerDelay;
         this.screamerConfig = screamerConfig;
         this.changingScreamerDelay = screamerShakingInterval;
+        console.log(screamerConfig);
 
         this.runEndGameScreamer = this.runEndGameScreamer.bind(this);
+
     }
 
     screamerInitializing() {
+        if (camera.classList.contains('active')) {
+            camera.classList.remove('active');
+        }
     }
 
     runEndGameScreamer() {
+        const screamerAudioSrc = this.screamerConfig.screamer_sound;
+        screamerSound.setAttribute('src', screamerAudioSrc);
+        console.log(screamerSound);
+        screamerSound.play();
+
+        
         setTimeout(() => {
             screamerObject.classList.add('active');
         }, this.screamerDelay);
 
         setInterval(() => {
             const currentBackground = screamerImageObject.style.backgroundImage;
-            screamerSound.play();
+
 
             const { background_image, background_active_image } = this.screamerConfig;
 
