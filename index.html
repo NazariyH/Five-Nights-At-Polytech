@@ -17,7 +17,9 @@
 </head>
 
 <body>
-    <img id="background-location" class="d-none" data-enemyId="0" src="./assets/gameObjects/gamePlay/main_location/background_0.png">
+    <div id="fps-count" class="d-none"><span>0</span> FPS</div>
+    <img id="background-location" class="d-none" data-enemyId="0"
+        src="./assets/gameObjects/gamePlay/main_location/background_0.png">
     <div id="preloader"></div>
     <div id="light-circle" class="d-none"></div>
 
@@ -55,11 +57,22 @@
             <div class="start__block--menubar">
                 <ul>
                     <li id="start-new-game"><img src="./assets/icons/arrow.png" class="arrow-icon" alt="">Нова Гра</li>
-                    <li><img src="./assets/icons/arrow.png" class="arrow-icon" alt="">Вибрати Ніч</li>
-                    <li><img src="./assets/icons/arrow.png" class="arrow-icon" alt="">Усі Політехотроніки</li>
-                    <li><img src="./assets/icons/arrow.png" class="arrow-icon" alt="">Інструкція</li>
-                    <li><img src="./assets/icons/arrow.png" class="arrow-icon" alt=""><a
-                            href="https://github.com/NazariyH" target="_blank">Github автора</a></li>
+                    <li id="start-new-game"><img src="./assets/icons/arrow.png" class="arrow-icon" alt="">Продовжити
+                    </li>
+                    <li id="select-menu"><img src="./assets/icons/arrow.png" class="arrow-icon" alt="">Вибрати Ніч</li>
+                    <div id="select-menu-list" class="select-menu d-none">
+                        <li>1 ніч</li>
+                        <li>2 ніч</li>
+                        <li>3 ніч</li>
+                        <li>4 ніч</li>
+                        <li>5 ніч</li>
+                    </div>
+                    <div id="helpful-links">
+                        <li><img src="./assets/icons/arrow.png" class="arrow-icon" alt="">Усі Політехотроніки</li>
+                        <li><img src="./assets/icons/arrow.png" class="arrow-icon" alt="">Інструкція</li>
+                        <li><img src="./assets/icons/arrow.png" class="arrow-icon" alt=""><a
+                                href="https://nazariyh.github.io/myBlog/" target="_blank">Cайт автора</a></li>
+                    </div>
                 </ul>
             </div>
         </div>
@@ -127,6 +140,7 @@
                             src="./assets/gameObjects/gamePlay/locations/Location_1/location_123.png">
                         <div class="no-signal">Нема сигналу</div>
                         <div>
+                            <div class="puppet-box-progress-bar"></div>
                             <button class="puppet-box-update-button">Підкрутити шкатулку</button>
                         </div>
                     </div>
@@ -174,12 +188,16 @@
             </div>
         </div>
         <div class="game__footer">
-            <button class="game__footer--mask"><img src="./assets/gameObjects/gamePlay/icons/mask.png"
-                    alt="mask"></button>
-            <button class="game__footer--camares"><img src="./assets/gameObjects/gamePlay/icons/camera.png"
-                    alt="camera"></button>
-            <button class="game__footer--close--flashlight"><img
-                    src="./assets/gameObjects/gamePlay/icons/flashlight.png" alt="flashlight"></button>
+            <button class="game__footer--arrow-move" data-direction="left"><img src="./assets/icons/arrow.png"> Ліво</button>
+            <div>
+                <button class="game__footer--mask"><img src="./assets/gameObjects/gamePlay/icons/mask.png"
+                        alt="mask"></button>
+                <button class="game__footer--camares"><img src="./assets/gameObjects/gamePlay/icons/camera.png"
+                        alt="camera"></button>
+                <button class="game__footer--close--flashlight"><img
+                        src="./assets/gameObjects/gamePlay/icons/flashlight.png" alt="flashlight"></button>
+            </div>
+            <button class="game__footer--arrow-move" data-direction="right">Право <img src="./assets/icons/arrow.png"></button>
         </div>
     </div>
 
@@ -213,6 +231,7 @@
         <audio id="win-sound" src="./assets/audio/soundEffect/gameplay/win_sound.mp3"></audio>
         <audio id="empty-battery-end" src="./assets/audio/soundEffect/gameplay/battery_empty_song.mp3"></audio>
         <audio id="power-outage" src="./assets/audio/soundEffect/gameplay/power_outage.mp3"></audio>
+        <audio id="enemy-approaching" src="./assets/audio/soundEffect/gameplay/enemy_approaching.mp3"></audio>
 
         <audio class="screamer-audio"></audio>
     </div>

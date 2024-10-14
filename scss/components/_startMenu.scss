@@ -79,6 +79,16 @@
 
             @include flex-position($x: center, $y: center, $direction: row);
 
+            &#select-menu {
+                img.open {
+                    transform: rotate(90deg);
+                }
+
+                img.close {
+                    transform: rotate(-90deg);
+                }
+            }
+
             img {
                 filter: $start-menu-navbar-icons-color;
                 width: $arrow-icon-width;

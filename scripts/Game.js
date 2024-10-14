@@ -1,6 +1,10 @@
 const timerObject = document.querySelector('.game__header--time-count');
 const winGameText = document.querySelector('.win-game__text');
 const winGameBlock = document.getElementById('win-game');
+const fpsCount = document.getElementById('fps-count');
+
+let frameCount = 0;
+let lastTime = performance.now();
 
 
 // Import audio files
@@ -26,6 +30,8 @@ class Game {
     initialize() {
         // InitialingGame
 
+        this.updateFPSCount();
+        setInterval(() => this.calculateFPS(), 100);
     }
 
     checkTimerClock() {
@@ -42,6 +48,7 @@ class Game {
         // Initializing game win
         puppetBoxAudio.pause();
         startMenuBackgroundMusic.pause();
+        enemyApproaching.pause();
         winSound.play();
 
         if (mask.classList.contains('active')) {
@@ -58,5 +65,24 @@ class Game {
         setTimeout(() => {
             winGameText.classList.add('active');
         }, this.winTextDelay);
+    }
+
+
+    updateFPSCount() {
+        // Updates fps logic and animation
+
+        frameCount++;
+        requestAnimationFrame(() => this.updateFPSCount()); // Use arrow function for proper context
+    }
+
+    calculateFPS() {
+        const now = performance.now();
+        const delta = now - lastTime;
+
+        if (delta > 1000) {
+            fpsCount.querySelector('span').innerText = frameCount;
+            frameCount = 0;
+            lastTime = now;
+        }
     }
 }

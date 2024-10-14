@@ -137,6 +137,19 @@
                         color: darken($puppet-box-button-color, 100)
                     }
                 }
+
+                .puppet-box-progress-bar {
+                    position: relative;
+
+                    max-width: $puppet-box-progress-bar-size;
+                    max-height: $puppet-box-progress-bar-size;
+
+                    background-color: $puppet-box-progress-bar-background;
+                    background: $puppet-box-progress-bar-color;
+                    border-radius: 50%;
+
+                    margin-right: $puppet-box-progress-bar-margin;
+                }
             }
 
 

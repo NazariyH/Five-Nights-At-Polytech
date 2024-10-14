@@ -6,7 +6,8 @@ const soundEffects = document.getElementById('sound-effects');
 
 // Import audio
 const screamerSound = document.querySelector('.screamer-audio');
-
+const enemyApproaching = document.getElementById('enemy-approaching');
+enemyApproaching.volume = 0.7;
 
 class Enemy {
     constructor(enemyObjects, enemyMoveInterval, cameraRepairSpeed, enemyDelayBeforeAtack, screamerConfig) {
@@ -17,7 +18,7 @@ class Enemy {
     
 
         this.dynamicEnemyObject = {}
-        this.preloadScreamerRemoveDelay = 2000;
+        this.preloadScreamerRemoveDelay = screamerConfig.preloader_screamer_remove_delay;
 
 
         this.screamerPopupDelay = screamerConfig.screamer_popup_delay;
@@ -45,9 +46,6 @@ class Enemy {
             screamer_sound: enemy['screamer_sound'],
         }
 
-        if (!mask.classList.contains('active')) {
-            this.runScreamer(enemyImage);
-        };
 
         mainLocation.setAttribute('data-enemyId', enemyId);
         waitingScreamerWrapObj.querySelector('div').style.backgroundImage = `url(${enemy['background_image']})`;
@@ -61,6 +59,7 @@ class Enemy {
             }
 
             waitingScreamerWrapObj.classList.add('waiting');
+            enemyApproaching.play();
             waitingScreamerWrapObj.style.opacity = 1;
     
             setTimeout(() => {
@@ -70,8 +69,10 @@ class Enemy {
                 setTimeout(() => {
                     waitingScreamerWrapObj.style.opacity = 0;
                     waitingScreamerWrapObj.classList.remove('unload');
-                    
                     mainLocation.setAttribute('data-enemyId', '0');
+                    
+                    enemyApproaching.pause();
+                    enemyApproaching.currentTime = 0;
 
                     clearInterval(this.checkMaskStatusInterval);
                     this.checkMaskStatusInterval = null;
@@ -86,6 +87,7 @@ class Enemy {
         // Check if user's mask is puted on else screamer will kill the user and the game will end
 
         if (!mask.classList.contains('active')) {
+            enemyApproaching.pause();
             this.runScreamer(enemyImage);
         };
     }

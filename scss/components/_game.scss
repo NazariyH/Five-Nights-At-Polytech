@@ -18,6 +18,13 @@
     background: $light-circle-color;
 }
 
+#fps-count {
+    @include absolute-position;
+    
+    margin: $fps-margin;
+    font-size: $fps-count-fontsize;
+}
+
 
 .game {
     overflow: hidden;
@@ -58,7 +65,8 @@
 
     &__footer {
         padding: $footer-padding-y $footer-padding-x;
-        @include flex-position($x: center, $y: center, $direction: row);
+        width: 100%;
+        @include flex-position($x: space-between, $y: center, $direction: row);
 
         button {
             margin: 0 $game-footer-button-margin;
@@ -69,9 +77,41 @@
             }
 
 
+
             &:hover {
+                color: $start-menu-navbar-hover-color;
+
                 img {
                     filter: $game-icon-color-hover;
+                }
+            }
+        }
+
+        .game__footer--arrow-move {
+            width: $camera-button-width;
+            height: $camera-button-height;
+            font-size: $camera-button-fontsize;
+            border: $camera-button;
+
+            img {
+                width: $arrow-move-size !important;
+            }
+
+            &:nth-last-of-type(2) {
+                img {
+                    transform: rotate(180deg);
+                }
+            }
+
+            &:active {
+                background-color: $camera-button-active-color;
+
+                @if (lightness($camera-button-active-color) > 40) {
+                    color: #000000;
+                }
+
+                @else {
+                    color: #ffffff;
                 }
             }
         }
@@ -82,7 +122,7 @@
 #mask {
     @include full-screen-mode;
     @include absolute-position(center);
-    z-index: -1;
+    z-index: -2;
 
     transform: $mask-deactivated;
     transition: $mask-transition;
@@ -109,6 +149,7 @@
 .blood-effect {
     @include full-screen-mode;
     @include absolute-position;
+    z-index: -1;
 
     background-color: transparent;
 

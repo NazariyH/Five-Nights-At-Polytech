@@ -6,9 +6,10 @@
     "background_move_step": 170,
     "blood_start_showing": 30,
     "screamer_popup_delay": 600,
-    "changing_screamer_image_delay": 300,
+    "changing_screamer_image_delay": 200,
     "timer_clock": 20000,
     "win_game_block": 1300,
+    "preloader_screamer_remove_delay": 1000,
 
     "level_1": {
         "battery_capacity": 3600,
@@ -29,8 +30,8 @@
 
         "screamers": {
             "puppet_screamer": {
-                "background_image": "./assets/gameObjects/gamePlay/screamers/screamer_1.png",
-                "background_active_image": "./assets/gameObjects/gamePlay/screamers/screamer_1_active.png",
+                "background_image": "./assets/gameObjects/gamePlay/screamers/puppet_box_screamer.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/puppet_box_screamer_active.png",
                 "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_1.mp3"
             }
             

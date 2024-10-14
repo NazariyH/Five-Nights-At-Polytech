@@ -39,6 +39,7 @@
         @include full-screen-mode;
         @include absolute-position(center);
 
+
         transform: $screamer-deactivated;
 
         div {

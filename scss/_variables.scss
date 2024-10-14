@@ -4,7 +4,7 @@ $background-width:                  200%;
 $preloader-size:                    120px;
 $preloader-radius:                  50%;
 
-$light-circle-size:                 300px;
+$light-circle-size:                 600px;
 
 $warning-icon-size:                 80px;
 $disclaimer-width:                  800px;
@@ -61,6 +61,7 @@ $blood-image-size:                  500px;
 
 $puppet-box-button-width:           200px;
 $puppet-box-button-height:          50px; 
+$puppet-box-progress-bar-size:      $puppet-box-button-height;
 
 $screamer-width:                    800px;
 $screamer-height:                   1000px;
@@ -70,6 +71,8 @@ $screamer-scale-offset:             0.030;
 $screamer-preloading-size:          150px;
 
 // Margins and paddings
+$fps-margin:                        20px;
+
 $warning-icon-margin:               25px;
 $disclaimer-button-margin:          $warning-icon-margin;
 
@@ -108,6 +111,9 @@ $oxygen-margin:                     40px;
 $time-text-margin:                  10px;
 $win-time-text-margin:              40px;
 
+$puppet-box-progress-bar-margin:    20px;
+
+$arrow-move-size:                   20px;
 
 
 
@@ -125,7 +131,7 @@ $start-menu-navbar-icons-color:    invert(100%) sepia(1) saturate(0) hue-rotate(
 $game-icon-color:                  invert(1);
 $game-icon-color-hover:            $start-menu-navbar-icons-color;
 
-$camera-background-color:         #313131;
+$camera-background-color:         #212833;
 $camera-screen-color:             #575757;
 $camera-button-background:        transparent;
 $camera-button-active-color:      #ffffff;
@@ -140,16 +146,22 @@ $battery-border-color:            #ffffff;
 $battery-bg-color:                #00ff00;
 $oxygen-bg-color:                 #0000ff;
 $blood-shadow:                    0 0 0 5px red, inset 0 0 100px 40px rgba(255, 0, 0, 0.9);
-$puppet-box-button-color:         #ffffff;
-$puppet-box-button-shadow:        0 6px 15px rgba(0, 0, 0, 0.4);
-$puppet-box-button-text-shadow:   2px 2px 4px rgba(0, 0, 0, 0.5);
-$win-bg:                          #000000;
 
-$light-circle-color:              radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 90%);
+$puppet-box-button-color:               #ffffff;
+$puppet-box-progress-bar-background:    transparent;
+$puppet-box-progress-bar-color:         conic-gradient($puppet-box-button-color 0deg, $puppet-box-button-color 360deg, transparent 360deg);
+$puppet-box-button-shadow:              0 6px 15px rgba(0, 0, 0, 0.4);
+$puppet-box-button-text-shadow:         2px 2px 4px rgba(0, 0, 0, 0.5);
+
+$win-bg:                                #000000;
+
+$light-circle-color:                    radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 90%);
 
 
 
 // Font styles, sizes, familys
+$fps-count-fontsize:                    12px;
+
 $disclaimer-text-fontsize:              18px;
 
 $start-menu-title-fontsize:             48px;

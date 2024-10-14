@@ -10,6 +10,11 @@ const startGameBtn = document.getElementById('start-new-game');
 const game = document.getElementById('game');
 const backgroundId = document.getElementById('background-location');
 
+const selectMenuButton = document.getElementById('select-menu');
+const selectMenuList = document.getElementById('select-menu-list');
+const helpfulLinks = document.getElementById('helpful-links');
+
+
 
 var startMenu = {
     startMenuConfig: null,
@@ -30,12 +35,31 @@ var startMenu = {
 
             this.clearAllIntervals();
         });
+
+        selectMenuButton.addEventListener('click', this.toggleSelectMenu);
+    },
+
+    toggleSelectMenu() {
+        // Toggle menu list for helpful links displayed on the start screen
+
+        if (selectMenuList.classList.contains('d-none')) {
+            selectMenuList.classList.remove('d-none');
+            selectMenuButton.querySelector('img').classList.add('close');
+            selectMenuButton.querySelector('img').classList.remove('open');
+            helpfulLinks.classList.add('d-none');
+        } else {
+            selectMenuList.classList.add('d-none');
+            selectMenuButton.querySelector('img').classList.add('open');
+            selectMenuButton.querySelector('img').classList.remove('close');
+            helpfulLinks.classList.remove('d-none');
+        }
     },
 
     setUpDisclaimer() {
         disclaimerBtn.addEventListener('click', () => {
             disclaimer.classList.add('d-none');
             startMenuBlock.classList.remove('d-none');
+            fpsCount.classList.remove('d-none');
 
             this.launchStartMenuAnimation();
 

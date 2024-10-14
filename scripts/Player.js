@@ -8,12 +8,14 @@ const camera = document.getElementById('camera');
 const locations = document.querySelectorAll('.camera__screen--location');
 const locationWrap = document.querySelectorAll('.camera__screen--wrap');
 const locationButtons = document.querySelectorAll('.camera-toggling-button');
+const moveButtons = document.querySelectorAll('.game__footer--arrow-move');
 const mask = document.getElementById('mask');
 const batteryCapacityObject = document.querySelector('.game__header--energy--capacity');
 const batteryConsumptionText = document.querySelector('.game__header--energy--consumption');
 const oxygenCapacityObject = document.querySelector('.game__header--oxygen--capacity');
 const bloodAnimationObject = document.querySelector('.blood-effect');
 const puppetBoxButton = document.querySelector('.puppet-box-update-button');
+const puppetBoxProgressBar = document.querySelector('.puppet-box-progress-bar');
 
 const greenIndicator = document.getElementById('green-indicator');
 const yellowIndicator = document.getElementById('yellow-indicator');
@@ -107,6 +109,12 @@ class Player {
 
         maskBtn.addEventListener('click', () => this.putOnMask());
 
+
+        moveButtons.forEach(btn => {
+            btn.addEventListener('click', event => this.moveBackground(event.currentTarget.getAttribute('data-direction')));
+        });
+
+
         // Added event listeners for specific buttons
         document.addEventListener('keydown', event => {
             if (event.key === 'ArrowLeft') this.moveBackground('left');
@@ -120,6 +128,10 @@ class Player {
 
 
         puppetBoxButton.addEventListener('click', () => {
+            let percentage = this.puppetBoxTimer * 100 / this.puppetBoxDuration * 3.6 + 'deg';
+            let puppetBoxBackgroundStyle = window.getComputedStyle(puppetBoxProgressBar);
+            puppetBoxProgressBar.style.background = puppetBoxBackgroundStyle.background.replace(/\d+deg/g, percentage);
+            
             twistingPuppetSound.play()
             if (this.puppetBoxTimer + this.puppetBoxUpdateSec < this.puppetBoxDuration) {
                 this.puppetBoxTimer += this.puppetBoxUpdateSec;
@@ -226,6 +238,11 @@ class Player {
 
     updatePuppetBox() {
         // Updated puppet box every second
+
+
+        let percentage = this.puppetBoxTimer * 100 / this.puppetBoxDuration * 3.6 + 'deg';
+        let puppetBoxBackgroundStyle = window.getComputedStyle(puppetBoxProgressBar);
+        puppetBoxProgressBar.style.background = puppetBoxBackgroundStyle.background.replace(/\d+deg/g, percentage);
 
         this.puppetBoxTimer -= 1;
         if (this.puppetBoxTimer <= 0) {

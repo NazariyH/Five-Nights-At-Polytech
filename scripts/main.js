@@ -73,6 +73,7 @@ function fetchConfig() {
 
             const screamerConfig = {
                 screamer_popup_delay: settings['screamer_popup_delay'],
+                preloader_screamer_remove_delay: settings['preloader_screamer_remove_delay'],
                 puppet_screamer: settings[current_level]['screamers']['puppet_screamer'],
                 screamer_sound: settings[current_level]['screamers']['screamer_sound'],
                 changing_screamer_delay: settings['changing_screamer_image_delay'],

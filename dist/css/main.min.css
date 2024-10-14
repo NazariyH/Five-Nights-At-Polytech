@@ -153,6 +153,12 @@ table {
   align-items: center;
   flex-direction: row;
 }
+.start__block--menubar ul li#select-menu img.open {
+  transform: rotate(90deg);
+}
+.start__block--menubar ul li#select-menu img.close {
+  transform: rotate(-90deg);
+}
 .start__block--menubar ul li img {
   filter: invert(100%) sepia(1) saturate(0) hue-rotate(0deg) brightness(60%);
   width: 20px;
@@ -253,11 +259,19 @@ table {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: -2;
-  transform: translate(-50px, -50px);
-  width: 300px;
+  transform: translate(-100px, -100px);
+  width: 600px;
   border-radius: 50%;
-  height: 300px;
+  height: 600px;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 90%);
+}
+
+#fps-count {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 20px;
+  font-size: 12px;
 }
 
 .game {
@@ -374,8 +388,9 @@ table {
 }
 .game__footer {
   padding: 40px 150px;
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: row;
 }
@@ -386,8 +401,27 @@ table {
   width: 40px;
   filter: invert(1);
 }
+.game__footer button:hover {
+  color: #9b9b9b;
+}
 .game__footer button:hover img {
   filter: invert(100%) sepia(1) saturate(0) hue-rotate(0deg) brightness(60%);
+}
+.game__footer .game__footer--arrow-move {
+  width: 160px;
+  height: 35px;
+  font-size: 16px;
+  border: 2px solid #ffffff;
+}
+.game__footer .game__footer--arrow-move img {
+  width: 20px !important;
+}
+.game__footer .game__footer--arrow-move:nth-last-of-type(2) img {
+  transform: rotate(180deg);
+}
+.game__footer .game__footer--arrow-move:active {
+  background-color: #ffffff;
+  color: #000000;
 }
 
 #mask {
@@ -400,7 +434,7 @@ table {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: -1;
+  z-index: -2;
   transform: scale(0.8) translateY(100%) rotateX(90deg);
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
   opacity: 0;
@@ -480,6 +514,7 @@ table {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: -1;
   background-color: transparent;
 }
 .blood-effect img {
@@ -592,10 +627,10 @@ table {
   height: 700px;
   padding: 40px;
   border-radius: 80px 80px;
-  background-color: #313131;
+  background-color: #212833;
   transition: top 0.5s ease;
-  border-right: 20px solid #242424;
-  border-bottom: 20px solid #242424;
+  border-right: 20px solid #171c24;
+  border-bottom: 20px solid #171c24;
   cursor: url("../../assets/cursor/cursor.png"), auto;
   display: flex;
   justify-content: space-between;
@@ -612,8 +647,8 @@ table {
 .camera .camera-top-panel {
   width: 200px;
   height: 30px;
-  background-color: #313131;
-  border-right: 10px solid #242424;
+  background-color: #212833;
+  border-right: 10px solid #171c24;
   border-radius: 25px 25px 0 0;
   display: flex;
   justify-content: center;
@@ -746,6 +781,15 @@ table {
 .camera__screen--wrap div button:active {
   background-color: #ffffff;
   color: black;
+}
+.camera__screen--wrap div .puppet-box-progress-bar {
+  position: relative;
+  max-width: 50px;
+  max-height: 50px;
+  background-color: transparent;
+  background: conic-gradient(#ffffff 0deg, #ffffff 360deg, transparent 360deg);
+  border-radius: 50%;
+  margin-right: 20px;
 }
 .camera__screen--wrap.d-none button {
   display: none;
