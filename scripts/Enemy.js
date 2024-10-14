@@ -39,14 +39,18 @@ class Enemy {
     moveEnemyToMainLocation(enemy, enemyId, enemyWaitingDuration) {
         // Move enemy to the main location when they passed their route
 
-        mainLocation.setAttribute('data-enemyId', enemyId);
-        waitingScreamerWrapObj.querySelector('div').style.backgroundImage = `url(${enemy['background_image']})`;
-        
         const enemyImage = {
             background_image: enemy['background_image'],
             background_active_image: enemy['background_active_image'],
             screamer_sound: enemy['screamer_sound'],
         }
+
+        if (!mask.classList.contains('active')) {
+            this.runScreamer(enemyImage);
+        };
+
+        mainLocation.setAttribute('data-enemyId', enemyId);
+        waitingScreamerWrapObj.querySelector('div').style.backgroundImage = `url(${enemy['background_image']})`;
 
 
         setTimeout(() => {
@@ -82,15 +86,23 @@ class Enemy {
         // Check if user's mask is puted on else screamer will kill the user and the game will end
 
         if (!mask.classList.contains('active')) {
-            waitingScreamerWrapObj.classList.add('d-none');
-            const screamer = new Screamer(this.screamerPopupDelay, enemyImage, this.screamerShaking);
-            screamer.screamerInitializing();
-            screamer.runEndGameScreamer();
-
-            clearInterval(this.checkMaskStatusInterval);
-            this.checkMaskStatusInterval = null;
+            this.runScreamer(enemyImage);
         };
     }
+
+
+    runScreamer(enemyImage) {
+        // Run screamer when user's mask has unactive status
+
+
+        waitingScreamerWrapObj.classList.add('d-none');
+        const screamer = new Screamer(this.screamerPopupDelay, enemyImage, this.screamerShaking);
+        screamer.screamerInitializing();
+        screamer.runEndGameScreamer();
+
+        clearInterval(this.checkMaskStatusInterval);
+        this.checkMaskStatusInterval = null;
+    };
 
 
     enemyMove(enemy) {
@@ -262,7 +274,6 @@ class Screamer {
         this.screamerDelay = screamerDelay;
         this.screamerConfig = screamerConfig;
         this.changingScreamerDelay = screamerShakingInterval;
-        console.log(screamerConfig);
 
         this.runEndGameScreamer = this.runEndGameScreamer.bind(this);
 

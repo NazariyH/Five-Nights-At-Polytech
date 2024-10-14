@@ -19,7 +19,7 @@
         "oxygen_mask_consumption": 30,
         "oxygen_restoration": 10,
         
-        "puppet_box_duration": 10,
+        "puppet_box_duration": 40,
         "puppet_box_update": 2,
 
         "move_enemy_interval": 7000,
