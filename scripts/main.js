@@ -38,7 +38,11 @@ function fetchConfig() {
         ? 'settings.json'  // Local development
         : 'https://nazariyh.github.io/Five-Nights-At-Polytech/settings.json';  // GitHub Pages
 
+<<<<<<< HEAD
     return fetch('settings.json')
+=======
+    return fetch('https://nazariyh.github.io/Five-Nights-At-Polytech/settings.json')
+>>>>>>> origin/main
         .then(response => response.json())
         .then(settings => {
             let current_level = 'level_1';
@@ -112,7 +116,14 @@ function fetchConfig() {
 }
 
 
+<<<<<<< HEAD
 // console.clear();
 // for (i = 0; i < 100; i++) {
 //     console.log(`${i}) А НУ ВИЙШОВ ОТ СЮДА РОЗБІЙНИК`);
 // }
+=======
+console.clear();
+for (i = 0; i < 100; i++) {
+    console.log(`${i}) А НУ ВИЙШОВ ОТ СЮДА РОЗБІЙНИК`);
+}
+>>>>>>> origin/main
