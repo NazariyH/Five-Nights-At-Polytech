@@ -42,7 +42,7 @@ function fetchConfig() {
         ? 'settings.json'  // Local development
         : 'https://nazariyh.github.io/Five-Nights-At-Polytech/settings.json';  // GitHub Pages
 
-    return fetch('settings.json')
+    return fetch(settingsPath)
         .then(response => response.json())
         .then(settings => {
             let current_level = (`level_${localStorage.getItem('current_night')}`)
