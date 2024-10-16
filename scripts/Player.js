@@ -196,6 +196,8 @@ class Player {
 
     endGameDueToBattery() {
         // Ends game
+        if (puppetBoxAudio.paused) return;
+
 
         clearInterval(this.updateTimer)
 
@@ -230,6 +232,16 @@ class Player {
 
 
         let convertedUsedCapacity = 100 - (100 * this.oxygenUsed / this.oxygenCapacity);
+        if(convertedUsedCapacity <= 0) {
+            clearInterval(this.updateTimer);
+            this.background.classList.add('d-none');
+            mask.classList.add('d-none');
+            maskBreath.pause();
+
+            setTimeout(() => {
+                this.puppetBoxEndGame();
+            }, this.endScreenAppearDelay);
+        }
 
         if (convertedUsedCapacity < this.bloodStartShowing) {
             bloodAnimationObject.classList.add('active');
@@ -240,7 +252,6 @@ class Player {
         }
 
         oxygenCapacityObject.style.width = `${convertedUsedCapacity}%`;
-        // console.log(this.oxygenGeneralConsumption, typeof this.oxygenGeneralConsumption, convertedUsedCapacity);
     }
 
     updatePuppetBox() {

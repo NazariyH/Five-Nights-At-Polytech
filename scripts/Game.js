@@ -71,6 +71,15 @@ class Game {
         setTimeout(() => {
             winGameText.classList.add('active');
         }, this.winTextDelay);
+
+
+        let updateNight = Number(localStorage.getItem('current_night'));
+        updateNight++;
+
+        localStorage.setItem('current_night', updateNight);
+
+
+        setTimeout(() => location.reload(), winSound.duration * 1000 + 1000);
     }
 
 

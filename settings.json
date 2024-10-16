@@ -7,26 +7,331 @@
     "blood_start_showing": 30,
     "screamer_popup_delay": 600,
     "changing_screamer_image_delay": 200,
-    "timer_clock": 20000,
+    "timer_clock": 60000,
     "win_game_block": 1300,
     "preloader_screamer_remove_delay": 1000,
     "end_screen_appear_delay": 4000,
 
     "level_1": {
-        "battery_capacity": 3600,
+        "battery_capacity": 5000,
+        "battery_camera_consumption":32,
+        "battery_flashlight_consumption": 12,
+
+        "oxygen_capacity": 1000,
+        "oxygen_mask_consumption": 40,
+        "oxygen_restoration": 25,
+        
+        "puppet_box_duration": 40,
+        "puppet_box_update": 2,
+
+        "move_enemy_interval": 15000,
+        "camera-repair-speed": 3000,
+        "enemy_delay_before_atack":  10000,
+
+
+        "screamers": {
+            "puppet_screamer": {
+                "background_image": "./assets/gameObjects/gamePlay/screamers/puppet_box_screamer.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/puppet_box_screamer_active.png",
+                "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_1.mp3"
+            }
+            
+        },
+
+        "enemies": {
+            "enemy_object_1": {
+                "enemy_id": 1,
+                "enemy_locations": [1, 2, 3, 4, 5, 6, 7],
+                "enemy_start_location": 1,
+                "enemy_waiting_duration": 7000,
+                "enemy_chance_to_skip_over_location": 50,
+                
+                "background_image": "./assets/gameObjects/gamePlay/screamers/screamer_1.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/screamer_1_active.png",
+                "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_1.mp3"
+            },
+
+            "enemy_object_2": {
+                "enemy_id": 2,
+                "enemy_locations": [1, 2, 3, 4, 5, 6, 7],
+                "enemy_start_location": 1,
+                "enemy_waiting_duration": 7000,
+                "enemy_chance_to_skip_over_location": 90,
+                
+                "background_image": "./assets/gameObjects/gamePlay/screamers/screamer_2.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/screamer_2_active.png",
+                "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_2.mp3"
+            },
+
+            "enemy_object_3": {
+                "enemy_id": 3,
+                "enemy_locations": [1, 2, 3, 4, 5, 6, 7],
+                "enemy_start_location": 1,
+                "enemy_waiting_duration": 7000,
+                "enemy_chance_to_skip_over_location": 10,
+                
+                "background_image": "./assets/gameObjects/gamePlay/screamers/screamer_3.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/screamer_3_active.png",
+                "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_3.mp3"
+            },
+
+            "enemy_object_4": {
+                "enemy_id": 4,
+                "enemy_locations": [8, 9],
+                "enemy_start_location": 8,
+                "enemy_waiting_duration": 7000,
+                "enemy_chance_to_skip_over_location": 70,
+                
+                "background_image": "./assets/gameObjects/gamePlay/screamers/screamer_4.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/screamer_4_active.png",
+                "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_4.mp3"
+            }
+        }
+    },
+
+    "level_2": {
+        "battery_capacity": 4800,
+        "battery_camera_consumption": 32,
+        "battery_flashlight_consumption": 12,
+
+        "oxygen_capacity": 1000,
+        "oxygen_mask_consumption": 40,
+        "oxygen_restoration": 25,
+        
+        "puppet_box_duration": 30,
+        "puppet_box_update": 2,
+
+        "move_enemy_interval": 12000,
+        "camera-repair-speed": 3000,
+        "enemy_delay_before_atack":  8000,
+
+
+        "screamers": {
+            "puppet_screamer": {
+                "background_image": "./assets/gameObjects/gamePlay/screamers/puppet_box_screamer.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/puppet_box_screamer_active.png",
+                "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_1.mp3"
+            }
+            
+        },
+
+        "enemies": {
+            "enemy_object_1": {
+                "enemy_id": 1,
+                "enemy_locations": [1, 2, 3, 4, 5, 6, 7],
+                "enemy_start_location": 1,
+                "enemy_waiting_duration": 7000,
+                "enemy_chance_to_skip_over_location": 50,
+                
+                "background_image": "./assets/gameObjects/gamePlay/screamers/screamer_1.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/screamer_1_active.png",
+                "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_1.mp3"
+            },
+
+            "enemy_object_2": {
+                "enemy_id": 2,
+                "enemy_locations": [1, 2, 3, 4, 5, 6, 7],
+                "enemy_start_location": 1,
+                "enemy_waiting_duration": 7000,
+                "enemy_chance_to_skip_over_location": 90,
+                
+                "background_image": "./assets/gameObjects/gamePlay/screamers/screamer_2.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/screamer_2_active.png",
+                "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_2.mp3"
+            },
+
+            "enemy_object_3": {
+                "enemy_id": 3,
+                "enemy_locations": [1, 2, 3, 4, 5, 6, 7],
+                "enemy_start_location": 1,
+                "enemy_waiting_duration": 7000,
+                "enemy_chance_to_skip_over_location": 10,
+                
+                "background_image": "./assets/gameObjects/gamePlay/screamers/screamer_3.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/screamer_3_active.png",
+                "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_3.mp3"
+            },
+
+            "enemy_object_4": {
+                "enemy_id": 4,
+                "enemy_locations": [8, 9],
+                "enemy_start_location": 8,
+                "enemy_waiting_duration": 7000,
+                "enemy_chance_to_skip_over_location": 70,
+                
+                "background_image": "./assets/gameObjects/gamePlay/screamers/screamer_4.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/screamer_4_active.png",
+                "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_4.mp3"
+            }
+        }
+    },
+    "level_3": {
+        "battery_capacity": 4200,
+        "battery_camera_consumption": 32,
+        "battery_flashlight_consumption": 12,
+
+        "oxygen_capacity": 1000,
+        "oxygen_mask_consumption": 40,
+        "oxygen_restoration": 15,
+        
+        "puppet_box_duration": 25,
+        "puppet_box_update": 2,
+
+        "move_enemy_interval": 9000,
+        "camera-repair-speed": 3000,
+        "enemy_delay_before_atack":  7000,
+
+
+        "screamers": {
+            "puppet_screamer": {
+                "background_image": "./assets/gameObjects/gamePlay/screamers/puppet_box_screamer.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/puppet_box_screamer_active.png",
+                "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_1.mp3"
+            }
+            
+        },
+
+        "enemies": {
+            "enemy_object_1": {
+                "enemy_id": 1,
+                "enemy_locations": [1, 2, 3, 4, 5, 6, 7],
+                "enemy_start_location": 1,
+                "enemy_waiting_duration": 7000,
+                "enemy_chance_to_skip_over_location": 50,
+                
+                "background_image": "./assets/gameObjects/gamePlay/screamers/screamer_1.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/screamer_1_active.png",
+                "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_1.mp3"
+            },
+
+            "enemy_object_2": {
+                "enemy_id": 2,
+                "enemy_locations": [1, 2, 3, 4, 5, 6, 7],
+                "enemy_start_location": 1,
+                "enemy_waiting_duration": 7000,
+                "enemy_chance_to_skip_over_location": 90,
+                
+                "background_image": "./assets/gameObjects/gamePlay/screamers/screamer_2.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/screamer_2_active.png",
+                "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_2.mp3"
+            },
+
+            "enemy_object_3": {
+                "enemy_id": 3,
+                "enemy_locations": [1, 2, 3, 4, 5, 6, 7],
+                "enemy_start_location": 1,
+                "enemy_waiting_duration": 7000,
+                "enemy_chance_to_skip_over_location": 10,
+                
+                "background_image": "./assets/gameObjects/gamePlay/screamers/screamer_3.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/screamer_3_active.png",
+                "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_3.mp3"
+            },
+
+            "enemy_object_4": {
+                "enemy_id": 4,
+                "enemy_locations": [8, 9],
+                "enemy_start_location": 8,
+                "enemy_waiting_duration": 7000,
+                "enemy_chance_to_skip_over_location": 70,
+                
+                "background_image": "./assets/gameObjects/gamePlay/screamers/screamer_4.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/screamer_4_active.png",
+                "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_4.mp3"
+            }
+        }
+    },
+    "level_4": {
+        "battery_capacity": 4000,
         "battery_camera_consumption": 32,
         "battery_flashlight_consumption": 12,
 
         "oxygen_capacity": 1000,
         "oxygen_mask_consumption": 30,
-        "oxygen_restoration": 10,
+        "oxygen_restoration": 20,
         
-        "puppet_box_duration": 5,
-        "puppet_box_update": 2,
+        "puppet_box_duration": 30,
+        "puppet_box_update": 3,
 
         "move_enemy_interval": 7000,
         "camera-repair-speed": 3000,
-        "enemy_delay_before_atack":  2000,
+        "enemy_delay_before_atack":  7000,
+
+
+        "screamers": {
+            "puppet_screamer": {
+                "background_image": "./assets/gameObjects/gamePlay/screamers/puppet_box_screamer.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/puppet_box_screamer_active.png",
+                "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_1.mp3"
+            }
+            
+        },
+
+        "enemies": {
+            "enemy_object_1": {
+                "enemy_id": 1,
+                "enemy_locations": [1, 2, 3, 4, 5, 6, 7],
+                "enemy_start_location": 1,
+                "enemy_waiting_duration": 7000,
+                "enemy_chance_to_skip_over_location": 50,
+                
+                "background_image": "./assets/gameObjects/gamePlay/screamers/screamer_1.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/screamer_1_active.png",
+                "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_1.mp3"
+            },
+
+            "enemy_object_2": {
+                "enemy_id": 2,
+                "enemy_locations": [1, 2, 3, 4, 5, 6, 7],
+                "enemy_start_location": 1,
+                "enemy_waiting_duration": 7000,
+                "enemy_chance_to_skip_over_location": 90,
+                
+                "background_image": "./assets/gameObjects/gamePlay/screamers/screamer_2.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/screamer_2_active.png",
+                "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_2.mp3"
+            },
+
+            "enemy_object_3": {
+                "enemy_id": 3,
+                "enemy_locations": [1, 2, 3, 4, 5, 6, 7],
+                "enemy_start_location": 1,
+                "enemy_waiting_duration": 7000,
+                "enemy_chance_to_skip_over_location": 10,
+                
+                "background_image": "./assets/gameObjects/gamePlay/screamers/screamer_3.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/screamer_3_active.png",
+                "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_3.mp3"
+            },
+
+            "enemy_object_4": {
+                "enemy_id": 4,
+                "enemy_locations": [8, 9],
+                "enemy_start_location": 8,
+                "enemy_waiting_duration": 7000,
+                "enemy_chance_to_skip_over_location": 70,
+                
+                "background_image": "./assets/gameObjects/gamePlay/screamers/screamer_4.png",
+                "background_active_image": "./assets/gameObjects/gamePlay/screamers/screamer_4_active.png",
+                "screamer_sound": "./assets/gameObjects/gamePlay/screamers_audio/screamer_4.mp3"
+            }
+        }
+    },
+    "level_5": {
+        "battery_capacity": 3800,
+        "battery_camera_consumption": 32,
+        "battery_flashlight_consumption": 12,
+
+        "oxygen_capacity": 1000,
+        "oxygen_mask_consumption": 30,
+        "oxygen_restoration": 30,
+        
+        "puppet_box_duration": 30,
+        "puppet_box_update": 3,
+
+        "move_enemy_interval": 7000,
+        "camera-repair-speed": 2000,
+        "enemy_delay_before_atack":  7000,
 
 
         "screamers": {

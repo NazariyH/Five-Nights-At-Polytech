@@ -6,12 +6,15 @@ const startMenuImages = document.querySelectorAll('.two-options');
 const startMenuImagesGroup = document.querySelector('.start__block__group');
 const startMenuSoundEffects = document.querySelectorAll('.start-menu-sound-effect');
 const cameraTogglingSound = document.getElementById('camera-toggling-sound');
-const startGameBtn = document.getElementById('start-new-game');
+const startNewGameBtn = document.getElementById('start-new-game');
 const game = document.getElementById('game');
 const backgroundId = document.getElementById('background-location');
+const continueBtn = document.querySelector('.continue');
+const continueGameBtn = document.getElementById('continue-game');
 
 const selectMenuButton = document.getElementById('select-menu');
 const selectMenuList = document.getElementById('select-menu-list');
+const selectMenuOptions = selectMenuList.querySelectorAll('li');
 const helpfulLinks = document.getElementById('helpful-links');
 
 
@@ -23,18 +26,35 @@ var startMenu = {
     startMenuSoundInterval: null,
     intervals: [],
 
+    launchGame() {
+        startMenuBlock.classList.add('d-none');
+        backgroundId.classList.remove('d-none');
+        game.classList.remove('d-none');
+
+        this.clearAllIntervals();
+    },
+
     initializeStartMenu(startMenuConfig) {
         this.startMenuConfig = startMenuConfig;
 
         this.setUpDisclaimer();
 
-        startGameBtn.addEventListener('click', () => {
-            startMenuBlock.classList.add('d-none');
-            backgroundId.classList.remove('d-none');
-            game.classList.remove('d-none');
-
-            this.clearAllIntervals();
+        startNewGameBtn.addEventListener('click', () => {
+            localStorage.setItem('current_night', 1);
+            this.launchGame();
         });
+
+        continueGameBtn.addEventListener('click', () => {
+            this.launchGame();
+        });
+
+        selectMenuOptions.forEach(option => option.addEventListener('click', event => {
+            localStorage.setItem('current_night', event.currentTarget.getAttribute('data-night'));
+            continueBtn.textContent = `Продовжити ${localStorage.getItem('current_night')} ніч`;
+            selectMenuList.classList.add('d-none');
+            selectMenuButton.querySelector('img').classList.remove('close');
+            selectMenuButton.querySelector('img').classList.add('open');
+        }));
 
         selectMenuButton.addEventListener('click', this.toggleSelectMenu);
     },
@@ -66,6 +86,11 @@ var startMenu = {
             } catch (error) {
                 console.error('Error with playing background music', error);
             }
+
+            if(!localStorage.getItem('current_night')) 
+                localStorage.setItem('current_night', '1');
+            else
+                continueBtn.textContent = `Продовжити ${localStorage.getItem('current_night')} ніч`;
         });
     },
 
