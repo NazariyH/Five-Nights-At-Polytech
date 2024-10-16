@@ -10,6 +10,7 @@
     "timer_clock": 20000,
     "win_game_block": 1300,
     "preloader_screamer_remove_delay": 1000,
+    "end_screen_appear_delay": 4000,
 
     "level_1": {
         "battery_capacity": 3600,
@@ -20,12 +21,12 @@
         "oxygen_mask_consumption": 30,
         "oxygen_restoration": 10,
         
-        "puppet_box_duration": 40,
+        "puppet_box_duration": 5,
         "puppet_box_update": 2,
 
         "move_enemy_interval": 7000,
         "camera-repair-speed": 3000,
-        "enemy_delay_before_atack":  12000,
+        "enemy_delay_before_atack":  2000,
 
 
         "screamers": {

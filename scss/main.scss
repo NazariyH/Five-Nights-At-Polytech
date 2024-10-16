@@ -7,6 +7,7 @@
 @import './components/game';
 @import './components/camera';
 @import './components/screamer';
+@import './components/endScreen';
 
 
 body {
@@ -15,6 +16,7 @@ body {
     overflow: hidden;
     height: 100vh;
     cursor: $cursor, auto;
+    user-select: none;
 
     @include flex-position($x: center, $y: center, $direction: column);
 

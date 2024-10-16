@@ -52,11 +52,12 @@
 
 .start {
     padding: 0 $start-menu-padding;
-    @include flex-position($x: center, $y: center, $direction: column);
+    @include flex-position($x: space-around, $y: center, $direction: column);
     @include full-screen-mode;
 
     &__block {
         position: relative !important;
+
         &:nth-child(2) {
             width: 100%;
             height: $start-menu-image-height;
@@ -70,40 +71,47 @@
             margin-bottom: $start-menu-title-margin;
         }
 
-        &--menubar ul li {
-            font-size: $start-menu-navbar-fontsize;
-            font-family: $base-font-family;
-            letter-spacing: $start-menu-navbar-letter-spacing;
-            margin: $start-menu-navbar-item-margin 0;
-            transition: $start-menu-navbar-transition;
 
-            @include flex-position($x: center, $y: center, $direction: row);
 
-            &#select-menu {
-                img.open {
-                    transform: rotate(90deg);
-                }
+        &--menubar {
+            width: $start-menu-navbar-width;
 
-                img.close {
-                    transform: rotate(-90deg);
-                }
-            }
 
-            img {
-                filter: $start-menu-navbar-icons-color;
-                width: $arrow-icon-width;
-                height: $arrow-icon-height;
-                margin-right: $arrow-icon-margin;
+            ul li {
+                font-size: $start-menu-navbar-fontsize;
+                font-family: $base-font-family;
+                letter-spacing: $start-menu-navbar-letter-spacing;
+                margin: $start-menu-navbar-item-margin 0;
                 transition: $start-menu-navbar-transition;
 
-                opacity: 0;
-            }
+                @include flex-position($x: center, $y: center, $direction: row);
 
-            &:hover {
-                color: $start-menu-navbar-hover-color;
+                &#select-menu {
+                    img.open {
+                        transform: rotate(90deg);
+                    }
+
+                    img.close {
+                        transform: rotate(-90deg);
+                    }
+                }
 
                 img {
-                    opacity: 1;
+                    filter: $start-menu-navbar-icons-color;
+                    width: $arrow-icon-width;
+                    height: $arrow-icon-height;
+                    margin-right: $arrow-icon-margin;
+                    transition: $start-menu-navbar-transition;
+
+                    opacity: 0;
+                }
+
+                &:hover {
+                    color: $start-menu-navbar-hover-color;
+
+                    img {
+                        opacity: 1;
+                    }
                 }
             }
         }

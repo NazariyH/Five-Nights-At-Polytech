@@ -10,16 +10,15 @@ window.onload = function () {
 
     fetchConfig().then(({ startMenuConfig, backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing,
         puppetBoxConfig, screamerConfig, timerClock, winGameBlock, enemyObjects, enemyMoveInterval, 
-        cameraRepairSpeed, enemyDelayBeforeAtack }) => {
+        cameraRepairSpeed, enemyDelayBeforeAtack,endScreenAppearDelay }) => {
         startMenu.initializeStartMenu(startMenuConfig);
 
 
         startGameBtn.addEventListener('click', () => {
-            const player = new Player(backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing, puppetBoxConfig, screamerConfig);
+            const player = new Player(backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing, puppetBoxConfig, screamerConfig, endScreenAppearDelay);
             player.initializingGame();
 
-
-            const enemy = new Enemy(enemyObjects, enemyMoveInterval, cameraRepairSpeed, enemyDelayBeforeAtack, screamerConfig);
+            const enemy = new Enemy(enemyObjects, enemyMoveInterval, cameraRepairSpeed, enemyDelayBeforeAtack, screamerConfig, endScreenAppearDelay);
             enemy.initialize();
 
 
@@ -38,7 +37,7 @@ function fetchConfig() {
         ? 'settings.json'  // Local development
         : 'https://nazariyh.github.io/Five-Nights-At-Polytech/settings.json';  // GitHub Pages
 
-    return fetch('https://nazariyh.github.io/Five-Nights-At-Polytech/settings.json')
+    return fetch('settings.json')
         .then(response => response.json())
         .then(settings => {
             let current_level = 'level_1';
@@ -46,6 +45,7 @@ function fetchConfig() {
 
             const timerClock = settings['timer_clock'];
             const winGameBlock = settings['win_game_block'];
+            const endScreenAppearDelay = settings['end_screen_appear_delay'];
 
             const startMenuConfig = {
                 start_menu_shake_interval: settings['start_menu_shake_interval'],
@@ -103,6 +103,7 @@ function fetchConfig() {
                 enemyMoveInterval,
                 cameraRepairSpeed,
                 enemyDelayBeforeAtack,
+                endScreenAppearDelay,
             };
         })
         .catch(error => {

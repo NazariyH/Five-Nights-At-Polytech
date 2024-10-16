@@ -21,6 +21,12 @@ class Game {
 
         // Intervals
         this.timerClockInterval = setInterval(() => {
+            if (puppetBoxAudio.paused) {
+                clearInterval(this.timerClockInterval);
+                return;
+            }
+
+
             this.currentHour += 1;
             timerObject.textContent = this.currentHour;
             this.checkTimerClock();

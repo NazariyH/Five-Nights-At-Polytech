@@ -20,6 +20,7 @@ $start-menu-image-height:           400px;
 $start-menu-image-offset-x:         130px;
 $start-menu-image-offset-y:         -30px;
 $start-menu-image-shake-offset:     20px;
+$start-menu-navbar-width:           450px;
 
 $arrow-icon-width:                  20px;
 $arrow-icon-height:                 $arrow-icon-width;
@@ -70,6 +71,9 @@ $screamer-scale-offset:             0.030;
 
 $screamer-preloading-size:          150px;
 
+$end-screen-button-width:           200px;
+$end-screen-button-height:          60px;
+
 // Margins and paddings
 $fps-margin:                        20px;
 
@@ -114,6 +118,9 @@ $win-time-text-margin:              40px;
 $puppet-box-progress-bar-margin:    20px;
 
 $arrow-move-size:                   20px;
+
+$end-screen-padding-x:              120px;
+$end-screen-padding-y:              80px;                
 
 
 
@@ -179,6 +186,8 @@ $battery-info-fontsize:                 20px;
 
 $win-text:                              70px;
 $no-signal-fz:                          25px;
+
+$end-game-screen-fontsize:              30px;
 
 
 // Transitions

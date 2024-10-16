@@ -20,8 +20,11 @@
     <div id="fps-count" class="d-none"><span>0</span> FPS</div>
     <img id="background-location" class="d-none" data-enemyId="0"
         src="./assets/gameObjects/gamePlay/main_location/background_0.png">
+
+    <img src="./assets/gameObjects/endScreen/endScreenBg.png" id="end-game-screen-background" class="d-none">
     <div id="preloader"></div>
     <div id="light-circle" class="d-none"></div>
+
 
     <div id="disclaimer" class="d-none">
         <div class="disclaimer__block">
@@ -61,14 +64,13 @@
                     </li>
                     <li id="select-menu"><img src="./assets/icons/arrow.png" class="arrow-icon" alt="">Вибрати Ніч</li>
                     <div id="select-menu-list" class="select-menu d-none">
-                        <li>1 ніч</li>
-                        <li>2 ніч</li>
-                        <li>3 ніч</li>
-                        <li>4 ніч</li>
-                        <li>5 ніч</li>
+                        <li><img src="./assets/icons/arrow.png" class="arrow-icon">1 ніч</li>
+                        <li><img src="./assets/icons/arrow.png" class="arrow-icon">2 ніч</li>
+                        <li><img src="./assets/icons/arrow.png" class="arrow-icon">3 ніч</li>
+                        <li><img src="./assets/icons/arrow.png" class="arrow-icon">4 ніч</li>
+                        <li><img src="./assets/icons/arrow.png" class="arrow-icon">5 ніч</li>
                     </div>
                     <div id="helpful-links">
-                        <li><img src="./assets/icons/arrow.png" class="arrow-icon" alt="">Усі Політехотроніки</li>
                         <li><img src="./assets/icons/arrow.png" class="arrow-icon" alt="">Інструкція</li>
                         <li><img src="./assets/icons/arrow.png" class="arrow-icon" alt=""><a
                                 href="https://nazariyh.github.io/myBlog/" target="_blank">Cайт автора</a></li>
@@ -214,6 +216,12 @@
     </div>
 
 
+    <div id="end-game-screen" class="end-screen d-none">
+        <p>Гра завершина. Вас відчислено.</p>
+        <button id="play-again">Грати знову</button>
+    </div>
+
+
     <div id="sound-effects" class="d-none">
         <audio id="start-menu-background-music" src="./assets/audio/backgroundMusic/startMenuBackgroundMusic.mp3"
             loop></audio>
@@ -242,6 +250,7 @@
     <script src="./scripts/Game.js"></script>
     <script src="./scripts/Player.js"></script>
     <script src="./scripts/StartMenuState.js"></script>
+    <script src="./scripts/EndScreenMenuState.js"></script>
     <script src="./scripts/main.js"></script>
 </body>
 

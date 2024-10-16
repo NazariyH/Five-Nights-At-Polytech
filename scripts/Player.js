@@ -34,8 +34,9 @@ const emptyBatteryLevel = document.getElementById('empty-battery-end');
 const powerOutage = document.getElementById('power-outage');
 
 class Player {
-    constructor(backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing, puppetBoxConfig, screamerConfig) {
+    constructor(backgroundMoveStep, batteryConfig, oxygenConfig, bloodStartShowing, puppetBoxConfig, screamerConfig, endScreenAppearDelay) {
         this.backgroundMoveStep = backgroundMoveStep;
+        this.endScreenAppearDelay = endScreenAppearDelay;
 
         this.batteryCapacity = batteryConfig.battery_capacity;
         this.batteryCameraConsumption = batteryConfig.battery_camera_consumption;
@@ -57,6 +58,7 @@ class Player {
 
         this.screamerPopupDelay = screamerConfig.screamer_popup_delay;
         this.screamerShaking = screamerConfig.changing_screamer_delay;
+
 
         // screamers
         this.puppetScreamerConfig = {
@@ -90,6 +92,11 @@ class Player {
             let currentLocation = document.querySelector('.camera__screen--location:not(.d-none)');
 
             this.changeIndicator(currentLocation);
+
+
+            if (puppetBoxAudio.paused) {
+                clearInterval(this.updateTimer);
+            }
         }, 1000);
     }
 
@@ -382,7 +389,10 @@ class Player {
         }
 
         clearInterval(this.updateTimer);
-        const screamer = new Screamer(this.screamerPopupDelay, this.puppetScreamerConfig, this.screamerShaking);
+        puppetBoxAudio.pause();
+
+
+        const screamer = new Screamer(this.screamerPopupDelay, this.puppetScreamerConfig, this.screamerShaking, this.endScreenAppearDelay);
         screamer.screamerInitializing();
         screamer.runEndGameScreamer();
     }

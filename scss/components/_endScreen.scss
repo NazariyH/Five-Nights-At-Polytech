@@ -1,0 +1,35 @@
+#end-game-screen-background {
+    @include full-screen-mode;
+    @include absolute-position(center);
+    z-index: -1;
+}
+
+
+.end-screen {
+    @include full-screen-mode;
+    @include flex-position($x: space-between, $y: start, $direction: column);
+
+    padding: $end-screen-padding-y $end-screen-padding-x;
+
+    p {
+        color: $start-menu-title-color;
+        font-size: $end-game-screen-fontsize;
+    }
+
+    button {
+        width: $end-screen-button-width;
+        height: $end-screen-button-height;
+
+        border: $camera-button;
+
+        &:hover {
+            background-color: $camera-button-active-color;
+
+            @if (lightness($camera-button-active-color) > 40) {
+                color: #000000;
+            } @else {
+                color: #ffffff;
+            }
+        }
+    }
+}

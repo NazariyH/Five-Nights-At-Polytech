@@ -118,7 +118,7 @@ table {
 .start {
   padding: 0 200px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
   position: relative;
@@ -141,6 +141,9 @@ table {
   font-family: "Nosifer", sans-serif;
   color: #A50000;
   margin-bottom: 120px;
+}
+.start__block--menubar {
+  width: 450px;
 }
 .start__block--menubar ul li {
   font-size: 20px;
@@ -947,12 +950,52 @@ table {
   }
 }
 
+#end-game-screen-background {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.end-screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: column;
+  padding: 80px 120px;
+}
+.end-screen p {
+  color: #A50000;
+  font-size: 30px;
+}
+.end-screen button {
+  width: 200px;
+  height: 60px;
+  border: 2px solid #ffffff;
+}
+.end-screen button:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
 body {
   background-color: #000000;
   color: #FFFFFF;
   overflow: hidden;
   height: 100vh;
   cursor: url("../../assets/cursor/cursor.png"), auto;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   display: flex;
   justify-content: center;
   align-items: center;

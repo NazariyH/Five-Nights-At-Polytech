@@ -3,19 +3,26 @@ const screamerImageObject = screamerObject.querySelector('div');
 const mainLocation = document.getElementById('background-location');
 const waitingScreamerWrapObj = document.querySelector('.game__screamer--waiting');
 const soundEffects = document.getElementById('sound-effects');
+const endScreenBackground = document.getElementById('end-game-screen-background');
+
 
 // Import audio
 const screamerSound = document.querySelector('.screamer-audio');
 const enemyApproaching = document.getElementById('enemy-approaching');
+const endScreenView = document.getElementById('end-game-screen');
+
 enemyApproaching.volume = 0.7;
 
+
+
+
 class Enemy {
-    constructor(enemyObjects, enemyMoveInterval, cameraRepairSpeed, enemyDelayBeforeAtack, screamerConfig) {
+    constructor(enemyObjects, enemyMoveInterval, cameraRepairSpeed, enemyDelayBeforeAtack, screamerConfig, endScreenAppearDelay) {
         this.enemyObjects = enemyObjects;
         this.enemyMoveInterval = enemyMoveInterval;
         this.cameraRepairSpeed = cameraRepairSpeed;
         this.enemyDelayBeforeAtack = enemyDelayBeforeAtack;
-    
+        this.endScreenAppearDelay = endScreenAppearDelay;
 
         this.dynamicEnemyObject = {}
         this.preloadScreamerRemoveDelay = screamerConfig.preloader_screamer_remove_delay;
@@ -34,7 +41,6 @@ class Enemy {
         // Initialize enemy move interval
 
         this.initializeInitialEnemyPosition();
-
     }
 
     moveEnemyToMainLocation(enemy, enemyId, enemyWaitingDuration) {
@@ -61,16 +67,16 @@ class Enemy {
             waitingScreamerWrapObj.classList.add('waiting');
             enemyApproaching.play();
             waitingScreamerWrapObj.style.opacity = 1;
-    
+
             setTimeout(() => {
                 waitingScreamerWrapObj.classList.remove('waiting');
                 waitingScreamerWrapObj.classList.add('unload');
-    
+
                 setTimeout(() => {
                     waitingScreamerWrapObj.style.opacity = 0;
                     waitingScreamerWrapObj.classList.remove('unload');
                     mainLocation.setAttribute('data-enemyId', '0');
-                    
+
                     enemyApproaching.pause();
                     enemyApproaching.currentTime = 0;
 
@@ -96,14 +102,17 @@ class Enemy {
     runScreamer(enemyImage) {
         // Run screamer when user's mask has unactive status
 
-
         waitingScreamerWrapObj.classList.add('d-none');
-        const screamer = new Screamer(this.screamerPopupDelay, enemyImage, this.screamerShaking);
+        const screamer = new Screamer(this.screamerPopupDelay, enemyImage, this.screamerShaking, this.endScreenAppearDelay);
         screamer.screamerInitializing();
         screamer.runEndGameScreamer();
 
         clearInterval(this.checkMaskStatusInterval);
         this.checkMaskStatusInterval = null;
+
+        clearInterval(this.enemySpawnInterval);
+        clearInterval(this.updateImageSrcInterval);
+        puppetBoxAudio.pause();
     };
 
 
@@ -198,6 +207,13 @@ class Enemy {
         }
 
         this.enemySpawnInterval = setInterval(() => {
+            if (puppetBoxAudio.paused) {
+                clearInterval(this.enemySpawnInterval);
+                clearInterval(this.updateImageSrcInterval);
+                clearInterval(this.checkMaskStatusInterval);
+            }
+
+
             let randomEnemy = Math.floor(Math.random() * Object.keys(this.enemyObjects).length) + 1;
             this.enemyMove(this.enemyObjects[`enemy_object_${randomEnemy}`]);
         }, this.enemyMoveInterval);
@@ -272,10 +288,11 @@ class Enemy {
 }
 
 class Screamer {
-    constructor(screamerDelay, screamerConfig, screamerShakingInterval) {
+    constructor(screamerDelay, screamerConfig, screamerShakingInterval, endScreenAppearDelay) {
         this.screamerDelay = screamerDelay;
         this.screamerConfig = screamerConfig;
         this.changingScreamerDelay = screamerShakingInterval;
+        this.endScreenAppearDelay = endScreenAppearDelay;
 
         this.runEndGameScreamer = this.runEndGameScreamer.bind(this);
 
@@ -290,17 +307,16 @@ class Screamer {
     runEndGameScreamer() {
         const screamerAudioSrc = this.screamerConfig.screamer_sound;
         screamerSound.setAttribute('src', screamerAudioSrc);
-        console.log(screamerSound);
         screamerSound.play();
 
-        
+
+
         setTimeout(() => {
             screamerObject.classList.add('active');
         }, this.screamerDelay);
 
-        setInterval(() => {
+        const changeScreamerInterval = setInterval(() => {
             const currentBackground = screamerImageObject.style.backgroundImage;
-
 
             const { background_image, background_active_image } = this.screamerConfig;
 
@@ -314,5 +330,26 @@ class Screamer {
                 : `url(${backgroundImageUrl})`;
 
         }, this.changingScreamerDelay);
+
+
+        screamerSound.addEventListener('loadedmetadata', () => {
+            setTimeout(() => {
+                backgroundId.classList.add('d-none');
+                game.classList.add('d-none');
+                preloader.classList.remove('d-none');
+                screamerObject.classList.add('d-none');
+                screamerSound.remove();
+
+                if (!flashlightCircle.classList.contains('d-none')) {
+                    flashlightCircle.classList.add('d-none');
+                }
+
+                setTimeout(() => {
+                    preloader.classList.add('d-none');
+                    endScreenView.classList.remove('d-none');
+                    endScreenBackground.classList.remove('d-none');
+                }, this.endScreenAppearDelay);
+            }, screamerSound.duration * 1000);
+        });
     }
 }

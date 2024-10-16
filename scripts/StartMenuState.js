@@ -46,12 +46,10 @@ var startMenu = {
             selectMenuList.classList.remove('d-none');
             selectMenuButton.querySelector('img').classList.add('close');
             selectMenuButton.querySelector('img').classList.remove('open');
-            helpfulLinks.classList.add('d-none');
         } else {
             selectMenuList.classList.add('d-none');
             selectMenuButton.querySelector('img').classList.add('open');
             selectMenuButton.querySelector('img').classList.remove('close');
-            helpfulLinks.classList.remove('d-none');
         }
     },
 
