@@ -45,6 +45,9 @@ function fetchConfig() {
     return fetch('https://nazariyh.github.io/Five-Nights-At-Polytech/settings.json')
         .then(response => response.json())
         .then(settings => {
+
+            if (!localStorage.getItem('current_night')) localStorage.setItem('current_night', 1);
+
             let current_level = (`level_${localStorage.getItem('current_night')}`)
                 ? `level_${localStorage.getItem('current_night')}`
                 : 'level_1';
