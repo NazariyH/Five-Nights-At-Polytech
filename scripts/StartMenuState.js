@@ -16,7 +16,7 @@ const selectMenuButton = document.getElementById('select-menu');
 const selectMenuList = document.getElementById('select-menu-list');
 const selectMenuOptions = selectMenuList.querySelectorAll('li');
 const helpfulLinks = document.getElementById('helpful-links');
-
+const documentationBtn = document.getElementById('documentation');
 
 
 var startMenu = {
@@ -25,6 +25,7 @@ var startMenu = {
     startMenuAnimationInterval: null,
     startMenuSoundInterval: null,
     intervals: [],
+    message: `Хер тобі а не інструкція.\nВсе що тобі потрібно знати: дивись за камерами, якщо когось не видно на камерах, значить він в тебе в кімнаті, вдягни маску поки не пізно. Не забувай крутити шкатулку, бо Андрусяк тебе *****!`,
 
     launchGame() {
         startMenuBlock.classList.add('d-none');
@@ -36,6 +37,11 @@ var startMenu = {
 
     initializeStartMenu(startMenuConfig) {
         this.startMenuConfig = startMenuConfig;
+
+
+        documentationBtn.addEventListener('click', () => alert(this.message));
+
+
 
         this.setUpDisclaimer();
 
